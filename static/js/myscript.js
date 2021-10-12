@@ -9,17 +9,11 @@ var popoverList = popoverTriggerList.map(function(popoverTriggerEl) {
 })
 // ===========================================================
 
-// ======== https://jsonplaceholder.typicode.com/guide/ ======
-fetch('https://jsonplaceholder.typicode.com/posts/1')
-    .then((response) => response.json())
-    .then((json) => console.log(json));
-// ============================================================
-
 // ====================== OwlCarousel =========================
 $(document).ready(function() {
     $('.owl-carousel').owlCarousel({
-        nav: true,
-        navText: ['<i class="bi bi-arrow-left"></i>','<i class="bi bi-arrow-right"></i>'],
+        // nav: true,
+        // navText: ['<i class="bi bi-arrow-left"></i>','<i class="bi bi-arrow-right"></i>'],
         loop: true,
         margin: 10,
         responsiveClass: true,
@@ -83,66 +77,66 @@ $(document).ready(function() {
 
 // ====================== My scripts =========================
 
-$("#btnOrgInn").click(function() {
-    console.log("click");
-    $("#id_inn").attr("disabled", false);
-})
-$("#btnOrgName").click(function() {
-    $("#fieldNameOrg").show('fade');
-    $("#textNameOrg").hide();
-})
+// $("#btnOrgInn").click(function() {
+//     console.log("click");
+//     $("#id_inn").attr("disabled", false);
+// })
+// $("#btnOrgName").click(function() {
+//     $("#fieldNameOrg").show('fade');
+//     $("#textNameOrg").hide();
+// })
 
-$('#checkUsl1').click(function() {
-    if ($(this).is(':checked')) {
-        $('#btnPay').removeClass('disabled');
-    } else {
-        $('#btnPay').addClass('disabled');
-    }
-})
+// $('#checkUsl1').click(function() {
+//     if ($(this).is(':checked')) {
+//         $('#btnPay').removeClass('disabled');
+//     } else {
+//         $('#btnPay').addClass('disabled');
+//     }
+// })
 
-$('#checkSogl1').click(function() {
-    if ($(this).is(':checked')) {
-        $('#btnSend').removeClass('disabled');
-    } else {
-        $('#btnSend').addClass('disabled');
-    }
-})
+// $('#checkSogl1').click(function() {
+//     if ($(this).is(':checked')) {
+//         $('#btnSend').removeClass('disabled');
+//     } else {
+//         $('#btnSend').addClass('disabled');
+//     }
+// })
 
-$('#btn-move-to-reg').click(function() {
-    $('#form-registration').show('fade');
-    $('#form-signin').hide();
-})
-$('#btn-move-to-signin').click(function() {
-    $('#form-registration').hide();
-    $('#form-signin').show('fade');
-})
-$('#btn-move-to-recovery').click(function() {
-    $('#form-recovery').show('fade');
-    $('#form-signin').hide();
-})
-$('#btn-cancel-recovery').click(function() {
-    $('#form-recovery').hide();
-    $('#form-signin').show('fade');
-})
+// $('#btn-move-to-reg').click(function() {
+//     $('#form-registration').show('fade');
+//     $('#form-signin').hide();
+// })
+// $('#btn-move-to-signin').click(function() {
+//     $('#form-registration').hide();
+//     $('#form-signin').show('fade');
+// })
+// $('#btn-move-to-recovery').click(function() {
+//     $('#form-recovery').show('fade');
+//     $('#form-signin').hide();
+// })
+// $('#btn-cancel-recovery').click(function() {
+//     $('#form-recovery').hide();
+//     $('#form-signin').show('fade');
+// })
 // ===========================================================
 
-function copyToken() {
-  /* Получить текстовое поле */
-  var copyText = document.getElementById("tokenField");
+// function copyToken() {
+//   /* Получить текстовое поле */
+//   var copyText = document.getElementById("tokenField");
 
-  /* Выделите текстовое поле */
-  copyText.select();
-  copyText.setSelectionRange(0, 99999); /* Для мобильных устройств */
+//   /* Выделите текстовое поле */
+//   copyText.select();
+//   copyText.setSelectionRange(0, 99999); /* Для мобильных устройств */
 
-  /* Скопируйте текст внутри текстового поля */
-  document.execCommand("copy");
+//   /* Скопируйте текст внутри текстового поля */
+//   document.execCommand("copy");
 
-  /* Оповещение скопированного текста */
-  // alert("Скопировал текст: " + copyText.value);
-}
-function copyJson() {
-  var copyJson = document.getElementById("jsonField");
-  copyJson.select();
-  copyJson.setSelectionRange(0, 99999);
-  document.execCommand("copy");
-}
+//   /* Оповещение скопированного текста */
+//   // alert("Скопировал текст: " + copyText.value);
+// }
+// function copyJson() {
+//   var copyJson = document.getElementById("jsonField");
+//   copyJson.select();
+//   copyJson.setSelectionRange(0, 99999);
+//   document.execCommand("copy");
+// }

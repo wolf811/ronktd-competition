@@ -1,14 +1,17 @@
 {% load static %}
 <footer class="mt-auto">
-    <h1>Footer</h1>
-    {% comment %} <div class="container-xxl">
+    <div class="container-xxl">
         <div class="py-3 my-4">
-            <ul class="nav justify-content-center border-bottom border-warning pb-3 mb-3">
-                <li class="nav-item"><a href="#" class="nav-link px-2">О проекте</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2">Условия использования</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2">Стоимость</a></li>
+            <ul class="nav justify-content-center pb-3 mb-3">
+                <li class="nav-item"><a href="{% url 'main:index' %}" class="nav-link px-2">Главная</a></li>
+                <li class="nav-item"><a href="{% url 'main:news' %}" class="nav-link px-2">Новости</a></li>
+                <li class="nav-item"><a href="{% url 'main:about' %}" class="nav-link px-2">О&nbsp;конкурсе</a></li>
+                <li class="nav-item"><a href="{% url 'main:members' %}" class="nav-link px-2">Участники</a></li>
+                <li class="nav-item"><a href="{% url 'main:gallery' %}" class="nav-link px-2">Галерея</a></li>
+                <li class="nav-item"><a href="{% url 'main:partners' %}" class="nav-link px-2">Партнеры</a></li>
+                <li class="nav-item"><a href="{% url 'main:contacts' %}" class="nav-link px-2">Контакты</a></li>
             </ul>
-            <p class="text-center text-muted">© 2021, СРО Ассоциация "НАКС"</p>
+            <p class="text-center text-muted">© 2021, РОНКТД</p>
         </div>
-    </div> {% endcomment %}
+    </div>
 </footer>

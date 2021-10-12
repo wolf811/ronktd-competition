@@ -4,6 +4,8 @@
 // $warning: #E8A900 !important;
 // $danger: #E83400 !important;
 // $danger-hover: #F3663D !important;
+$ronktd-color: #2A0C67;
+$ronktd-hover: #633cb3;
 // ======== end Variables ==========
 
 html,
@@ -33,7 +35,21 @@ body {
     }
 
 }
-
+.text-sm {
+    font-size: 0.9rem !important;
+}
+.text-xs {
+    font-size: 0.8rem !important;
+}
+.text-purple {
+    color: #2A0C67;
+}
+.border-purple {
+    border-color: #2A0C67 !important;
+}
+.border-purple-light {
+    border-color: #633cb3 !important;
+}
 // ======== IMPORT =============
 @import "media";
 @import "menu";
@@ -41,7 +57,3 @@ body {
 @import "main";
 @import "footer";
 // ======== end import ==========
-
-// .carousel-main {
-    
-// }

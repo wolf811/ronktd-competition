@@ -1,31 +1,28 @@
 {% load static %}
-<header class="py-3 border-bottom border-warning">
-    {% comment %} <div class="header-main">
-        <div class="container-xl">
-            <div class="row align-items-center justify-content-between">
-                <div class="col-lg mb-3 mb-lg-0">
-                    <div class="d-flex align-items-center flex-column flex-sm-row justify-content-center justify-content-lg-start">
-                        <img src="{% static 'img/logo-bottom.png' %}" alt="Логотип" class="img-fluid">
-                        <div class="fs-4 ms-0 ms-sm-3 text-light text-center text-lg-start">Открытая интеграционная платформа НАКС</div>
-                    </div>
+<header class="py-3">
+    <div class="header-main">
+        <div class="container-xxl">
+            <div class="d-none d-sm-flex align-items-center justify-content-around">
+                <div class="text-center text-lg-start">
+                    <a href="{% url 'main:index' %}" class="text-center mx-auto">
+                        <img src="{% static 'img/defectoscopist2021.png' %}" alt="Логотип" class="img-fluid">
+                    </a>
                 </div>
-                {% if request.user.is_authenticated %}
-                <div class="col-sm col-lg-3 mb-3 mb-sm-0">
-                    <div class="profile-info text-center">
-                        <p class="mb-1"><a href="{% url 'main:profile' %}" class="fw-bold" title="Перейти в мой профиль">{{ request.user }}</a></p>
-                        <p class="mb-1">Запросы:<span class="ms-2 fw-bold">{{ subscr.number_requests }} шт.</span></p>
-                        <p class="mb-1">Подписка до:<span class="ms-2 fw-bold">{{ subscr.active_until|date:'d.m.Y' }} г.</span></p>
-                    </div>
-                </div>
-                {% endif %}
-                <div class="col-sm col-lg-3 col-xl-2">
-                    <div class="contacts d-flex flex-column text-center">
-                        <a href="tel:+74997847289"><i class="bi bi-telephone me-2"></i>+7 (499) 784-72-89</a>
-                        <a href="tel:+74997847289"><i class="bi bi-telephone me-2"></i>+7 (499) 784-72-86</a>
-                        <a href="mailto:soft@naks.ru"><i class="bi bi-envelope me-2"></i>soft@naks.ru</a>
+                <div class="d-none d-lg-block">
+                    <div class="contacts d-flex flex-column text-end">
+                        <a href="tel:+74992455656"><i class="bi bi-telephone me-1"></i>+7(499)245-56-56</a>
+                        <a href="mailto:info@ronktd.ru"><i class="bi bi-envelope me-2"></i>info@ronktd.ru</a>
                     </div>
                 </div>
             </div>
+            <div class="d-flex d-sm-none align-items-center justify-content-center">
+                <a href="#" class="me-2"><img src="{% static 'img/competition-logo.png' %}" alt="Логотип" class="d-block"></a>
+                <div class="text-center">
+                    <p class="mb-0 lh-sm text-purple text-xs">Всероссийский&nbsp;конкурс по&nbsp;неразрушающему&nbsp;контролю</p>
+                    <hr class="line-head my-2">
+                    <div class="fw-bold text-uppercase text-purple text-sm">Дефектоскопист 2021</div>
+                </div>
+            </div>
         </div>
-    </div> {% endcomment %}
+    </div>
 </header>
