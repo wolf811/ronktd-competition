@@ -16,6 +16,9 @@ body {
   .wrapper footer {
     flex: 0 0 auto; }
 
+a {
+  text-decoration: none !important; }
+
 .text-sm {
   font-size: 0.9rem !important; }
 
@@ -30,6 +33,13 @@ body {
 
 .border-purple-light {
   border-color: #633cb3 !important; }
+
+.btn-outline-primary {
+  color: #2A0C67;
+  border-color: #2A0C67 !important; }
+  .btn-outline-primary:hover {
+    background-color: #2A0C67 !important;
+    color: #fff; }
 
 @media (min-width: 576px) {
   .w-sm-100 {
@@ -168,18 +178,18 @@ header {
     .header-main .profile-info {
       font-size: 0.9rem; } }
 .header-main .contacts a {
-  color: #2A0C67;
+  color: #2A0C67 !important;
   margin-bottom: 0.25rem;
   text-decoration: none; }
   .header-main .contacts a:hover {
     transition: 0.3s;
-    color: #633cb3; }
+    color: #633cb3 !important; }
   .header-main .contacts a:last-child {
     margin-bottom: 0; }
 
 .header-main .line-head {
   height: 0;
-  border: 1px solid #2A0C67;
+  border: 1px solid #2A0C67 !important;
   opacity: 1;
   width: 75%;
   margin-left: auto;
@@ -189,6 +199,9 @@ main {
   background-image: url(../img/bg-content.png);
   background-position: center bottom;
   background-repeat: no-repeat; }
+  main .line-title {
+    border-bottom: 2px solid #633cb3 !important;
+    width: 150px; }
   main .owl-carousel .owl-nav {
     margin-top: 10px;
     text-align: center;
@@ -209,18 +222,48 @@ main {
         height: 10px;
         margin: 5px 7px;
         background: transparent;
-        border: 1px solid #2A0C67;
+        border: 1px solid #2A0C67 !important;
         display: block;
         -webkit-backface-visibility: visible;
         transition: opacity 200ms ease;
         border-radius: 30px; }
     main .owl-carousel .owl-dots .owl-dot.active span {
-      background: #2A0C67;
-      border: 1px solid #2A0C67; }
+      background: #2A0C67 !important;
+      border: 1px solid #2A0C67 !important; }
     main .owl-carousel .owl-dots .owl-dot:hover span {
-      background: #633cb3;
-      border: 1px solid #633cb3; }
-
+      background: #633cb3 !important;
+      border: 1px solid #633cb3 !important; }
+  main .pagination-main .page-link {
+    color: #2A0C67; }
+  main .pagination-main .page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color: #2A0C67 !important;
+    border-color: #2A0C67 !important; }
+  main .card-main:hover {
+    transition: 0.3s;
+    border-color: #633cb3 !important; }
+  main .card-main .card-img-box {
+    transition: 0.3s;
+    background-color: #fcfdfd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 150px;
+    padding: 0.5rem;
+    overflow: hidden; }
+    main .card-main .card-img-box .card-img-top {
+      width: auto;
+      max-width: 100%; }
+    main .card-main .card-img-box:hover {
+      background-color: rgba(99, 60, 179, 0.1);
+      transition: 0.3s; }
+  main .card-news .card-img-box {
+    background-color: rgba(99, 60, 179, 0.1);
+    height: 100%; }
+    @media (max-width: 991px) {
+      main .card-news .card-img-box {
+        height: 150px; } }
 footer {
   background-color: #2a0c67;
   border-top: 1px solid #889403; }

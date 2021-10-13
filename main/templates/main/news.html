@@ -4,7 +4,96 @@
 <main class="py-4">
     <div class="container-xxl">
         <div class="p-3 shadow-sm border border-light mb-4">
-            <h4 class="text-purple">Новости</h4>
+            <h4 class="text-purple">Новости
+                <hr class="line-title">
+            </h4>
+            <div class="row row-cols-1 row-cols-sm-2 g-4 mb-4">
+                <div class="col">
+                    <div class="card card-main card-news h-100">
+                        <div class="row g-0">
+                            <div class="col-lg-4">
+                                <div class="card-img-box">
+                                    <img src="{% static 'img/ronktd_logo.svg' %}" class="card-img-top" alt="...">
+                                </div>
+                            </div>
+                            <div class="col-lg-8">
+                                <div class="card-body">
+                                    <small class="text-muted">21.10.2021 г.</small>
+                                    <h5 class="card-title">Заголовок новости</h5>
+                                    <p class="card-text fw-light">This is a longer card with supporting text below as a
+                                        natural lead-in
+                                        to additional content. This content is a little bit longer.</p>
+                                    <a href="{% url 'main:news-detail' %}"
+                                        class="btn btn-outline-primary btn-sm">Подробнее<i
+                                            class="bi bi-arrow-right ms-1"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card card-main card-news h-100">
+                        <div class="row g-0">
+                            <div class="col-lg-4">
+                                <div class="card-img-box">
+                                    <img src="{% static 'img/ronktd_logo.svg' %}" class="card-img-top" alt="...">
+                                </div>
+                            </div>
+                            <div class="col-lg-8">
+                                <div class="card-body">
+                                    <small class="text-muted">21.10.2021 г.</small>
+                                    <h5 class="card-title">Заголовок новости</h5>
+                                    <p class="card-text fw-light">This is a longer card with supporting text below as a
+                                        natural lead-in
+                                        to additional content. This content is a little bit longer.</p>
+                                    <a href="{% url 'main:news-detail' %}"
+                                        class="btn btn-outline-primary btn-sm">Подробнее<i
+                                            class="bi bi-arrow-right ms-1"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card card-main card-news h-100">
+                        <div class="row g-0">
+                            <div class="col-lg-4">
+                                <div class="card-img-box">
+                                    <img src="{% static 'img/ronktd_logo.svg' %}" class="card-img-top" alt="...">
+                                </div>
+                            </div>
+                            <div class="col-lg-8">
+                                <div class="card-body">
+                                    <small class="text-muted">21.10.2021 г.</small>
+                                    <h5 class="card-title">Заголовок новости</h5>
+                                    <p class="card-text fw-light">This is a longer card with supporting text below as a
+                                        natural lead-in
+                                        to additional content. This content is a little bit longer.</p>
+                                    <a href="{% url 'main:news-detail' %}"
+                                        class="btn btn-outline-primary btn-sm">Подробнее<i
+                                            class="bi bi-arrow-right ms-1"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <nav aria-label="...">
+                <hr class="line-title">
+                <ul class="pagination pagination-main pagination-sm mb-0">
+                    <li class="page-item disabled">
+                        <span class="page-link"><i class="bi bi-arrow-left"></i></span>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item active" aria-current="page">
+                        <span class="page-link">2</span>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#"><i class="bi bi-arrow-right"></i></a>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </div>
 </main>

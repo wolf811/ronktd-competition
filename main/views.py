@@ -16,7 +16,11 @@ def news(request):
     return render(request, "main/news.html", content)
 
 def news_detail(request):
-    pass
+    title = "Новости"
+    content = {
+        "title": title,
+    }
+    return render(request, "main/news-detail.html", content)
 
 def about(request):
     title = "О конкурсе"

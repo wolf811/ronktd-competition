@@ -19,7 +19,7 @@ from django.contrib import admin
 import main.views as main
 
 urlpatterns = [
-    # path("admin/", admin.site.urls),
+    path("admin/", admin.site.urls),
     # path("users/", include("users.urls", namespace="users")),
     path("", include("main.urls", namespace="main")),
 ]

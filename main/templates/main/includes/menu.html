@@ -63,7 +63,8 @@
                 </ul> {% endcomment %}
                 <ul class="navbar-nav justify-content-end flex-grow-1">
                     <li class="nav-item">
-                        <a class="nav-link {% if 'authorization' in request.path %}active{% endif %}" href="{% url 'main:authorization' %}"><i class="bi bi-box-arrow-in-right me-2"></i>Войти</a>
+                        {% comment %} <a class="nav-link {% if 'authorization' in request.path %}active{% endif %}" href="{% url 'main:authorization' %}"><i class="bi bi-box-arrow-in-right me-2"></i>Войти</a> {% endcomment %}
+                        <a class="nav-link" href="/admin/" target="_blank"><i class="bi bi-box-arrow-in-right me-2"></i>Войти</a>
                     </li>
                 </ul>
             </div>
