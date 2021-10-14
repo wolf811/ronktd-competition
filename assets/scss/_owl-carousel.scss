@@ -1,4 +1,14 @@
 .owl-carousel {
+    .owl-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 160px;
+        img {
+            width: auto;
+            max-width: 100%;
+        }
+    }
     .owl-nav {
         margin-top: 10px;
         text-align: center;

@@ -1,16 +1,16 @@
 // =============== Enable Tooltips & Popovers ===============
 var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
     return new bootstrap.Tooltip(tooltipTriggerEl)
 })
 var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
-var popoverList = popoverTriggerList.map(function(popoverTriggerEl) {
+var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
     return new bootstrap.Popover(popoverTriggerEl)
 })
 // ===========================================================
 
 // ====================== OwlCarousel =========================
-$(document).ready(function() {
+$(document).ready(function () {
     $('.owl-carousel').owlCarousel({
         // nav: true,
         // navText: ['<i class="bi bi-arrow-left"></i>','<i class="bi bi-arrow-right"></i>'],
@@ -140,12 +140,47 @@ $(document).ready(function() {
 //   copyJson.setSelectionRange(0, 99999);
 //   document.execCommand("copy");
 // }
+// const newsCarousel = new Carousel(document.querySelector("#newsCarousel"), {
+//         // preload: 2,
+//     });
 
-const myCarousel = new Carousel(document.querySelector(".carousel"), {
-  Navigation: {
-    prevTpl:
-      '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M11 5l-7 7 7 7"/><path d="M4 12h16"/></svg>',
-    nextTpl:
-      '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M4 12h16"/><path d="M13 5l7 7-7 7"/></svg>',
-  },
+//     // Customize Fancybox
+//     Fancybox.bind('[data-fancybox="gallery"]', {
+//         Carousel: {
+//             on: {
+//                 change: (that) => {
+//                     newsCarousel.slideTo(newsCarousel.findPageForSlide(that.page), {
+//                         friction: 0,
+//                     });
+//                 },
+//             },
+//         },
+//     });
+
+const galleryCarousel = new Carousel(document.querySelector(".carousel"), {
+    Dots: false,
+});
+// Thumbnails
+const thumbCarousel = new Carousel(document.querySelector(".thumb"), {
+    Sync: {
+        target: galleryCarousel,
+        friction: 0,
+    },
+    Dots: false,
+    Navigation: false,
+    center: true,
+    slidesPerPage: 1,
+    infinite: false,
+});
+// Customize Fancybox
+Fancybox.bind('[data-fancybox="gallery"]', {
+    Carousel: {
+        on: {
+            change: (that) => {
+                galleryCarousel.slideTo(galleryCarousel.findPageForSlide(that.page), {
+                    friction: 0,
+                });
+            },
+        },
+    },
 });

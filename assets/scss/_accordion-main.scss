@@ -1,0 +1,9 @@
+.accordion-main {
+    .accordion-button {
+        font-size: 1.3rem;
+    }
+    .accordion-button:not(.collapsed) {
+        color: $primary;
+        background-color: rgba(99, 60, 179, 0.3);
+    }
+}

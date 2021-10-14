@@ -4,100 +4,59 @@
 <main class="py-4">
     <div class="container-xxl">
         <div class="p-3 shadow-sm border border-light mb-4">
-            <h4 class="text-purple">Заголовок новости
-                <hr class="line-title">
-            </h4>
-            <div class="row">
-                <div class="col-lg">
+            <div class="d-flex justify-content-between">
+                <h4 class="text-purple">Заголовок новости
+                    <hr class="line-title">
+                </h4>
+                <a href="{% url 'main:news' %}" class="text-sm text-nowrap"><i
+                        class="bi bi-arrow-left me-1"></i>назад</a>
+            </div>
 
-                    <small class="text-muted">21.10.2021 г.</small>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo quod error nobis iure corporis odit
-                        perferendis modi sapiente. Autem ex excepturi consequatur iusto sint non aperiam, quis ullam at
-                        deleniti!</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo quod error nobis iure corporis odit
-                        perferendis modi sapiente. Autem ex excepturi consequatur iusto sint non aperiam, quis ullam at
-                        deleniti!</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo quod error nobis iure corporis odit
-                        perferendis modi sapiente. Autem ex excepturi consequatur iusto sint non aperiam, quis ullam at
-                        deleniti!</p>
+            <div class="mb-3">
+                <small class="text-muted">21.10.2021 г.</small>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo quod error nobis iure corporis odit
+                    perferendis modi sapiente. Autem ex excepturi consequatur iusto sint non aperiam, quis ullam at
+                    deleniti!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo quod error nobis iure corporis odit
+                    perferendis modi sapiente. Autem ex excepturi consequatur iusto sint non aperiam, quis ullam at
+                    deleniti!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo quod error nobis iure corporis odit
+                    perferendis modi sapiente. Autem ex excepturi consequatur iusto sint non aperiam, quis ullam at
+                    deleniti!</p>
+            </div>
+            <div id="newsCarousel" class="carousel carousel-news">
+                <div class="carousel__slide" data-fancybox="gallery" data-src="{% static 'img/1.jpg' %}">
+                    <img src="{% static 'img/1.jpg' %}">
                 </div>
-                <div class="col-lg">
-                    <div class="carousel">
-                        <div class="carousel__viewport">
-                            <div class="carousel__track">
-                                <a href="{% static 'img/1.jpg' %}" class="carousel__slide" data-fancybox="konkurs"
-                                    data-index="0" aria-hidden="true"><img src="{% static 'img/1.jpg' %}" alt=""></a>
-                                <a href="{% static 'img/2.jpg' %}" class="carousel__slide" data-fancybox="konkurs"
-                                    data-index="1" aria-hidden="true"><img src="{% static 'img/2.jpg' %}" alt=""></a>
-                                <a href="{% static 'img/3.jpg' %}" class="carousel__slide" data-fancybox="konkurs"
-                                    data-index="2" aria-hidden="true"><img src="{% static 'img/3.jpg' %}" alt=""></a>
-                                <a href="{% static 'img/4.jpg' %}" class="carousel__slide" data-fancybox="konkurs"
-                                    data-index="3" aria-hidden="true"><img src="{% static 'img/4.jpg' %}" alt=""></a>
-
-                            </div>
-                        </div>
-                        {% comment %} <div class="carousel__nav">
-                            <button title="Next slide" class="carousel__button is-next" tabindex="0">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" tabindex="-1">
-                                    <path d="M9 3l9 9-9 9"></path>
-                                </svg>
-                            </button>
-                            <button title="Previous slide" class="carousel__button is-prev" tabindex="0">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" tabindex="-1">
-                                    <path d="M15 3l-9 9 9 9"></path>
-                                </svg>
-                            </button>
-                        </div> {% endcomment %}
-                        <ol class="carousel__dots">
-                            <li class="carousel__dot" data-page="0" role="button" tabindex="0" title="Go to slide #1">
-                            </li>
-                            <li class="carousel__dot" data-page="1" role="button" tabindex="0" title="Go to slide #2">
-                            </li>
-                            <li class="carousel__dot" data-page="2" role="button" tabindex="0" title="Go to slide #3">
-                            </li>
-                            <li class="carousel__dot" data-page="3" role="button" tabindex="0" title="Go to slide #4">
-                            </li>
-                        </ol>
-                    </div>
-                    {% comment %} <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
-                                class="active" aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                                aria-label="Slide 2"></button>
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                                aria-label="Slide 3"></button>
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
-                                aria-label="Slide 4"></button>
-                        </div>
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="{% static 'img/1.jpg' %}" class="d-block w-100" alt="...">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{% static 'img/2.jpg' %}" class="d-block w-100" alt="...">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{% static 'img/3.jpg' %}" class="d-block w-100" alt="...">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{% static 'img/4.jpg' %}" class="d-block w-100" alt="...">
-                            </div>
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-                            data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-                            data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
-                    </div> {% endcomment %}
+                <div class="carousel__slide" data-fancybox="gallery" data-src="{% static 'img/2.jpg' %}">
+                    <img src="{% static 'img/2.jpg' %}">
+                </div>
+                <div class="carousel__slide" data-fancybox="gallery" data-src="{% static 'img/3.jpg' %}">
+                    <img src="{% static 'img/3.jpg' %}">
+                </div>
+                <div class="carousel__slide" data-fancybox="gallery" data-src="{% static 'img/4.jpg' %}">
+                    <img src="{% static 'img/4.jpg' %}">
                 </div>
             </div>
         </div>
     </div>
 </main>
+<script>
+    const newsCarousel = new Carousel(document.querySelector("#newsCarousel"), {
+        // preload: 2,
+    });
+
+    // Customize Fancybox
+    Fancybox.bind('[data-fancybox="gallery"]', {
+        Carousel: {
+            on: {
+                change: (that) => {
+                    newsCarousel.slideTo(newsCarousel.findPageForSlide(that.page), {
+                        friction: 0,
+                    });
+                },
+            },
+        },
+    });
+</script>
 {% endblock %}
