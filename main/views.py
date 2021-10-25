@@ -31,7 +31,7 @@ def about(request):
 
 
 def members(request):
-    title = "Участники"
+    title = "Участникам"
     content = {
         "title": title,
     }
