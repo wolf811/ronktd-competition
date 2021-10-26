@@ -22,12 +22,12 @@ def news_detail(request):
     }
     return render(request, "main/news-detail.html", content)
 
-def about(request):
+def structure(request):
     title = "О конкурсе"
     content = {
         "title": title,
     }
-    return render(request, "main/about.html", content)
+    return render(request, "main/structure.html", content)
 
 
 def members(request):

@@ -5,7 +5,16 @@
             <ul class="nav justify-content-center pb-3 mb-3">
                 <li class="nav-item"><a href="{% url 'main:index' %}" class="nav-link px-2">Главная</a></li>
                 <li class="nav-item"><a href="{% url 'main:news' %}" class="nav-link px-2">Новости</a></li>
-                <li class="nav-item"><a href="{% url 'main:about' %}" class="nav-link px-2">О&nbsp;конкурсе</a></li>
+                {% comment %} <li class="nav-item"><a href="{% url 'main:about' %}" class="nav-link px-2">О&nbsp;конкурсе</a></li> {% endcomment %}
+                <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">О&nbsp;конкурсе</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="{% url 'main:structure' %}">Организационная структура</a></li>
+                            <li><a class="dropdown-item" href="#">Документы</a></li>
+                            <li><a class="dropdown-item" href="#">Отборочные этапы</a></li>
+                            <li><a class="dropdown-item" href="#">Финальный этап</a></li>
+                        </ul>
+                    </li>
                 <li class="nav-item"><a href="{% url 'main:members' %}" class="nav-link px-2">Участники</a></li>
                 <li class="nav-item"><a href="{% url 'main:gallery' %}" class="nav-link px-2">Галерея</a></li>
                 <li class="nav-item"><a href="{% url 'main:partners' %}" class="nav-link px-2">Партнеры</a></li>

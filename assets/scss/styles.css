@@ -147,6 +147,9 @@ a {
       .navbar-main .navbar-nav .nav-link-enter {
         font-size: 1rem;
         padding: 1rem; } }
+.nav-link:focus {
+  color: #fff; }
+
 .offcanvas-main .offcanvas-header {
   background-color: #633CB3;
   color: #fff;

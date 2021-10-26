@@ -77,7 +77,9 @@
                     background-color: rgba(247, 160, 20, 0.3);
                 }
             }
-
+            // &:focus {
+            //     color: #fff;
+            // }
             @media (max-width: 991px) {
                 color: #fff;
             }
@@ -103,7 +105,9 @@
         }
     }
 }
-
+.nav-link:focus {
+    color: #fff;
+}
 .offcanvas-main {
     .offcanvas-header {
         background-color: #633CB3;
