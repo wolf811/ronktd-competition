@@ -30,6 +30,28 @@ def structure(request):
     return render(request, "main/structure.html", content)
 
 
+def docs(request):
+    title = "Документы"
+    content = {
+        "title": title,
+    }
+    return render(request, "main/docs.html", content)
+
+
+def stages(request):
+    title = "Отборочные этапы"
+    content = {
+        "title": title,
+    }
+    return render(request, "main/stages.html", content)
+
+def final_stage(request):
+    title = "Финальный этап"
+    content = {
+        "title": title,
+    }
+    return render(request, "main/final-stage.html", content)
+
 def members(request):
     title = "Участникам"
     content = {

@@ -29,12 +29,12 @@
                         <a class="nav-link {% if 'about' in request.path %}active{% endif %}" href="{% url 'main:about' %}">О&nbsp;конкурсе</a>
                     </li> {% endcomment %}
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle {% if 'structure' in request.path %}active{% endif %}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">О&nbsp;конкурсе</a>
+                        <a class="nav-link dropdown-toggle {% if 'structure' in request.path or 'docs' in request.path or 'stages' in request.path or 'final-stage' in request.path %}active{% endif %}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">О&nbsp;конкурсе</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="{% url 'main:structure' %}">Организационная структура</a></li>
-                            <li><a class="dropdown-item" href="#">Документы</a></li>
-                            <li><a class="dropdown-item" href="#">Отборочные этапы</a></li>
-                            <li><a class="dropdown-item" href="#">Финальный этап</a></li>
+                            <li><a class="dropdown-item" href="{% url 'main:docs' %}">Документы</a></li>
+                            <li><a class="dropdown-item" href="{% url 'main:stages' %}">Отборочные этапы</a></li>
+                            <li><a class="dropdown-item" href="{% url 'main:final-stage' %}">Финальный этап</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">

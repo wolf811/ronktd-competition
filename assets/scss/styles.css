@@ -41,6 +41,11 @@ a {
     background-color: #2A0C67 !important;
     color: #fff; }
 
+.alert-purple {
+  color: #2A0C67;
+  background-color: rgba(99, 60, 179, 0.1);
+  border-color: rgba(99, 60, 179, 0.5); }
+
 @media (min-width: 576px) {
   .w-sm-100 {
     width: 100% !important; }

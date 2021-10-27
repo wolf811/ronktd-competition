@@ -1,0 +1,180 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block index %}
+<main class="py-4">
+    <div class="container-xxl">
+        <div class="p-3 shadow-sm border border-light mb-4">
+            <div class="d-flex justify-content-between">
+                <h4 class="text-purple">Финальный этап
+                    <hr class="line-title">
+                </h4>
+            </div>
+            <p>В период с 18 по 21 октября на площадке Форума «Территория NDT» прошло соревнование профессионалов в
+                области неразрушающего контроля. В финальном этапе приняли участие 55 специалистов – победителей
+                отборочных этапов Всероссийского конкурса специалистов по НК «Дефектоскопист 2021». Старт мероприятию
+                дали председатель оргкомитета Конкурса, академик РАН Н.П.Алёшин и члены оргкомитета: Президент РОНКТД,
+                д.т.н. В.А.Сясько, начальник правового управления Ростехнадзора Д.А.Яковлев, руководитель методического
+                центра СНК ОПО РОНКТД, к.т.н. Д.И.Галкин.</p>
+            <div class="alert alert-purple">
+                <div class="row align-items-center">
+                    <div class="col-lg">
+                        <p class="lead">Все финалисты продемонстрировали профессионализм, волю к победе и способность
+                            нестандартно мыслить!</p>
+                        <p class="lead">Поздравляем победителей и призеров Всероссийского конкурса специалистов по НК
+                            «Дефектоскопист 2021»!</p>
+                    </div>
+                    <div class="col-lg">
+                        <div class="carousel carousel-gallery">
+                            <div class="carousel__slide" data-fancybox="gallery" data-src="{% static 'img/Foto_89.jpg' %}">
+                                <img src="{% static 'img/Foto_89.jpg' %}">
+                            </div>
+                            <div class="carousel__slide" data-fancybox="gallery" data-src="{% static 'img/Foto_88.jpg' %}">
+                                <img src="{% static 'img/Foto_88.jpg' %}">
+                            </div>
+                            <div class="carousel__slide" data-fancybox="gallery" data-src="{% static 'img/Foto_90.jpg' %}">
+                                <img src="{% static 'img/Foto_90.jpg' %}">
+                            </div>
+                        </div>
+                        <div id="thumbCarousel" class="carousel thumb">
+                            <div class="carousel__slide">
+                                <img class="panzoom__content" src="{% static 'img/Foto_89.jpg' %}" />
+                            </div>
+                            <div class="carousel__slide">
+                                <img class="panzoom__content" src="{% static 'img/Foto_88.jpg' %}" />
+                            </div>
+                            <div class="carousel__slide">
+                                <img class="panzoom__content" src="{% static 'img/Foto_90.jpg' %}" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="alert alert-purple">
+                <div class="mb-3">
+                    <h5 class="text-purple">Номинация «Визуальный и измерительный контроль»</h5>
+                    <ol>
+                        <li>Теплов Михаил Юрьевич (ООО "Газпром трансгаз Екатеринбург")</li>
+                        <li>Григорьева Наталья Дмитриевна (ООО "СибСТК")</li>
+                        <li>Малышева Татьяна Анатольевна (АО "Соединитель")</li>
+                    </ol>
+                </div>
+                <div class="mb-3">
+                    <h5 class="text-purple">Номинация «Ультразвуковой контроль»</h5>
+                    <ol>
+                        <li>Теплов Михаил Юрьевич (ООО "Газпром трансгаз Екатеринбург")</li>
+                        <li>Григорьева Наталья Дмитриевна (ООО "СибСТК")</li>
+                        <li>Малышева Татьяна Анатольевна (АО "Соединитель")</li>
+                    </ol>
+                </div>
+                <div class="mb-3">
+                    <h5 class="text-purple">Номинация «Радиационный контроль»</h5>
+                    <ol>
+                        <li>Теплов Михаил Юрьевич (ООО "Газпром трансгаз Екатеринбург")</li>
+                        <li>Григорьева Наталья Дмитриевна (ООО "СибСТК")</li>
+                        <li>Малышева Татьяна Анатольевна (АО "Соединитель")</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <div class="p-3 shadow-sm border border-light mb-4">
+            <h5 class="text-purple">Перечень финалистов приведен ниже:</h5>
+            <div class="accordion accordion-main" id="accordionFinalists">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            ВИК
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                        data-bs-parent="#accordionFinalists">
+                        <div class="accordion-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered align-middle">
+                                    <tr>
+                                        <th>#</th>
+                                        <th>ФИО</th>
+                                        <th>Организация</th>
+                                        <th>АЦ, город</th>
+                                        <th>Дата и время начала финального этапа</th>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Бабкова Екатерина Игоревна</td>
+                                        <td>ООО "НовомосковскГазДеталь"</td>
+                                        <td>ООО «АЦ ПРОМЭКСПЕРТ», Тула</td>
+                                        <td>20.10.2021, 10:30</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Быков Владимир Витальевич</td>
+                                        <td>АО "Спецмонтаж"</td>
+                                        <td>ООО «НАКС-Ярославль», Ярославль</td>
+                                        <td>20.10.2021, 10:30</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            УК
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                        data-bs-parent="#accordionFinalists">
+                        <div class="accordion-body">
+                            <strong>This is the second item's accordion body.</strong> It is hidden by default, until
+                            the collapse plugin adds the appropriate classes that we use to style each element. These
+                            classes control the overall appearance, as well as the showing and hiding via CSS
+                            transitions. You can modify any of this with custom CSS or overriding our default variables.
+                            It's also worth noting that just about any HTML can go within the
+                            <code>.accordion-body</code>, though the transition does limit overflow.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            РК
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                        data-bs-parent="#accordionFinalists">
+                        <div class="accordion-body">
+                            <strong>This is the third item's accordion body.</strong> It is hidden by default, until the
+                            collapse plugin adds the appropriate classes that we use to style each element. These
+                            classes control the overall appearance, as well as the showing and hiding via CSS
+                            transitions. You can modify any of this with custom CSS or overriding our default variables.
+                            It's also worth noting that just about any HTML can go within the
+                            <code>.accordion-body</code>, though the transition does limit overflow.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<script>
+    const newsCarousel = new Carousel(document.querySelector("#newsCarousel"), {
+        // preload: 2,
+    });
+
+    // Customize Fancybox
+    Fancybox.bind('[data-fancybox="gallery"]', {
+        Carousel: {
+            on: {
+                change: (that) => {
+                    newsCarousel.slideTo(newsCarousel.findPageForSlide(that.page), {
+                        friction: 0,
+                    });
+                },
+            },
+        },
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block index %}
+<main class="py-4">
+    <div class="container-xxl">
+        <div class="p-3 shadow-sm border border-light mb-4">
+            <div class="d-flex justify-content-between">
+                <h4 class="text-purple">Отборочные этапы
+                    <hr class="line-title">
+                </h4>
+            </div>
+            <p class="mb-0"><strong>Отборочные этапы</strong> конкурса были проведены на базах АЦСНК – аттестационных центров по аттестации специалистов неразрушающего контроля СНК ОПО РОНКТД.</p>
+            <div class="w-75 mx-auto mb-3">
+                <img src="{% static 'img/geografia_konkurs.jpg' %}" alt="География конкурса" class="img-fluid">
+            </div>
+            <div id="newsCarousel" class="carousel carousel-news mb-3">
+                <div class="carousel__slide" data-fancybox="gallery" data-src="{% static 'img/1.jpg' %}">
+                    <img src="{% static 'img/1.jpg' %}">
+                </div>
+                <div class="carousel__slide" data-fancybox="gallery" data-src="{% static 'img/2.jpg' %}">
+                    <img src="{% static 'img/2.jpg' %}">
+                </div>
+                <div class="carousel__slide" data-fancybox="gallery" data-src="{% static 'img/3.jpg' %}">
+                    <img src="{% static 'img/3.jpg' %}">
+                </div>
+                <div class="carousel__slide" data-fancybox="gallery" data-src="{% static 'img/4.jpg' %}">
+                    <img src="{% static 'img/4.jpg' %}">
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table align-middle table-bordered">
+                    <tr>
+                        <th>Город</th>
+                        <th>Наименование центра СНК ОПО РОНКТД</th>
+                        <th>Номинации</th>
+                        <th>Даты проведения</th>
+                    </tr>
+                    <tr>
+                        <td>Архангельск</td>
+                        <td><a htef="http://naksarh.ru/" target="_blank">ООО "НАКС-Архангельск"</a></td>
+                        <td>ВИК, УК, РК, ВИК+РК, ВИК+УК, ВИК+УК+РК</td>
+                        <td>06.09.2021-14.09.2021</td>
+                    </tr>
+                    <tr>
+                        <td>Барнаул</td>
+                        <td><a htef="http://naksarh.ru/" target="_blank">ООО «ГАЦ АР НАКС»</a></td>
+                        <td>ВИК+РК, ВИК+УК, ВИК+МК+ПВК</td>
+                        <td>06.09.2021-10.09.2021</td>
+                    </tr>
+                    <tr>
+                        <td>Владивосток</td>
+                        <td><a htef="http://naksarh.ru/" target="_blank">ООО «Тихоокеанский ГАЦ»</a></td>
+                        <td>ВИК, РК, УК, ПВК, МК</td>
+                        <td>06.09.2021-10.09.2021</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="p-3 shadow-sm border border-light mb-4">
+            <h5 class="text-purple">Организации принявшие участие в конкурсе</h5>
+            <p>№2 ПАО "Сургутнефтегаз", АО "Алтай-Кокс", АО "Газпром газораспределение Киров", АО "Газпром газораспределение Тула", АО "Газпром газораспределение Ярославль", АО "ДГК" филиал "Приморская генерация", АО "Ковдорский ГОК", АО "Кузнецкие ферросплавы", АО "Ленгазспецстрой", АО "ММУС" , АО "Мосгаз", АО "Мособлгаз", АО "НСРЗ", АО "ОКБМ Африкантов", АО "Орский машиностроительный завод", АО "ПО "Севмаш", АО "ПО "Стрела", АО "ПО ЭХЗ", АО "Приморскуголь", АО "РНПК", АО "Рузхиммаш", </p>
+        </div>
+    </div>
+</main>
+<script>
+    const newsCarousel = new Carousel(document.querySelector("#newsCarousel"), {
+        // preload: 2,
+    });
+
+    // Customize Fancybox
+    Fancybox.bind('[data-fancybox="gallery"]', {
+        Carousel: {
+            on: {
+                change: (that) => {
+                    newsCarousel.slideTo(newsCarousel.findPageForSlide(that.page), {
+                        friction: 0,
+                    });
+                },
+            },
+        },
+    });
+</script>
+{% endblock %}

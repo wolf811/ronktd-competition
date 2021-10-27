@@ -68,6 +68,11 @@ a {
         color: #fff;
     }
 }
+.alert-purple {
+    color: #2A0C67;
+    background-color: rgba(99, 60, 179, 0.1);
+    border-color: rgba(99, 60, 179, 0.5);
+}
 // ======== IMPORT =============
 @import "media";
 @import "menu";
