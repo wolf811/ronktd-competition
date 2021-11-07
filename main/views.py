@@ -52,12 +52,12 @@ def final_stage(request):
     }
     return render(request, "main/final-stage.html", content)
 
-def members(request):
+def members_info(request):
     title = "Участникам"
     content = {
         "title": title,
     }
-    return render(request, "main/members.html", content)
+    return render(request, "main/members-info.html", content)
 
 
 def gallery(request):
@@ -75,6 +75,33 @@ def partners(request):
     }
     return render(request, "main/partners.html", content)
 
+def partner_detail(request):
+    title = "Партнеры"
+    content = {
+        "title": title,
+    }
+    return render(request, "main/partner-detail.html", content)
+
+def sponsors(request):
+    title = "Спонсоры"
+    content = {
+        "title": title,
+    }
+    return render(request, "main/sponsors.html", content)
+
+def sponsor_detail(request):
+    title = "Спонсоры"
+    content = {
+        "title": title,
+    }
+    return render(request, "main/sponsor-detail.html", content)
+
+def spon_info(request):
+    title = "Спонсорам"
+    content = {
+        "title": title,
+    }
+    return render(request, "main/spon-info.html", content)
 
 def contacts(request):
     title = "Контакты"

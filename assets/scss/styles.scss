@@ -60,12 +60,19 @@ a {
 .border-purple-light {
     border-color: #633cb3 !important;
 }
+.btn-primary {
+    background-color: $primary;
+    border-color: $primary;
+    &:hover {
+        background-color: $purple-light;
+    }
+}
 .btn-outline-primary {
     color: #2A0C67;
     border-color: $primary;
     &:hover {
         background-color: $primary;
-        color: #fff;
+        color: #fff !important;
     }
 }
 .alert-purple {

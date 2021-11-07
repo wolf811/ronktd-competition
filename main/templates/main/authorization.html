@@ -1,10 +1,106 @@
 {% extends 'main/base.html' %}
 {% load static %}
-{% block index %}
+{% block content %}
 <main class="py-4">
     <div class="container-xxl">
-        <div class="p-3 shadow-sm border border-light mb-4">
-            <h4 class="text-purple">Вход в личный кабинет</h4>
+        <div class="row justify-content-sm-center my-4">
+            <div class="col-sm-6 col-lg-4">
+                <div class="card card-main shadow my-5" id="form-signin">
+                    <div class="card-header fw-bold py-3">
+                        Вход в личный кабинет
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="mb-3">
+                                <label for="login-reg" class="form-label">Email (логин)</label>
+                                <input type="text" class="form-control" id="login-reg">
+                            </div>
+                            <div class="mb-3">
+                                <label for="password-reg" class="form-label">Пароль</label>
+                                <input type="password" class="form-control" id="password-reg">
+                            </div>
+                            <hr class="border-bottom border-warning">
+                            <button type="submit" class="btn btn-primary"><i class="bi bi-box-arrow-in-right me-2"></i>Войти</button>
+                            <a href="#" class="btn btn-outline-primary text-dark" id="btn-move-to-reg">Регистрация</a>
+                        </form>
+                        {% comment %}
+                        {% if form.errors %}
+                        <div class="alert alert-danger">
+                            {% for field in form %}
+                            {% if field.errors %}
+                            {{ field.label_tag }} {{ field.errors }}
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        {% if auth_error %}
+                        <div class="alert alert-danger">
+                            {{ auth_error }}
+                        </div>
+                        {% endif %}
+                        <form method="post" action="">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <label for="id_email" class="form-label">Email (логин)</label>
+                                {% render_field form.email class+='form-control' %}
+                            </div>
+                            <div class="mb-3">
+                                <label for="id_password" class="form-label">Пароль</label>
+                                <div class="input-group">
+                                    {% render_field form.password class+='form-control border-end-0' type='password' %}
+                                    <a href="#" class="btn btn-link border border-start-0" id="btn-move-to-recovery" role="button">Забыли?</a>
+                                </div>
+                            </div>
+                            <hr class="border-bottom border-warning">
+                            <button type="submit" class="btn btn-primary"><i class="bi bi-box-arrow-in-right me-2"></i>Войти</button>
+                            <a href="{% url 'users:register' %}" class="btn btn-outline-primary text-dark" id="btn-move-to-reg">Регистрация</a>
+                            {% endcomment %}
+                        </form>
+                    </div>
+                </div>
+                <div class="card card-main shadow my-5" id="form-registration" style="display: none;">
+                    <div class="card-header fw-bold py-3">
+                        Регистрация
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="mb-3">
+                                <label for="login-reg" class="form-label">Email (логин)</label>
+                                <input type="text" class="form-control" id="login-reg">
+                            </div>
+                            <div class="mb-3">
+                                <label for="password-reg" class="form-label">Пароль</label>
+                                <input type="password" class="form-control" id="password-reg">
+                            </div>
+                            <div class="mb-3">
+                                <label for="password-reg-repeat" class="form-label">Повторите пароль</label>
+                                <input type="password" class="form-control" id="password-reg-repeat">
+                            </div>
+                            <p class="fw-light">Регистрируясь, Вы принимаете <a href="#" target="_blank">Пользовательское соглашение</a></p>
+                            <hr class="border-bottom border-warning">
+                            <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+                            <a href="#" class="btn btn-outline-primary text-dark" id="btn-move-to-signin">Вход</a>
+                        </form>
+                    </div>
+                </div>
+                <div class="card card-main shadow my-5" id="form-recovery" style="display: none;">
+                    <div class="card-header fw-bold py-3">
+                        Восстановление пароля
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <p class="fw-light">Введите E-mail (логин). Ссылка для смены пароля будет отправлена на указанный Вами адрес.</p>
+                            <div class="mb-3">
+                                <label for="email-recovery" class="form-label">Email (логин)</label>
+                                <input type="text" class="form-control" id="email-recovery">
+                            </div>
+                            <hr class="border-bottom border-warning">
+                            <button type="submit" class="btn btn-primary">Отправить</button>
+                            <a href="#" class="btn btn-outline-primary text-dark" id="btn-cancel-recovery">Отмена</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </main>

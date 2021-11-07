@@ -1,6 +1,6 @@
 {% extends 'main/base.html' %}
 {% load static %}
-{% block index %}
+{% block content %}
 <main class="py-4">
     <div class="container-xxl">
         <div class="p-3 shadow-sm border border-light mb-4">
@@ -10,32 +10,26 @@
             <div class="accordion accordion-main" id="accordionGallery">
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingOne">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                             Дефектоскопист 2021
                         </button>
                     </h2>
-                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-                        data-bs-parent="#accordionGallery">
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionGallery">
                         <div class="accordion-body">
                             <div class="row">
                                 <div class="col-lg">
-                                <h5 class="text-purple fw-light mb-3">Финальный этап</h5>
+                                    <h5 class="text-purple fw-light mb-3">Финальный этап</h5>
                                     <div class="carousel carousel-gallery">
-                                        <div class="carousel__slide" data-fancybox="gallery"
-                                            data-src="{% static 'img/1.jpg' %}">
+                                        <div class="carousel__slide" data-fancybox="gallery" data-src="{% static 'img/1.jpg' %}">
                                             <img src="{% static 'img/1.jpg' %}">
                                         </div>
-                                        <div class="carousel__slide" data-fancybox="gallery"
-                                            data-src="{% static 'img/2.jpg' %}">
+                                        <div class="carousel__slide" data-fancybox="gallery" data-src="{% static 'img/2.jpg' %}">
                                             <img src="{% static 'img/2.jpg' %}">
                                         </div>
-                                        <div class="carousel__slide" data-fancybox="gallery"
-                                            data-src="{% static 'img/3.jpg' %}">
+                                        <div class="carousel__slide" data-fancybox="gallery" data-src="{% static 'img/3.jpg' %}">
                                             <img src="{% static 'img/3.jpg' %}">
                                         </div>
-                                        <div class="carousel__slide" data-fancybox="gallery"
-                                            data-src="{% static 'img/4.jpg' %}">
+                                        <div class="carousel__slide" data-fancybox="gallery" data-src="{% static 'img/4.jpg' %}">
                                             <img src="{% static 'img/4.jpg' %}">
                                         </div>
                                     </div>
@@ -58,19 +52,16 @@
                                     <h5 class="text-purple fw-light mb-3">Отборочные этапы</h5>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingTwo">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                             Дефектоскопист 2020
                         </button>
                     </h2>
-                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                        data-bs-parent="#accordionGallery">
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionGallery">
                         <div class="accordion-body">
                             <strong>This is the second item's accordion body.</strong> It is hidden by default, until
                             the collapse plugin adds the appropriate classes that we use to style each element. These
@@ -83,13 +74,11 @@
                 </div>
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingThree">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                             Дефектоскопист 2019
                         </button>
                     </h2>
-                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
-                        data-bs-parent="#accordionGallery">
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionGallery">
                         <div class="accordion-body">
                             <strong>This is the third item's accordion body.</strong> It is hidden by default, until the
                             collapse plugin adds the appropriate classes that we use to style each element. These

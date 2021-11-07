@@ -5,16 +5,12 @@
     <div class="container-xxl">
         <div class="p-3 shadow-sm border border-light mb-4">
             <div class="d-flex justify-content-between">
-                <h4 class="text-purple">Заголовок новости
+                <h4 class="text-purple">Наименование спонсора
                     <hr class="line-title">
                 </h4>
-                <a href="{% url 'main:news' %}" class="text-sm text-nowrap"><i class="bi bi-arrow-left me-1"></i>назад</a>
+                <a href="{% url 'main:sponsors' %}" class="text-sm text-nowrap"><i class="bi bi-arrow-left me-1"></i>назад</a>
             </div>
             <div class="mb-3">
-                <small class="text-muted">21.10.2021 г.</small>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo quod error nobis iure corporis odit
-                    perferendis modi sapiente. Autem ex excepturi consequatur iusto sint non aperiam, quis ullam at
-                    deleniti!</p>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo quod error nobis iure corporis odit
                     perferendis modi sapiente. Autem ex excepturi consequatur iusto sint non aperiam, quis ullam at
                     deleniti!</p>
@@ -22,6 +18,16 @@
                     perferendis modi sapiente. Autem ex excepturi consequatur iusto sint non aperiam, quis ullam at
                     deleniti!</p>
             </div>
+            <h5 class="text-purple">Контакты спонсора</h5>
+            <div class="bg-light p-3 mb-3">
+                <p class="mb-2"><span class="fw-light">Адрес:</span><span class="ms-2">ул. Усачева, д. 35, стр. 1, Москва, Россия, 119048</span></p>
+                <p class="mb-2"><span class="fw-light">Телефон:</span><a href="tel:+74992455656" class="ms-2">+7(499)245-56-56</a></p>
+                <p class="mb-2"><span class="fw-light">Факс:</span><span class="ms-2">+7(499)246-88-88</span></p>
+                <p class="mb-0"><span class="fw-light">E-mail:</span><a href="mailto:info@ronktd.ru" class="ms-2">info@ronktd.ru</a></p>
+            </div>
+            <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Ac87186104a4b33245af3291c7ddfefca904487ee2062c705dbb4c67601dd7024&amp;width=100%25&amp;height=400&amp;lang=ru_RU&amp;scroll=false"></script>
+        </div>
+        <div class="p-3 shadow-sm border border-light mb-4">
             <div id="newsCarousel" class="carousel carousel-news">
                 <div class="carousel__slide" data-fancybox="gallery" data-src="{% static 'img/1.jpg' %}">
                     <img src="{% static 'img/1.jpg' %}">
@@ -36,6 +42,7 @@
                     <img src="{% static 'img/4.jpg' %}">
                 </div>
             </div>
+            
         </div>
     </div>
 </main>

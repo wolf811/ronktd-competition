@@ -33,10 +33,15 @@
 <body>
     <div class="wrapper">
         {% include 'main/includes/menu.html' %}
-        {% include 'main/includes/header.html' %} 
-        {% block content %}
-        {% endblock %}
+        {% include 'main/includes/header.html' %}
+        {% comment %}
+        {% if request.path != '/' %}
+            {% include 'main/includes/header.html' %}
+        {% endif %}
+        {% endcomment %}
         {% block index %}
+        {% endblock %}
+        {% block content %}
         {% endblock %}
         {% include 'main/includes/footer.html' %}
     </div>

@@ -94,30 +94,30 @@ $(document).ready(function () {
 //     }
 // })
 
-// $('#checkSogl1').click(function() {
-//     if ($(this).is(':checked')) {
-//         $('#btnSend').removeClass('disabled');
-//     } else {
-//         $('#btnSend').addClass('disabled');
-//     }
-// })
+$('#checkSogl1').click(function() {
+    if ($(this).is(':checked')) {
+        $('#btnSend').removeClass('disabled');
+    } else {
+        $('#btnSend').addClass('disabled');
+    }
+})
 
-// $('#btn-move-to-reg').click(function() {
-//     $('#form-registration').show('fade');
-//     $('#form-signin').hide();
-// })
-// $('#btn-move-to-signin').click(function() {
-//     $('#form-registration').hide();
-//     $('#form-signin').show('fade');
-// })
-// $('#btn-move-to-recovery').click(function() {
-//     $('#form-recovery').show('fade');
-//     $('#form-signin').hide();
-// })
-// $('#btn-cancel-recovery').click(function() {
-//     $('#form-recovery').hide();
-//     $('#form-signin').show('fade');
-// })
+$('#btn-move-to-reg').click(function() {
+    $('#form-registration').show('fade');
+    $('#form-signin').hide();
+})
+$('#btn-move-to-signin').click(function() {
+    $('#form-registration').hide();
+    $('#form-signin').show('fade');
+})
+$('#btn-move-to-recovery').click(function() {
+    $('#form-recovery').show('fade');
+    $('#form-signin').hide();
+})
+$('#btn-cancel-recovery').click(function() {
+    $('#form-recovery').hide();
+    $('#form-signin').show('fade');
+})
 // ===========================================================
 
 // function copyToken() {

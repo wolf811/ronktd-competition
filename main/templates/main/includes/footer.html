@@ -10,14 +10,16 @@
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">О&nbsp;конкурсе</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="{% url 'main:structure' %}">Организационная структура</a></li>
-                            <li><a class="dropdown-item" href="#">Документы</a></li>
-                            <li><a class="dropdown-item" href="#">Отборочные этапы</a></li>
-                            <li><a class="dropdown-item" href="#">Финальный этап</a></li>
+                            <li><a class="dropdown-item" href="{% url 'main:docs' %}">Документы</a></li>
+                            <li><a class="dropdown-item" href="{% url 'main:stages' %}">Отборочные этапы</a></li>
+                            <li><a class="dropdown-item" href="{% url 'main:final-stage' %}">Финальный этап</a></li>
+                            <li><a class="dropdown-item" href="{% url 'main:members-info' %}">Участникам</a></li>
+                            <li><a class="dropdown-item" href="{% url 'main:spon-info' %}">Спонсорам</a></li>
                         </ul>
                     </li>
-                <li class="nav-item"><a href="{% url 'main:members' %}" class="nav-link px-2">Участники</a></li>
                 <li class="nav-item"><a href="{% url 'main:gallery' %}" class="nav-link px-2">Галерея</a></li>
                 <li class="nav-item"><a href="{% url 'main:partners' %}" class="nav-link px-2">Партнеры</a></li>
+                <li class="nav-item"><a href="{% url 'main:sponsors' %}" class="nav-link px-2">Спонсоры</a></li>
                 <li class="nav-item"><a href="{% url 'main:contacts' %}" class="nav-link px-2">Контакты</a></li>
             </ul>
             <p class="text-center text-muted">© 2021, РОНКТД</p>
