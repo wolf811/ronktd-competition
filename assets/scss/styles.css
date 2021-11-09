@@ -191,16 +191,6 @@ header {
   @media (max-width: 991px) {
     .header-main .profile-info {
       font-size: 0.9rem; } }
-.header-main .contacts a {
-  color: #2A0C67 !important;
-  margin-bottom: 0.25rem;
-  text-decoration: none; }
-  .header-main .contacts a:hover {
-    transition: 0.3s;
-    color: #633cb3 !important; }
-  .header-main .contacts a:last-child {
-    margin-bottom: 0; }
-
 .header-main .line-head {
   height: 0;
   border: 1px solid #2A0C67 !important;
@@ -208,6 +198,16 @@ header {
   width: 75%;
   margin-left: auto;
   margin-right: auto; }
+
+.contacts a {
+  color: #2A0C67 !important;
+  margin-bottom: 0.25rem;
+  text-decoration: none; }
+  .contacts a:hover {
+    transition: 0.3s;
+    color: #633cb3 !important; }
+  .contacts a:last-child {
+    margin-bottom: 0; }
 
 main {
   background-image: url(../img/bg-content.png);

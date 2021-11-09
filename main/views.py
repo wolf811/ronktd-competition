@@ -52,12 +52,6 @@ def final_stage(request):
     }
     return render(request, "main/final-stage.html", content)
 
-def members_info(request):
-    title = "Участникам"
-    content = {
-        "title": title,
-    }
-    return render(request, "main/members-info.html", content)
 
 
 def gallery(request):
@@ -68,19 +62,41 @@ def gallery(request):
     return render(request, "main/gallery.html", content)
 
 
-def partners(request):
-    title = "Партнеры"
+def members(request):
+    title = "Участники"
     content = {
         "title": title,
     }
-    return render(request, "main/partners.html", content)
+    return render(request, "main/members.html", content)
 
-def partner_detail(request):
-    title = "Партнеры"
+def member_detail(request):
+    title = "Участники"
     content = {
         "title": title,
     }
-    return render(request, "main/partner-detail.html", content)
+    return render(request, "main/member-detail.html", content)
+
+def memb_info(request):
+    title = "Участникам"
+    content = {
+        "title": title,
+    }
+    return render(request, "main/memb-info.html", content)
+
+def organizers(request):
+    title = "Организаторы"
+    content = {
+        "title": title,
+    }
+    return render(request, "main/organizers.html", content)
+
+
+def organizer_detail(request):
+    title = "Организаторы"
+    content = {
+        "title": title,
+    }
+    return render(request, "main/organizer-detail.html", content)
 
 def sponsors(request):
     title = "Спонсоры"
@@ -109,7 +125,6 @@ def contacts(request):
         "title": title,
     }
     return render(request, "main/contacts.html", content)
-
 
 def authorization(request):
     title = "Вход в личный кабинет"
