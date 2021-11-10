@@ -132,3 +132,12 @@ def authorization(request):
         "title": title,
     }
     return render(request, "main/authorization.html", content)
+
+def profile(request):
+    title = "Личный кабинет"
+    subtitle = "Мой профиль"
+    content = {
+        "title": title,
+        "subtitle": subtitle,
+    }
+    return render(request, "main/profile.html", content)

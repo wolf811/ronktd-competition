@@ -22,5 +22,6 @@ urlpatterns = [
     path("spon-info/", main.spon_info, name="spon-info"),
     path("contacts/", main.contacts, name="contacts"),
     path("authorization/", main.authorization, name="authorization"),
+    path("profile/", main.profile, name="profile"),
     # path("register/", main.register, name="register"),
 ]

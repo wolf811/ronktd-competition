@@ -18,7 +18,7 @@ main {
     }
 
     // ======== IMPORT =============
-    // @import "menu-vertical";
+    @import "menu-vertical";
     @import "owl-carousel";
     @import "carousel";
     // @import "main-doc-list";
@@ -68,6 +68,13 @@ main {
         }
     }
 
-
+    .badge-award {
+        border-radius: 50%;
+        width: 20px;
+        padding: .35em .5em;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
 
 }

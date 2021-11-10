@@ -35,6 +35,35 @@ header {
         }
     }
 
+    .contacts {
+
+        // @media (max-width: 767px) {
+        //     width: 100%;
+        //     border: none;
+        //     background-color: transparent;
+        //     box-shadow: none;
+        //     padding: 0;
+        // }
+
+        // @media (max-width: 991px) {
+        //     font-size: 0.9rem;
+        // }
+
+        a {
+            color: $ronktd-color;
+            margin-bottom: 0.25rem;
+            text-decoration: none;
+
+            &:hover {
+                transition: 0.3s;
+                color: $ronktd-hover;
+            }
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
     
     .line-head {
         height: 0;
@@ -46,32 +75,3 @@ header {
     }
 }
 
-.contacts {
-
-    // @media (max-width: 767px) {
-    //     width: 100%;
-    //     border: none;
-    //     background-color: transparent;
-    //     box-shadow: none;
-    //     padding: 0;
-    // }
-
-    // @media (max-width: 991px) {
-    //     font-size: 0.9rem;
-    // }
-
-    a {
-        color: $ronktd-color;
-        margin-bottom: 0.25rem;
-        text-decoration: none;
-
-        &:hover {
-            transition: 0.3s;
-            color: $ronktd-hover;
-        }
-
-        &:last-child {
-            margin-bottom: 0;
-        }
-    }
-}
