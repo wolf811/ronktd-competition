@@ -1,0 +1,131 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block content %}
+<main class="py-4">
+    <div class="container-xxl">
+        <div class="p-3 shadow-sm border border-light mb-4">
+            <h4 class="text-purple">Участники
+                <hr class="line-title">
+            </h4>
+            <p class="lead"><a href="{% url 'main:memb-info' %}">Информация для участников<i class="bi bi-arrow-right ms-2"></i></a></p>
+            <div class="accordion accordion-main" id="accordionGallery">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Дефектоскопист 2021
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionGallery">
+                        <div class="accordion-body">
+                            <div class="mb-3">
+                                <h5 class="text-purple mb-3">Отборочные этапы</h5>
+                                <p class="mb-2"><a href="#" target="_blank"><i class="bi bi-file-pdf me-2"></i>Победители и призеры отборочного этапа Конкурса в номинации ВИК</a></p>
+                                <p class="mb-2"><a href="#" target="_blank"><i class="bi bi-file-pdf me-2"></i>Победители и призеры отборочного этапа Конкурса в номинации УК</a></p>
+                                <p class="mb-2"><a href="#" target="_blank"><i class="bi bi-file-pdf me-2"></i>Победители и призеры отборочного этапа Конкурса в номинации РК</a></p>
+                                <p class="mb-2"><a href="#" target="_blank"><i class="bi bi-file-pdf me-2"></i>Победители и призеры отборочного этапа Конкурса в номинации МК</a></p>
+                                <p class="mb-2"><a href="#" target="_blank"><i class="bi bi-file-pdf me-2"></i>Победители и призеры отборочного этапа Конкурса в номинации ПВК</a></p>
+                            </div>
+                            <h5 class="text-purple mb-3">Финальный этап</h5>
+                            <div class="table-responsive">
+                                <table class="table table-bordered align-middle">
+                                    <tbody><tr>
+                                        <th>#</th>
+                                        <th>Участник</th>
+                                        <th>Организация</th>
+                                        <th>Номинация</th>
+                                        <th>АЦ, город</th>
+                                        <th>Дата и время начала финального этапа</th>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td class="position-relative">
+                                            <span class="badge badge-award bg-warning me-1 mt-1" data-bs-container="body" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="top" data-bs-content="1 место">1</span>
+                                            <a href="{% url 'main:member-detail' %}">Бабкова Екатерина Игоревна</a>
+                                        </td>
+                                        <td>ООО "НовомосковскГазДеталь"</td>
+                                        <td>ВИК</td>
+                                        <td>ООО «АЦ ПРОМЭКСПЕРТ», Тула</td>
+                                        <td>20.10.2021, 10:30</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td class="position-relative">
+                                            <span class="badge badge-award bg-warning me-1 mt-1" data-bs-container="body" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="top" data-bs-content="2 место">2</span>
+                                            <a href="{% url 'main:member-detail' %}">Быков Владимир Витальевич</a>
+                                        </td>
+                                        <td>АО "Спецмонтаж"</td>
+                                        <td>ВИК</td>
+                                        <td>ООО «НАКС-Ярославль», Ярославль</td>
+                                        <td>20.10.2021, 10:30</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td class="position-relative">
+                                            <span class="badge badge-award bg-warning me-1 mt-1" data-bs-container="body" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="top" data-bs-content="3 место">3</span>
+                                            <a href="{% url 'main:member-detail' %}">ООО "Организация"</a>
+                                        </td>
+                                        <td>ООО "Организация"</td>
+                                        <td>ВИК</td>
+                                        <td>ООО «НАКС-Ярославль», Ярославль</td>
+                                        <td>20.10.2021, 10:30</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td class="position-relative"><a href="{% url 'main:member-detail' %}">Петровский Владимир Витальевич</a></td>
+                                        <td>АО "Спецмонтаж"</td>
+                                        <td>ВИК</td>
+                                        <td>ООО «НАКС-Ярославль», Ярославль</td>
+                                        <td>20.10.2021, 10:30</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td class="position-relative"><a href="{% url 'main:member-detail' %}">Овчинников Владимир Витальевич</a></td>
+                                        <td>АО "Спецмонтаж"</td>
+                                        <td>ВИК</td>
+                                        <td>ООО «НАКС-Ярославль», Ярославль</td>
+                                        <td>20.10.2021, 10:30</td>
+                                    </tr>
+                                </tbody></table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Дефектоскопист 2020
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionGallery">
+                        <div class="accordion-body">
+                            <strong>This is the second item's accordion body.</strong> It is hidden by default, until
+                            the collapse plugin adds the appropriate classes that we use to style each element. These
+                            classes control the overall appearance, as well as the showing and hiding via CSS
+                            transitions. You can modify any of this with custom CSS or overriding our default variables.
+                            It's also worth noting that just about any HTML can go within the
+                            <code>.accordion-body</code>, though the transition does limit overflow.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Дефектоскопист 2019
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionGallery">
+                        <div class="accordion-body">
+                            <strong>This is the third item's accordion body.</strong> It is hidden by default, until the
+                            collapse plugin adds the appropriate classes that we use to style each element. These
+                            classes control the overall appearance, as well as the showing and hiding via CSS
+                            transitions. You can modify any of this with custom CSS or overriding our default variables.
+                            It's also worth noting that just about any HTML can go within the
+                            <code>.accordion-body</code>, though the transition does limit overflow.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

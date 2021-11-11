@@ -1,7 +1,7 @@
 {% load static %}
-<nav class="navbar navbar-main navbar-expand-lg shadow">
+<nav class="navbar navbar-main navbar-expand-xl shadow">
     <div class="container-xxl">
-        <div class="contacts d-lg-none">
+        <div class="contacts d-xl-none">
             <a href="tel:+74992455656" class="me-3"><i class="bi bi-telephone me-1"></i>+7(499)245-56-56</a>
             <a href="mailto:info@ronktd.ru"><i class="bi bi-envelope me-1"></i>info@ronktd.ru</a>
         </div>
@@ -25,29 +25,27 @@
                         <a class="nav-link {% if 'about' in request.path %}active{% endif %}" href="{% url 'main:about' %}">О&nbsp;конкурсе</a>
                     </li> {% endcomment %}
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle {% if 'structure' in request.path or 'docs' in request.path or 'stages' in request.path or 'final-stage' in request.path or 'members-info' in request.path or 'spon-info' in request.path %}active{% endif %}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">О&nbsp;конкурсе</a>
+                        <a class="nav-link dropdown-toggle {% if 'structure' in request.path or 'docs' in request.path or 'stages' in request.path or 'final-stage' in request.path or 'memb-info' in request.path or 'spon-info' in request.path %}active{% endif %}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">О&nbsp;конкурсе</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="{% url 'main:structure' %}">Организационная структура</a></li>
                             <li><a class="dropdown-item" href="{% url 'main:docs' %}">Документы</a></li>
                             <li><a class="dropdown-item" href="{% url 'main:stages' %}">Отборочные этапы</a></li>
                             <li><a class="dropdown-item" href="{% url 'main:final-stage' %}">Финальный этап</a></li>
-                            <li><a class="dropdown-item" href="{% url 'main:members-info' %}">Участникам</a></li>
+                            <li><a class="dropdown-item" href="{% url 'main:memb-info' %}">Участникам</a></li>
                             <li><a class="dropdown-item" href="{% url 'main:spon-info' %}">Спонсорам</a></li>
                         </ul>
                     </li>
-                    {% comment %}
-                    <li class="nav-item">
-                        <a class="nav-link {% if 'members' in request.path %}active{% endif %}" href="{% url 'main:members' %}">Участникам</a>
-                    </li>
-                    {% endcomment %}
                     <li class="nav-item">
                         <a class="nav-link {% if 'gallery' in request.path %}active{% endif %}" href="{% url 'main:gallery' %}">Галерея</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% if 'partners' in request.path or 'partner-detail' in request.path %}active{% endif %}" href="{% url 'main:partners' %}">Партнеры</a>
+                        <a class="nav-link {% if 'members' in request.path or 'member-detail' in request.path %}active{% endif %}" href="{% url 'main:members' %}">Участники</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% if 'sponsors' in request.path or 'sponsor-detail' in request.path %}active{% endif %}" href="{% url 'main:sponsors' %}">Спонсоры</a>
+                        <a class="nav-link {% if 'organizers' in request.path or 'organizer-detail' in request.path %}active{% endif %}" href="{% url 'main:organizers' %}">Организаторы</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if 'sponsors' in request.path or 'sponsor-detail' in request.path %}active{% endif %} text-nowrap" href="{% url 'main:sponsors' %}">Партнеры и Спонсоры</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {% if 'contacts' in request.path %}active{% endif %}" href="{% url 'main:contacts' %}">Контакты</a>
@@ -70,12 +68,15 @@
                     {% endif %}
                 </ul> {% endcomment %}
                 <ul class="navbar-nav justify-content-end flex-grow-1">
+                    {% comment %} <li class="nav-item">
+                        <a class="nav-link {% if 'authorization' in request.path %}active{% endif %}active{% endif %}" href="{% url 'main:authorization' %}"><i class="bi bi-box-arrow-in-right me-2"></i>Войти</a>
+                    </li> {% endcomment %}
                     <li class="nav-item">
-                        <a class="nav-link {% if 'authorization' in request.path %}active{% endif %}" href="{% url 'main:authorization' %}"><i class="bi bi-box-arrow-in-right me-2"></i>Войти</a>
-                        {% comment %}
-                        <a class="nav-link" href="/admin/" target="_blank"><i class="bi bi-box-arrow-in-right me-2"></i>Войти</a>
-                        {% endcomment %}
+                        <a class="nav-link text-nowrap {% if 'profile' in request.path %}active{% endif %}" href="{% url 'main:profile' %}"><i class="bi bi-person-circle me-1"></i>Личный кабинет</a>
                     </li>
+                    {% comment %} <li class="nav-item">
+                        <a class="nav-link text-nowrap" href="#"><i class="bi bi-box-arrow-left me-1"></i>Выйти</a>
+                    </li> {% endcomment %}
                 </ul>
             </div>
         </div>

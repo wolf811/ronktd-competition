@@ -4,13 +4,14 @@
 <main class="py-4">
     <div class="container-xxl">
         <div class="p-3 shadow-sm border border-light mb-4">
-            <h4 class="text-purple">Спонсоры
+            <h4 class="text-purple">Партнеры и Спонсоры
                 <hr class="line-title">
             </h4>
-            <p class="lead"><a href="{% url 'main:spon-info' %}">Подробнее о спонсорстве<i class="bi bi-arrow-right ms-2"></i></a></p>
+            <p class="lead"><a href="{% url 'main:spon-info' %}">Информация для спонсоров<i class="bi bi-arrow-right ms-2"></i></a></p>
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 g-4">
                 <div class="col">
-                    <div class="card card-main h-100">
+                    <div class="card card-main h-100 position-relative">
+                        <span class="position-absolute top-0 end-0 p-1"><i class="bi bi-award-fill fs-1 text-warning" data-bs-container="body" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="top" data-bs-content="Организация является спонсором конкурса"></i></span>
                         <a href="{% url 'main:sponsor-detail' %}" class="card-img-box" target="_blank"><img src="{% static 'img/logo-naks-media.png' %}" class="card-img-top" alt="..."></a>
                         <div class="card-body">
                             <h5 class="card-title">ООО "НАКС-Медиа"</h5>
@@ -21,7 +22,7 @@
                     </div>
                 </div>
                 <div class="col">
-                    <div class="card card-main h-100">
+                    <div class="card card-main h-100 position-relative">
                         <a href="{% url 'main:sponsor-detail' %}" class="card-img-box" target="_blank"><img src="{% static 'img/logo.png' %}" class="card-img-top" alt="..."></a>
                         <div class="card-body">
                             <h5 class="card-title">СРО Ассоциация "НАКС"</h5>
@@ -32,7 +33,7 @@
                     </div>
                 </div>
                 <div class="col">
-                    <div class="card card-main h-100">
+                    <div class="card card-main h-100 position-relative">
                         <a href="{% url 'main:sponsor-detail' %}" class="card-img-box" target="_blank"><img src="{% static 'img/logo-naks-media.png' %}" class="card-img-top" alt="..."></a>
                         <div class="card-body">
                             <h5 class="card-title">ООО "НАКС-Медиа"</h5>
@@ -43,7 +44,7 @@
                     </div>
                 </div>
                 <div class="col">
-                    <div class="card card-main h-100">
+                    <div class="card card-main h-100 position-relative">
                         <a href="{% url 'main:sponsor-detail' %}" class="card-img-box" target="_blank"><img src="{% static 'img/logo.png' %}" class="card-img-top" alt="..."></a>
                         <div class="card-body">
                             <h5 class="card-title">СРО Ассоциация "НАКС"</h5>

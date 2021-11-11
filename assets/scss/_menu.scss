@@ -20,7 +20,7 @@
         }
 
         a {
-            color: #fff;
+            color: #fff !important;
             margin-bottom: 0.25rem;
             text-decoration: none;
 
@@ -116,7 +116,7 @@
     }
 
     .offcanvas-body {
-        @media (max-width: 991px) {
+        @media (max-width: 1199px) {
             background-color: #795CB3;
         }
     }

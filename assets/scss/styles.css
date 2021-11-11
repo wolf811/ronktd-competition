@@ -114,7 +114,7 @@ a {
     .navbar-main .contacts {
       font-size: 0.8rem; } }
   .navbar-main .contacts a {
-    color: #fff;
+    color: #fff !important;
     margin-bottom: 0.25rem;
     text-decoration: none; }
     .navbar-main .contacts a:hover {
@@ -166,7 +166,7 @@ a {
   color: #fff;
   padding: 0.75rem 1rem; }
 
-@media (max-width: 991px) {
+@media (max-width: 1199px) {
   .offcanvas-main .offcanvas-body {
     background-color: #795CB3; } }
 
@@ -216,6 +216,57 @@ main {
   main .line-title {
     border-bottom: 2px solid #633cb3 !important;
     width: 150px; }
+  main .vertical-menu {
+    z-index: 2; }
+    @media (max-width: 991px) {
+      main .vertical-menu {
+        background-color: #633cb3 !important;
+        position: sticky;
+        top: 0;
+        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075); } }
+    main .vertical-menu .nav-right-main {
+      position: sticky;
+      top: 0;
+      padding-top: 1.5rem;
+      padding-bottom: 0.5rem; }
+      @media (max-width: 991px) {
+        main .vertical-menu .nav-right-main {
+          padding-top: 0.5rem; } }
+      main .vertical-menu .nav-right-main .nav-link {
+        background-color: #633cb3 !important;
+        padding: 1rem;
+        color: #A9B0C3;
+        margin-bottom: 0.5rem;
+        -o-transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        -webkit-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075); }
+        @media (max-width: 991px) {
+          main .vertical-menu .nav-right-main .nav-link {
+            background: #013f73;
+            padding: 0.5rem;
+            margin-bottom: 0;
+            box-shadow: none; } }
+        main .vertical-menu .nav-right-main .nav-link:hover {
+          box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+          -o-transform: translateX(10px);
+          -ms-transform: translateX(10px);
+          -moz-transform: translateX(10px);
+          -webkit-transform: translateX(10px);
+          transform: translateX(10px);
+          background-color: #235985;
+          color: #fff; }
+          @media (max-width: 991px) {
+            main .vertical-menu .nav-right-main .nav-link:hover {
+              transform: none;
+              box-shadow: none; } }
+      main .vertical-menu .nav-right-main .nav-link.active {
+        font-weight: bold;
+        color: #fff; }
+        main .vertical-menu .nav-right-main .nav-link.active:hover {
+          transform: none;
+          background-color: #235985; }
   main .owl-carousel .owl-item {
     display: flex;
     align-items: center;
@@ -352,6 +403,14 @@ main {
     @media (max-width: 991px) {
       main .card-news .card-img-box {
         height: 150px; } }
+  main .badge-award {
+    border-radius: 50%;
+    width: 20px;
+    padding: .35em .5em;
+    position: absolute;
+    top: 0;
+    right: 0; }
+
 footer {
   background-color: #2a0c67;
   border-top: 1px solid #889403; }
