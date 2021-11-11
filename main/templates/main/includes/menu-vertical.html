@@ -4,8 +4,8 @@
     <a class="nav-link" href="#">Пункт меню</a>
     <a class="nav-link" href="#">Пункт меню</a>
     <a class="nav-link" href="#"><i class="bi bi-box-arrow-left me-1"></i>Выйти</a>
-    {% comment %} {% if user.is_staff %}
+    {% if user.is_staff %}
         <a href="/admin/" class="nav-link text-warning" target="_blank">admin_panel</a>
-    {% endif %} {% endcomment %}
+    {% endif %}
 </nav>
 

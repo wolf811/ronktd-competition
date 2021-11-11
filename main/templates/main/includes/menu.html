@@ -68,16 +68,17 @@
                     {% endif %}
                 </ul> {% endcomment %}
                 <ul class="navbar-nav justify-content-end flex-grow-1">
-                    {% comment %} <li class="nav-item">
-                        <a class="nav-link {% if 'authorization' in request.path %}active{% endif %}active{% endif %}" href="{% url 'main:authorization' %}"><i class="bi bi-box-arrow-in-right me-2"></i>Войти</a>
-                    </li> {% endcomment %}
+                    {% if user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link text-nowrap {% if 'profile' in request.path %}active{% endif %}" href="{% url 'main:profile' %}"><i class="bi bi-person-circle me-1"></i>Личный кабинет</a>
                     </li>
-                    {% comment %} <li class="nav-item">
-                        <a class="nav-link text-nowrap" href="#"><i class="bi bi-box-arrow-left me-1"></i>Выйти</a>
-                    </li> {% endcomment %}
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link {% if 'authorization' in request.path %}active{% endif %}" href="{% url 'main:authorization' %}"><i class="bi bi-box-arrow-in-right me-2"></i>Войти</a>
+                    </li>
+                    {% endif %}
                 </ul>
+                {% comment %} <p class="text-danger">{{ user.username }}</p> {% endcomment %}
             </div>
         </div>
     </div>

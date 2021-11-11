@@ -23,7 +23,7 @@ def news_detail(request):
     return render(request, "main/news-detail.html", content)
 
 def structure(request):
-    title = "О конкурсе"
+    title = "Организационная структура"
     content = {
         "title": title,
     }
@@ -51,8 +51,6 @@ def final_stage(request):
         "title": title,
     }
     return render(request, "main/final-stage.html", content)
-
-
 
 def gallery(request):
     title = "Галерея"
@@ -89,7 +87,6 @@ def organizers(request):
         "title": title,
     }
     return render(request, "main/organizers.html", content)
-
 
 def organizer_detail(request):
     title = "Организаторы"

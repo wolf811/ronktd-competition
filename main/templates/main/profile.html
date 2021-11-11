@@ -3,19 +3,65 @@
 {% comment %} {% load widget_tweaks %} {% endcomment %}
 {% block content %}
 <main class="py-0 py-lg-4">
-
-    <div class="container-xxl" id="vue-profile-app" v-cloak>
+    <div class="container-xxl">
         <div class="row">
             <div class="col-lg-9 order-2 order-lg-1 py-4">
                 <div class="p-3 shadow-sm border border-light mb-4">
                     <h4 class="text-purple">{{ subtitle }}
                         <hr class="line-title">
                     </h4>
-                    <p class="lead">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum odio, facilis inventore in vel accusantium dolores aliquid veniam omnis voluptatem, exercitationem, ab ea porro. Magni labore quam exercitationem aperiam porro?</p>
+                    <div class="my-4">
+                        <div class="row justify-content-sm-center">
+                            <div class="col-sm-10 col-md-8 col-xl-6">
+                                <form>
+                                    <div class="mb-3">
+                                        <label for="name1" class="form-label">Название организации / ФИО</label>
+                                        <input type="text" class="form-control" id="name1">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="name1" class="form-label">Юридическией адрес / Адрес
+                                            проживания</label>
+                                        <input type="text" class="form-control" id="name1">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="phone1" class="form-label">Телефон</label>
+                                        <input type="text" class="form-control" id="phone1">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="email1" class="form-label">Email</label>
+                                        <input type="text" class="form-control" id="email1">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="email1" class="form-label">Адрес сайта <small
+                                                class="text-muted">(для организаций)</small></label>
+                                        <input type="text" class="form-control" id="email1">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="formFile" class="form-label">Логотип (фото) профиля</label>
+                                        <input class="form-control" type="file" id="formFile">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="comment1" class="form-label">Общая информация</label>
+                                        <textarea class="form-control" id="comment1" rows="3"></textarea>
+                                    </div>
+                                    <div class="mb-3 form-check">
+                                        <input type="checkbox" class="form-check-input" id="checkSogl1">
+                                        <label class="form-check-label" for="checkSogl1"><a href="#">Даю согласие на
+                                                обработку
+                                                персональных данных</a></label>
+                                    </div>
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-outline-primary text-dark disabled"
+                                            id="btnSend">Сохранить</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-3 order-1 order-lg-2 vertical-menu">
-                    {% include 'main/includes/menu-vertical.html' %}
+                {% include 'main/includes/menu-vertical.html' %}
             </div>
 
         </div>
