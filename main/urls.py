@@ -1,10 +1,12 @@
-from django.urls import path, include
+from django.urls import include, path
+
 import main.views as main
 
 app_name = "main"
 
 urlpatterns = [
     path("", main.index, name="index"),
+    path("users/", include("users.urls", namespace="users")),
     path("news/", main.news, name="news"),
     path("news-detail/", main.news_detail, name="news-detail"),
     path("structure/", main.structure, name="structure"),

@@ -2,6 +2,10 @@
 {% load static %}
 {% block index %}
 <main>
+    <div id="test_callback">
+        <h1>TEST TEST TEST</h1>
+
+    </div>
     <div class="container-xxl p-0 px-lg-2">
     <div class="carousel carousel-main">
         <div class="carousel__slide">
@@ -92,7 +96,8 @@
             </div>
         </div>
         <div class="alert alert-light border border-light shadow-sm">
-            <h4 class="fw-light text-purple">Партнеры и спонсоры</h4>
+            {% comment %}<h4 class="fw-light text-purple">Партнеры и спонсоры</h4>{% endcomment %}
+            <h4 class="fw-light text-purple">Уже с нами</h4>
             <div class="owl-carousel owl-theme owl-loaded">
                 <div class="owl-stage-outer">
                     <div class="owl-stage">

@@ -1,10 +1,41 @@
-from django.shortcuts import render, redirect
-# from django.http import HttpResponse
-# from django.contrib.auth import authenticate, login, logout
-# from users.models import CustomUser
+from django.contrib.auth import authenticate, login, logout
+from django.http import HttpResponse
+from django.shortcuts import redirect, render
+
+from users.models import CustomUser
+
 # from users.forms import LoginForm, RegisterForm
 
 # Create your views here.
+
+
+def login_classic(request):
+    content = {}
+    return render(request, "main/authorization.html", content)
+
+
+def logged_in_classic(request):
+    return HttpResponse("you are logged in")
+
+
+def logout_classic(request):
+    return HttpResponse("you are logged out")
+
+
+def register_classic(request):
+    return HttpResponse("registration email sent")
+
+
+def confirm_registration_classic(request):
+    return HttpResponse("your user is ativated")
+
+
+def password_recovery_classic(request):
+    return HttpResponse("password link sent to your registration email")
+
+
+def create_new_password_classic(request):
+    return HttpResponse("your new password has been set")
 
 
 # def login_classic(request):

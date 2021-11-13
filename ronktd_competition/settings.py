@@ -10,11 +10,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
-from .settings_deploy_variables import *
-from pathlib import Path
-from datetime import timedelta
-import os
 import json
+import os
+from datetime import timedelta
+from pathlib import Path
+
+from .settings_deploy_variables import *
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '04l2*1__lt%2^lotj)i6#gdki=uv)%i1b57l5*q7818t1^85%-'
+SECRET_KEY = "04l2*1__lt%2^lotj)i6#gdki=uv)%i1b57l5*q7818t1^85%-"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -45,7 +46,6 @@ INSTALLED_APPS = [
     # "widget_tweaks",
     "users",
     "main",
-
 ]
 
 # WKHTMLTOPDF_CMD_OPTIONS = {
@@ -160,7 +160,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# AUTH_USER_MODEL = "users.CustomUser"
+AUTH_USER_MODEL = "users.CustomUser"
 
 
 # Internationalization

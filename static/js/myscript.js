@@ -1,35 +1,39 @@
 // =============== Enable Tooltips & Popovers ===============
-var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+var tooltipTriggerList = [].slice.call(
+	document.querySelectorAll('[data-bs-toggle="tooltip"]')
+);
 var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-    return new bootstrap.Tooltip(tooltipTriggerEl)
-})
-var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+	return new bootstrap.Tooltip(tooltipTriggerEl);
+});
+var popoverTriggerList = [].slice.call(
+	document.querySelectorAll('[data-bs-toggle="popover"]')
+);
 var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-    return new bootstrap.Popover(popoverTriggerEl)
-})
+	return new bootstrap.Popover(popoverTriggerEl);
+});
 // ===========================================================
 
 // ====================== OwlCarousel =========================
 $(document).ready(function () {
-    $('.owl-carousel').owlCarousel({
-        // nav: true,
-        // navText: ['<i class="bi bi-arrow-left"></i>','<i class="bi bi-arrow-right"></i>'],
-        loop: true,
-        margin: 10,
-        responsiveClass: true,
-        responsive: {
-            0: {
-                items: 1,
-            },
-            600: {
-                items: 3,
-            },
-            1000: {
-                items: 5,
-                loop: false
-            }
-        }
-    })
+	$(".owl-carousel").owlCarousel({
+		// nav: true,
+		// navText: ['<i class="bi bi-arrow-left"></i>','<i class="bi bi-arrow-right"></i>'],
+		loop: true,
+		margin: 10,
+		responsiveClass: true,
+		responsive: {
+			0: {
+				items: 1,
+			},
+			600: {
+				items: 3,
+			},
+			1000: {
+				items: 5,
+				loop: false,
+			},
+		},
+	});
 });
 // ============================================================
 
@@ -94,30 +98,30 @@ $(document).ready(function () {
 //     }
 // })
 
-$('#checkSogl1').click(function() {
-    if ($(this).is(':checked')) {
-        $('#btnSend').removeClass('disabled');
-    } else {
-        $('#btnSend').addClass('disabled');
-    }
-})
+$("#checkSogl1").click(function () {
+	if ($(this).is(":checked")) {
+		$("#btnSend").removeClass("disabled");
+	} else {
+		$("#btnSend").addClass("disabled");
+	}
+});
 
-$('#btn-move-to-reg').click(function() {
-    $('#form-registration').show('fade');
-    $('#form-signin').hide();
-})
-$('#btn-move-to-signin').click(function() {
-    $('#form-registration').hide();
-    $('#form-signin').show('fade');
-})
-$('#btn-move-to-recovery').click(function() {
-    $('#form-recovery').show('fade');
-    $('#form-signin').hide();
-})
-$('#btn-cancel-recovery').click(function() {
-    $('#form-recovery').hide();
-    $('#form-signin').show('fade');
-})
+$("#btn-move-to-reg").click(function () {
+	$("#form-registration").show("fade");
+	$("#form-signin").hide();
+});
+$("#btn-move-to-signin").click(function () {
+	$("#form-registration").hide();
+	$("#form-signin").show("fade");
+});
+$("#btn-move-to-recovery").click(function () {
+	$("#form-recovery").show("fade");
+	$("#form-signin").hide();
+});
+$("#btn-cancel-recovery").click(function () {
+	$("#form-recovery").hide();
+	$("#form-signin").show("fade");
+});
 // ===========================================================
 
 // function copyToken() {
@@ -158,29 +162,31 @@ $('#btn-cancel-recovery').click(function() {
 //     });
 
 const galleryCarousel = new Carousel(document.querySelector(".carousel"), {
-    Dots: false,
+	Dots: false,
 });
 // Thumbnails
-const thumbCarousel = new Carousel(document.querySelector(".thumb"), {
-    Sync: {
-        target: galleryCarousel,
-        friction: 0,
-    },
-    Dots: false,
-    Navigation: false,
-    center: true,
-    slidesPerPage: 1,
-    infinite: false,
-});
+if (document.querySelectorAll(".thumb").length) {
+	const thumbCarousel = new Carousel(document.querySelector(".thumb"), {
+		Sync: {
+			target: galleryCarousel,
+			friction: 0,
+		},
+		Dots: false,
+		Navigation: false,
+		center: true,
+		slidesPerPage: 1,
+		infinite: false,
+	});
+}
 // Customize Fancybox
 Fancybox.bind('[data-fancybox="gallery"]', {
-    Carousel: {
-        on: {
-            change: (that) => {
-                galleryCarousel.slideTo(galleryCarousel.findPageForSlide(that.page), {
-                    friction: 0,
-                });
-            },
-        },
-    },
+	Carousel: {
+		on: {
+			change: (that) => {
+				galleryCarousel.slideTo(galleryCarousel.findPageForSlide(that.page), {
+					friction: 0,
+				});
+			},
+		},
+	},
 });
