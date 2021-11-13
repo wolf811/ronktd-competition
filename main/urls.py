@@ -25,5 +25,6 @@ urlpatterns = [
     path("contacts/", main.contacts, name="contacts"),
     path("authorization/", main.authorization, name="authorization"),
     path("profile/", main.profile, name="profile"),
+    path("details/<slug:pk>/", main.page_details, name="details"),
     # path("register/", main.register, name="register"),
 ]
