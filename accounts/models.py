@@ -3,6 +3,8 @@ from django.utils.translation import pgettext_lazy
 from django.utils.translation import ugettext_lazy as _
 from phonenumber_field.modelfields import PhoneNumberField
 
+# from users.models import CustomUser
+
 # Create your models here.
 
 
@@ -13,9 +15,13 @@ class Account(models.Model):
         ("close", "Close"),
     )
 
-    name = models.CharField(pgettext_lazy("Name of Account", "Name"), max_length=64)
+    name = models.CharField(
+        pgettext_lazy("Name of Account", "Name"),
+        max_length=64,
+    )
     email = models.EmailField()
     phone = PhoneNumberField(null=True)
+    """
     industry = models.CharField(
         _("Industry Type"),
         max_length=255,
@@ -23,6 +29,7 @@ class Account(models.Model):
         blank=True,
         null=True,
     )
+    """
     billing_address_line = models.CharField(
         _("Address"), max_length=255, blank=True, null=True
     )
@@ -38,12 +45,6 @@ class Account(models.Model):
         blank=True,
         null=True,
     )
-    billing_state = models.CharField(
-        _("State"),
-        max_length=255,
-        blank=True,
-        null=True,
-    )
     billing_postcode = models.CharField(
         _("Post/Zip-code"),
         max_length=64,
@@ -55,37 +56,49 @@ class Account(models.Model):
         blank=True,
         null=True,
     )
-    description = models.TextField(blank=True, null=True)
+    description = models.TextField(
+        blank=True,
+        null=True,
+    )
     created_by = models.ForeignKey(
-        Profile,
+        "users.CustomUser",
         related_name="account_created_by",
         on_delete=models.SET_NULL,
         null=True,
     )
-    created_on = models.DateTimeField(_("Created on"), auto_now_add=True)
-    is_active = models.BooleanField(default=False)
-    tags = models.ManyToManyField(Tags, blank=True)
-    status = models.CharField(
-        choices=ACCOUNT_STATUS_CHOICE, max_length=64, default="open"
+    created_on = models.DateTimeField(
+        _("Created on"),
+        auto_now_add=True,
     )
+    is_active = models.BooleanField(default=False)
+    tags = models.ManyToManyField(
+        "common.Tag",
+        blank=True,
+    )
+    status = models.CharField(
+        choices=ACCOUNT_STATUS_CHOICE,
+        max_length=64,
+        default="open",
+    )
+    """
     lead = models.ForeignKey(
         "leads.Lead", related_name="account_leads", on_delete=models.SET_NULL, null=True
     )
+    """
     contact_name = models.CharField(
-        pgettext_lazy("Name of Contact", "Contact Name"), max_length=120
+        pgettext_lazy("Name of Contact", "Contact Name"),
+        max_length=120,
     )
     contacts = models.ManyToManyField(
         "contacts.Contact", related_name="account_contacts"
     )
-    assigned_to = models.ManyToManyField(Profile, related_name="account_assigned_users")
-    teams = models.ManyToManyField(Teams, related_name="account_teams")
-    org = models.ForeignKey(
-        Org,
-        on_delete=models.SET_NULL,
-        null=True,
-        blank=True,
-        related_name="account_org",
+    assigned_to = models.ManyToManyField(
+        "users.CustomUser",
+        related_name="account_assigned_users",
     )
+    """
+        ORG FOREIGN KEY ???
+    """
 
     class Meta:
         ordering = ["-created_on"]

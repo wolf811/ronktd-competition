@@ -46,6 +46,18 @@ INSTALLED_APPS = [
     # "widget_tweaks",
     "users",
     "main",
+    "publications",
+    "gallery",
+    "accounts",
+    "competitors",
+    "crm",
+    "operators",
+    "partners",
+    "cases",
+    "contacts",
+    "common",
+    "ckeditor",
+    "ckeditor_uploader",
 ]
 
 # WKHTMLTOPDF_CMD_OPTIONS = {

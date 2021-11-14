@@ -1,11 +1,14 @@
 from django.shortcuts import render
+from publications.models import Banner
 
 
 # Create your views here.
 def index(request):
     title = "Главная"
+    main_page_banners = Banner.objects.filter(activated=True).order_by("number")
     content = {
         "title": title,
+        "banners": main_page_banners,
     }
     return render(request, "main/index.html", content)
 

@@ -7,27 +7,44 @@
     </div>
     <div class="container-xxl p-0 px-lg-2">
     <div class="carousel carousel-main">
-        <div class="carousel__slide">
-            <img src="{% static 'img/Foto_89.jpg' %}">
-            <div class="carousel-text p-4">
-                <p class="fw-light mb-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo debitis nesciunt, quas perferendis dolor tenetur nam inventore, voluptatibus molestias, laboriosam, nobis. Delectus suscipit molestias, mollitia tenetur nesciunt harum modi, nostrum!</p>
-                <a href="{% url 'main:news-detail' %}" class="btn btn-outline-light" role="button">Подробнее<i class="bi bi-arrow-right ms-2"></i></a>
+        {% if banners %}
+            {% for banner in banners %}
+                <div class="carousel__slide">
+                    <img src="{{ banner.image.large.url }}">
+                    <div class="carousel-text p-4">
+                        <p class="fw-light mb-2">{{ banner.short_description }}</p>
+                        <a href="{% url 'publications:details' banner.related_post.pk %}" 
+                           class="btn btn-outline-light" role="button">{{ banner.related_post_button_name }}
+                            <i class="bi bi-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            
+            <div class="carousel__slide">
+                <img src="{% static 'img/Foto_89.jpg' %}">
+                <div class="carousel-text p-4">
+                    <p class="fw-light mb-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo debitis nesciunt, quas perferendis dolor tenetur nam inventore, voluptatibus molestias, laboriosam, nobis. Delectus suscipit molestias, mollitia tenetur nesciunt harum modi, nostrum!</p>
+                    <a href="{% url 'main:news-detail' %}" class="btn btn-outline-light" role="button">Подробнее<i class="bi bi-arrow-right ms-2"></i></a>
+                </div>
             </div>
-        </div>
-        <div class="carousel__slide">
-            <img src="{% static 'img/Foto_88.jpg' %}">
-            <div class="carousel-text p-4">
-                <p class="fw-light mb-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo debitis nesciunt, quas perferendis dolor tenetur nam inventore, voluptatibus molestias, laboriosam, nobis. Delectus suscipit molestias, mollitia tenetur nesciunt harum modi, nostrum!</p>
-                <a href="{% url 'main:news-detail' %}" class="btn btn-outline-light" role="button">Подробнее<i class="bi bi-arrow-right ms-2"></i></a>
+            <div class="carousel__slide">
+                <img src="{% static 'img/Foto_88.jpg' %}">
+                <div class="carousel-text p-4">
+                    <p class="fw-light mb-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo debitis nesciunt, quas perferendis dolor tenetur nam inventore, voluptatibus molestias, laboriosam, nobis. Delectus suscipit molestias, mollitia tenetur nesciunt harum modi, nostrum!</p>
+                    <a href="{% url 'main:news-detail' %}" class="btn btn-outline-light" role="button">Подробнее<i class="bi bi-arrow-right ms-2"></i></a>
+                </div>
             </div>
-        </div>
-        <div class="carousel__slide">
-            <img src="{% static 'img/Foto_90.jpg' %}">
-            <div class="carousel-text p-4">
-                <p class="fw-light mb-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo debitis nesciunt, quas perferendis dolor tenetur nam inventore, voluptatibus molestias, laboriosam, nobis. Delectus suscipit molestias, mollitia tenetur nesciunt harum modi, nostrum!</p>
-                <a href="{% url 'main:news-detail' %}" class="btn btn-outline-light" role="button">Подробнее<i class="bi bi-arrow-right ms-2"></i></a>
+            <div class="carousel__slide">
+                <img src="{% static 'img/Foto_90.jpg' %}">
+                <div class="carousel-text p-4">
+                    <p class="fw-light mb-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo debitis nesciunt, quas perferendis dolor tenetur nam inventore, voluptatibus molestias, laboriosam, nobis. Delectus suscipit molestias, mollitia tenetur nesciunt harum modi, nostrum!</p>
+                    <a href="{% url 'main:news-detail' %}" class="btn btn-outline-light" role="button">Подробнее<i class="bi bi-arrow-right ms-2"></i></a>
+                </div>
             </div>
-        </div>
+
+        {% endif %}
+
     </div>
 </div>
 </main>
