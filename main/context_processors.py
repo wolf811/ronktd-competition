@@ -3,6 +3,8 @@ from django.conf import settings
 from django.middleware.csrf import get_token
 from django.utils.functional import SimpleLazyObject
 
+from main.models import Profile
+
 # from ndtadmin.models import AccreditedCenter
 # from users.services import get_user_menu
 
@@ -32,6 +34,13 @@ def csrf(request):
             return token
 
     return {"csrf_token": SimpleLazyObject(_get_val)}
+
+
+def profile(request):
+    profile = Profile.objects.first()
+    if profile:
+        return {"profile": profile}
+    return {"profile": None}
 
 
 """

@@ -21,9 +21,10 @@ from django.urls import include, path
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("ckeditor/", include("ckeditor_uploader.urls")),
-    # path("users/", include("users.urls", namespace="users")),
     path("", include("main.urls", namespace="main")),
+    path("ckeditor/", include("ckeditor_uploader.urls")),
+    path("captcha/", include("captcha.urls")),
+    # path("users/", include("users.urls", namespace="users")),
     path("publications/", include("publications.urls", namespace="publications")),
 ]
 

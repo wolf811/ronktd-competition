@@ -199,6 +199,9 @@ class Document(models.Model):
     publish_in_basement = models.BooleanField(
         verbose_name="Опубликовать в подвале", default=False
     )
+    number = models.SmallIntegerField(
+        verbose_name="Порядок сортировки", null=True, blank=True, default=None
+    )
     json_data = models.JSONField("json-data", null=True, blank=True)
 
     class Meta:

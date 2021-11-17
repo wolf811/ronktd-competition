@@ -1,14 +1,25 @@
 from django.shortcuts import render
-from publications.models import Banner
+from publications.models import Banner, Document
+
+from main.models import Chunk
 
 
 # Create your views here.
 def index(request):
     title = "Главная"
     main_page_banners = Banner.objects.filter(activated=True).order_by("number")
+    main_page_chunks = Chunk.objects.filter(
+        activated=True,
+        publish_on_main_page=True,
+    ).order_by("number")
+    main_page_documents = Document.objects.filter(publish_on_main_page=True).order_by(
+        "number"
+    )
     content = {
         "title": title,
         "banners": main_page_banners,
+        "chunks": main_page_chunks,
+        "documents": main_page_documents,
     }
     return render(request, "main/index.html", content)
 

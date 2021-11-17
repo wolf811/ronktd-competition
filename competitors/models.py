@@ -24,6 +24,10 @@ class Staff(People):
 
 
 class Participant(People):
+
+    winner = models.PositiveSmallIntegerField(default=0)
+    nominations = models.ManyToManyField("common.Nomination", blank=True)
+
     class Meta:
         verbose_name = "Участник"
         verbose_name_plural = "Участники"

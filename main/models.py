@@ -214,9 +214,17 @@ class Profile(models.Model):
         null=True,
         default=None,
     )
-    org_phones = models.TextField("Телефоны", blank=True, null=True, default=None)
+    org_phones = models.TextField(
+        "Телефоны",
+        blank=True,
+        null=True,
+        default=None,
+    )
     org_email = models.TextField(
-        "Адрес электронной почты", blank=True, null=True, default=None
+        "Адрес электронной почты",
+        blank=True,
+        null=True,
+        default=None,
     )
     org_order_email = models.CharField(
         "Адреса для подключения формы заявки",
@@ -226,10 +234,16 @@ class Profile(models.Model):
         default=None,
     )
     org_header_emails = models.TextField(
-        "Адреса электронной почты (для хедера)", blank=True, null=True, default=None
+        "Адреса электронной почты (для хедера)",
+        blank=True,
+        null=True,
+        default=None,
     )
     org_header_phones = models.TextField(
-        "Телефоны (для хедера)", blank=True, null=True, default=None
+        "Телефоны (для хедера)",
+        blank=True,
+        null=True,
+        default=None,
     )
     org_address = models.TextField(
         "Адрес местоположения организации", null=True, blank=True, default=None
@@ -251,7 +265,11 @@ class Profile(models.Model):
     counter_js_goal2 = models.CharField(
         "JS код счетчика (2)", max_length=500, null=True, blank=True
     )
-    number = models.SmallIntegerField("Порядок сортировки", null=True, blank=True)
+    number = models.PositiveSmallIntegerField(
+        "Порядок сортировки",
+        null=True,
+        blank=True,
+    )
     json_data = models.JSONField("json-data", null=True, blank=True)
 
     class Meta:
@@ -269,7 +287,25 @@ class Chunk(models.Model):
     code = models.CharField(
         "Уникальный код вставки", max_length=64, default="КОД_ВСТАВКИ"
     )
-    html = RichTextUploadingField("Форматирование вставки")
+    text = models.TextField(
+        null=True,
+        blank=True,
+    )
+    html = RichTextUploadingField(
+        "Форматирование вставки",
+        null=True,
+        blank=True,
+    )
+    activated = models.BooleanField("Активирован", default=False)
+    publish_on_main_page = models.BooleanField(
+        "Опубликовать на главной",
+        default=False,
+    )
+    number = models.PositiveSmallIntegerField(
+        "Порядок сортировки",
+        null=True,
+        blank=True,
+    )
 
     json_data = models.JSONField("json-data", null=True, blank=True)
 

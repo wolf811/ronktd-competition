@@ -20,25 +20,24 @@
                 </div>
             {% endfor %}
         {% else %}
-            
             <div class="carousel__slide">
                 <img src="{% static 'img/Foto_89.jpg' %}">
                 <div class="carousel-text p-4">
-                    <p class="fw-light mb-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo debitis nesciunt, quas perferendis dolor tenetur nam inventore, voluptatibus molestias, laboriosam, nobis. Delectus suscipit molestias, mollitia tenetur nesciunt harum modi, nostrum!</p>
+                    <p class="fw-light mb-2">DEMO SLIDE: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo debitis nesciunt, quas perferendis dolor tenetur nam inventore, voluptatibus molestias, laboriosam, nobis. Delectus suscipit molestias, mollitia tenetur nesciunt harum modi, nostrum!</p>
                     <a href="{% url 'main:news-detail' %}" class="btn btn-outline-light" role="button">Подробнее<i class="bi bi-arrow-right ms-2"></i></a>
                 </div>
             </div>
             <div class="carousel__slide">
                 <img src="{% static 'img/Foto_88.jpg' %}">
                 <div class="carousel-text p-4">
-                    <p class="fw-light mb-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo debitis nesciunt, quas perferendis dolor tenetur nam inventore, voluptatibus molestias, laboriosam, nobis. Delectus suscipit molestias, mollitia tenetur nesciunt harum modi, nostrum!</p>
+                    <p class="fw-light mb-2">DEMO SLIDE: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo debitis nesciunt, quas perferendis dolor tenetur nam inventore, voluptatibus molestias, laboriosam, nobis. Delectus suscipit molestias, mollitia tenetur nesciunt harum modi, nostrum!</p>
                     <a href="{% url 'main:news-detail' %}" class="btn btn-outline-light" role="button">Подробнее<i class="bi bi-arrow-right ms-2"></i></a>
                 </div>
             </div>
             <div class="carousel__slide">
                 <img src="{% static 'img/Foto_90.jpg' %}">
                 <div class="carousel-text p-4">
-                    <p class="fw-light mb-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo debitis nesciunt, quas perferendis dolor tenetur nam inventore, voluptatibus molestias, laboriosam, nobis. Delectus suscipit molestias, mollitia tenetur nesciunt harum modi, nostrum!</p>
+                    <p class="fw-light mb-2">DEMO SLIDE: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo debitis nesciunt, quas perferendis dolor tenetur nam inventore, voluptatibus molestias, laboriosam, nobis. Delectus suscipit molestias, mollitia tenetur nesciunt harum modi, nostrum!</p>
                     <a href="{% url 'main:news-detail' %}" class="btn btn-outline-light" role="button">Подробнее<i class="bi bi-arrow-right ms-2"></i></a>
                 </div>
             </div>
@@ -50,33 +49,61 @@
 </main>
 <main class="py-4">
     <div class="container-xxl">
+
+        {% if chunks %}
+
+            {% for chunk in chunks %}
+
+                {% if user.is_authenticated %}
+                    <div class="position-relative">
+                        <div class="position-absolute top-0 end-0">
+                            <div class="badge bg-primary">
+                                edit me: 
+                                <a class="text-white" href="{% url 'admin:main_chunk_change' chunk.id %}">
+                                    {{ chunk.code }}
+                                </a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
+                <div class="p-3 shadow-sm border border-light mb-4">
+                    {{ chunk.text|safe }}
+                </div>
+                
+            {% endfor %}
+
+        {% else %}
+                <div class="p-3 shadow-sm border border-light mb-4">
+                    NO CHUNKS
+                </div>
+        {% endif %}
+        
         <div class="p-3 shadow-sm border border-light mb-4">
-            <h4 class="text-purple">Дефектоскопист 2021
-                <hr class="line-title">
-            </h4>
-            <p>Всероссийский конкурс РОНКТД по неразрушающему контролю «Дефектоскопист 2021» проводится Российским
-                обществом по неразрушающему контролю и технической диагностике (РОНКТД) при поддержке Ростехнадзора и
-                Минпромторга России.</p>
-            <h5 class="text-purple">Основными задачами Конкурса являются:</h5>
-            <ul class="list-group list-group-flush mb-3">
-                <li class="list-group-item">демонстрация высокой квалификации, знаний и умений специалистов ведущих
-                    организаций в области НК;</li>
-                <li class="list-group-item">предоставление возможностей для профессионального роста, а также обмена
-                    опытом в рамках самого значительного события года в области неразрушающего контроля на площадях VIII
-                    Международного промышленного форума «Территория NDT»</li>
-                <li class="list-group-item">повышение престижа и популяризация профессии специалиста неразрушающего
-                    контроля (НК) (дефектоскописта), включенной в список 50 наиболее востребованных на рынке труда,
-                    новых и перспективных профессий</li>
-                <li class="list-group-item">гармонизация стандартов подготовки специалистов НК</li>
-            </ul>
-            <p class="mb-0 fw-bold">Участие в конкурсе - бесплатное</p>
+            {% if documents %}
+                {% for doc in documents %}
+                    <p
+                        {% if forloop.last %}
+                           class="mb-0" 
+                           {% else %}
+                            class="mb-2"
+                        {% endif %}
+                    >
+                    <a href="{{ doc.document.url }}" target="_blank">
+                        <i class="bi bi-file-pdf me-2"></i>
+                        {{  doc.title }}</a>
+
+                    </p>
+                    
+                {% endfor %}   
+            {% else %}
+                NO DOCUMENTS        
+            {% endif %}
         </div>
-        <div class="p-3 shadow-sm border border-light mb-4">
-            <p><a href="#" target="_blank"><i class="bi bi-file-pdf me-2"></i>Приглашение на Всероссийский конкурс
-                    РОНКТД по НК "Дефектоскопист 2021</a></p>
-            <a href="#" target="_blank"><i class="bi bi-file-pdf me-2"></i>Заявка на участие в отборочном этапе</a>
-        </div>
-        <div class="alert alert-purple shadow-sm mb-4">
+        <div 
+            id="vue_main_page_form"
+            class="alert alert-purple shadow-sm mb-4">
             <h3 class="fw-light text-purple text-center">Стать участником, партнером или спонсором конкурса</h3>
             <div class="my-4">
                 <div class="row justify-content-sm-center">
@@ -88,7 +115,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="phone1" class="form-label">Телефон</label>
-                                <input type="text" class="form-control" id="phone1">
+                                <input type="text" class="form-control" id="masked_phone_number">
                             </div>
                             <div class="mb-3">
                                 <label for="email1" class="form-label">Email</label>
