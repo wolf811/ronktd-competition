@@ -1,4 +1,15 @@
 // =============== Enable Tooltips & Popovers ===============
+//
+//captcha django-simple-captcha
+//
+$('#refresh_captcha').on('click', function (e) {
+	console.log('refresh clicked...');
+	$.getJSON('/captcha/refresh/', function (result) {
+		$('.captcha').attr('src', result['image_url']);
+		$('#id_captcha_0').val(result['key']);
+	});
+});
+//
 var tooltipTriggerList = [].slice.call(
 	document.querySelectorAll('[data-bs-toggle="tooltip"]')
 );
@@ -15,7 +26,7 @@ var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
 
 // ====================== OwlCarousel =========================
 $(document).ready(function () {
-	$(".owl-carousel").owlCarousel({
+	$('.owl-carousel').owlCarousel({
 		// nav: true,
 		// navText: ['<i class="bi bi-arrow-left"></i>','<i class="bi bi-arrow-right"></i>'],
 		loop: true,
@@ -98,29 +109,29 @@ $(document).ready(function () {
 //     }
 // })
 
-$("#checkSogl1").click(function () {
-	if ($(this).is(":checked")) {
-		$("#btnSend").removeClass("disabled");
+$('#checkSogl1').click(function () {
+	if ($(this).is(':checked')) {
+		$('#btnSend').removeClass('disabled');
 	} else {
-		$("#btnSend").addClass("disabled");
+		$('#btnSend').addClass('disabled');
 	}
 });
 
-$("#btn-move-to-reg").click(function () {
-	$("#form-registration").show("fade");
-	$("#form-signin").hide();
+$('#btn-move-to-reg').click(function () {
+	$('#form-registration').show('fade');
+	$('#form-signin').hide();
 });
-$("#btn-move-to-signin").click(function () {
-	$("#form-registration").hide();
-	$("#form-signin").show("fade");
+$('#btn-move-to-signin').click(function () {
+	$('#form-registration').hide();
+	$('#form-signin').show('fade');
 });
-$("#btn-move-to-recovery").click(function () {
-	$("#form-recovery").show("fade");
-	$("#form-signin").hide();
+$('#btn-move-to-recovery').click(function () {
+	$('#form-recovery').show('fade');
+	$('#form-signin').hide();
 });
-$("#btn-cancel-recovery").click(function () {
-	$("#form-recovery").hide();
-	$("#form-signin").show("fade");
+$('#btn-cancel-recovery').click(function () {
+	$('#form-recovery').hide();
+	$('#form-signin').show('fade');
 });
 // ===========================================================
 
@@ -161,12 +172,12 @@ $("#btn-cancel-recovery").click(function () {
 //         },
 //     });
 
-const galleryCarousel = new Carousel(document.querySelector(".carousel"), {
+const galleryCarousel = new Carousel(document.querySelector('.carousel'), {
 	Dots: false,
 });
 // Thumbnails
-if (document.querySelectorAll(".thumb").length) {
-	const thumbCarousel = new Carousel(document.querySelector(".thumb"), {
+if (document.querySelectorAll('.thumb').length) {
+	const thumbCarousel = new Carousel(document.querySelector('.thumb'), {
 		Sync: {
 			target: galleryCarousel,
 			friction: 0,

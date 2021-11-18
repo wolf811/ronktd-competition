@@ -6,6 +6,7 @@ app_name = "main"
 
 urlpatterns = [
     path("", main.index, name="index"),
+    path("part_form/", main.participant_form),
     path("users/", include("users.urls", namespace="users")),
     path("news/", main.news, name="news"),
     path("news-detail/", main.news_detail, name="news-detail"),

@@ -1,6 +1,9 @@
+from django.http.response import JsonResponse
 from django.shortcuts import render
 from publications.models import Banner, Document
+from rest_framework.parsers import JSONParser
 
+from main.forms import ParticipantForm
 from main.models import Chunk
 
 
@@ -15,13 +18,26 @@ def index(request):
     main_page_documents = Document.objects.filter(publish_on_main_page=True).order_by(
         "number"
     )
+    form = ParticipantForm()
     content = {
         "title": title,
         "banners": main_page_banners,
         "chunks": main_page_chunks,
         "documents": main_page_documents,
+        "form": form,
     }
     return render(request, "main/index.html", content)
+
+
+def participant_form(request):
+    post_data = {k: v for k, v in JSONParser().parse(request).items()}
+    form = ParticipantForm(post_data)
+    if form.is_valid():
+        print("FORM is valid")
+        return JsonResponse({"success": post_data})
+    else:
+        print("ERRORS", form.errors)
+    return JsonResponse({"errors": form.errors})
 
 
 def news(request):

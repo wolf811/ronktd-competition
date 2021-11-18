@@ -85,9 +85,9 @@
                 {% for doc in documents %}
                     <p
                         {% if forloop.last %}
-                           class="mb-0" 
+                               class="mb-0" 
                            {% else %}
-                            class="mb-2"
+                               class="mb-2"
                         {% endif %}
                     >
                     <a href="{{ doc.document.url }}" target="_blank">
@@ -103,7 +103,9 @@
         </div>
         <div 
             id="vue_main_page_form"
-            class="alert alert-purple shadow-sm mb-4">
+            class="alert alert-purple shadow-sm mb-4"
+            v-cloak
+            >
             <h3 class="fw-light text-purple text-center">Стать участником, партнером или спонсором конкурса</h3>
             <div class="my-4">
                 <div class="row justify-content-sm-center">
@@ -111,27 +113,78 @@
                         <form>
                             <div class="mb-3">
                                 <label for="name1" class="form-label">Контактное лицо</label>
-                                <input type="text" class="form-control" id="name1" placeholder="ФИО">
+                                <input 
+                                       v-model="fio" 
+                                       name="fio"
+                                       type="text" 
+                                       class="form-control" 
+                                       id="name1" 
+                                       placeholder="ФИО"
+                                    >
                             </div>
                             <div class="mb-3">
                                 <label for="phone1" class="form-label">Телефон</label>
-                                <input type="text" class="form-control" id="masked_phone_number">
+                                <input 
+                                       v-model="phone" 
+                                       name="phone"
+                                       type="text" 
+                                       class="form-control" 
+                                       id="masked_phone_number"
+                                >
                             </div>
                             <div class="mb-3">
                                 <label for="email1" class="form-label">Email</label>
-                                <input type="text" class="form-control" id="email1">
+                                <input 
+                                        v-model="email" 
+                                        name="email"
+                                        type="text" 
+                                        class="form-control" 
+                                        id="email1"
+                                    >
                             </div>
                             <div class="mb-3">
                                 <label for="comment1" class="form-label">Комментарий</label>
-                                <textarea class="form-control" id="comment1" rows="3"></textarea>
+                                <textarea 
+                                    v-model="comment"
+                                    name="comment"
+                                    class="form-control" 
+                                    id="comment1" 
+                                    rows="3">
+                                </textarea>
                             </div>
                             <div class="mb-3 form-check">
-                                <input type="checkbox" class="form-check-input" id="checkSogl1">
-                                <label class="form-check-label" for="checkSogl1"><a href="#">Даю согласие на обработку
-                                        персональных данных</a></label>
+                                <input 
+                                    v-model="pdnAccept"
+                                    name="pdn_accept"
+                                    type="checkbox" 
+                                    class="form-check-input"
+                                    id="checkSogl1"
+                                    >
+                                    <label class="form-check-label" for="checkSogl1">
+                                        <span>Согласен с </span><a href="#">обработкой
+                                            персональных данных
+                                        </a>
+                                    </label>
+                                <div v-if="formErrorMessage">
+                                    [[ formErrorMessage ]]
+                                </div>
                             </div>
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-outline-primary text-dark disabled" id="btnSend">Отправить заявку</button>
+                            <div class="mb-1">
+                                <label class="form-label">Введите символы с картинки</label><br>
+                                {{ form.captcha }}
+                                <small id="refresh_captcha">refresh</small>
+                            </div>
+                            <div 
+                                @click="checkForm"
+                                class="text-center">
+                                <button 
+                                    @click.prevent="sendForm"
+                                     class="btn btn-outline-primary text-dark" 
+                                     id="btnSend"
+                                     :disabled="!formCanBeSend"
+                                     >
+                                    Отправить заявку
+                                </button>
                             </div>
                         </form>
                     </div>
