@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     "common",
     "ckeditor",
     "ckeditor_uploader",
+    "seminar",
 ]
 
 # WKHTMLTOPDF_CMD_OPTIONS = {

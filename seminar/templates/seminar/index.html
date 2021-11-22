@@ -1,0 +1,210 @@
+{% extends 'seminar/base.html' %}
+{% load static %}
+{% block index %}
+<main>
+    <div id="test_callback">
+        {% comment %}VUE CALLBACK{% endcomment %}
+    </div>
+    <div class="container-xxl p-0 px-lg-2 position-relative">
+        <div class="carousel carousel-main">
+            {% if banners %}
+            {% for banner in banners %}
+            <div class="carousel__slide">
+                <img src="{{ banner.image.large.url }}">
+                <div class="carousel-text p-4">
+                    <p class="fw-light mb-2">{{ banner.short_description }}</p>
+                    <a href="{% url 'publications:details' banner.related_post.pk %}" class="btn btn-outline-light"
+                        role="button">{{ banner.related_post_button_name }}
+                        <i class="bi bi-arrow-right ms-2"></i></a>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <div class="carousel__slide">
+                <img src="{% static 'img/Foto_89.jpg' %}">
+                {% comment %} <div class="carousel-text p-4">
+                    <p class="fw-light mb-2">DEMO SLIDE: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo
+                        debitis nesciunt, quas perferendis dolor tenetur nam inventore, voluptatibus molestias,
+                        laboriosam, nobis. Delectus suscipit molestias, mollitia tenetur nesciunt harum modi, nostrum!
+                    </p>
+                    <a href="#" class="btn btn-outline-light" role="button">Подробнее<i
+                            class="bi bi-arrow-right ms-2"></i></a>
+                </div> {% endcomment %}
+            </div>
+            <div class="carousel__slide">
+                <img src="{% static 'img/Foto_88.jpg' %}">
+                {% comment %} <div class="carousel-text p-4">
+                    <p class="fw-light mb-2">DEMO SLIDE: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo
+                        debitis nesciunt, quas perferendis dolor tenetur nam inventore, voluptatibus molestias,
+                        laboriosam, nobis. Delectus suscipit molestias, mollitia tenetur nesciunt harum modi, nostrum!
+                    </p>
+                    <a href="#" class="btn btn-outline-light" role="button">Подробнее<i
+                            class="bi bi-arrow-right ms-2"></i></a>
+                </div> {% endcomment %}
+            </div>
+            <div class="carousel__slide">
+                <img src="{% static 'img/Foto_90.jpg' %}">
+                {% comment %} <div class="carousel-text p-4">
+                    <p class="fw-light mb-2">DEMO SLIDE: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo
+                        debitis nesciunt, quas perferendis dolor tenetur nam inventore, voluptatibus molestias,
+                        laboriosam, nobis. Delectus suscipit molestias, mollitia tenetur nesciunt harum modi, nostrum!
+                    </p>
+                    <a href="#" class="btn btn-outline-light" role="button">Подробнее<i
+                            class="bi bi-arrow-right ms-2"></i></a>
+                </div> {% endcomment %}
+            </div>
+
+            {% endif %}
+
+        </div>
+        <a href="#" class="btn btn-lg btn-danger btn-reg">Зарегистрироваться</a>
+    </div>
+</main>
+<main class="py-4">
+    <div class="container-xxl">
+
+        {% comment %} {% if chunks %}
+
+        {% for chunk in chunks %}
+
+        {% if user.is_authenticated %}
+        <div class="position-relative">
+            <div class="position-absolute top-0 end-0">
+                <div class="badge bg-primary">
+                    edit me:
+                    <a class="text-white" href="{% url 'admin:main_chunk_change' chunk.id %}">
+                        {{ chunk.code }}
+                    </a>
+
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="p-3 shadow-sm border border-light mb-4">
+            {{ chunk.text|safe }}
+        </div>
+
+        {% endfor %}
+
+        {% else %}
+        <div class="p-3 shadow-sm border border-light mb-4">
+            NO CHUNKS
+        </div>
+        {% endif %} {% endcomment %}
+
+        <div class="p-3 shadow-sm border border-light mb-4">
+            <h4 class="text-purple">О семинаре
+                <hr class="line-title">
+            </h4>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Id nisi consequuntur eveniet quam perferendis.
+                Ex minima rerum cum numquam ad. Id maxime soluta ipsa similique reiciendis voluptatum architecto
+                eligendi voluptatibus!</p>
+        </div>
+
+        <div class="p-3 shadow-sm border border-light mb-4">
+            <h4 class="text-purple">Документы
+                <hr class="line-title">
+            </h4>
+            <p class="mb-2">
+                <a href="#" target="_blank"><i class="bi bi-file-pdf me-2"></i>Программа семинара</a>
+            </p>
+            <p class="mb-0">
+                <a href="#" target="_blank"><i class="bi bi-file-pdf me-2"></i>Другой документ</a>
+            </p>
+            {% comment %} {% if documents %}
+            {% for doc in documents %}
+            <p {% if forloop.last %} class="mb-0" {% else %} class="mb-2" {% endif %}>
+                <a href="{{ doc.document.url }}" target="_blank">
+                    <i class="bi bi-file-pdf me-2"></i>
+                    {{  doc.title }}</a>
+
+            </p>
+
+            {% endfor %}
+            {% else %}
+            NO DOCUMENTS
+            {% endif %} {% endcomment %}
+        </div>
+        <div id="vue_main_page_form" class="alert alert-purple shadow-sm mb-4" v-cloak>
+            <h3 class="fw-light text-purple text-center">Стать участником</h3>
+            <div class="my-4">
+                <div class="row justify-content-sm-center">
+                    <div class="col-sm-10 col-md-8 col-xl-6">
+                        <form>
+                            <div class="mb-3">
+                                <label for="name1" class="form-label">Контактное лицо</label>
+                                <input v-model="fio" name="fio" type="text" class="form-control" id="name1"
+                                    placeholder="ФИО">
+                            </div>
+                            <div class="mb-3">
+                                <label for="phone1" class="form-label">Телефон</label>
+                                <input v-model="phone" name="phone" type="text" class="form-control"
+                                    id="masked_phone_number">
+                            </div>
+                            <div class="mb-3">
+                                <label for="email1" class="form-label">Email</label>
+                                <input v-model="email" name="email" type="text" class="form-control" id="email1">
+                            </div>
+                            <div class="mb-3">
+                                <label for="comment1" class="form-label">Комментарий</label>
+                                <textarea v-model="comment" name="comment" class="form-control" id="comment1" rows="3">
+                                </textarea>
+                            </div>
+                            <div class="mb-3 form-check">
+                                <input v-model="pdnAccept" name="pdn_accept" type="checkbox" class="form-check-input"
+                                    id="checkSogl1">
+                                <label class="form-check-label" for="checkSogl1">
+                                    <span>Согласен с </span><a href="#">обработкой
+                                        персональных данных
+                                    </a>
+                                </label>
+                                <div v-if="formErrorMessage">
+                                    [[ formErrorMessage ]]
+                                </div>
+                            </div>
+                            <div class="mb-1">
+                                <label class="form-label">Введите символы с картинки</label><br>
+                                {{ form.captcha }}
+                                <small id="refresh_captcha">refresh</small>
+                            </div>
+                            <div @click="checkForm" class="text-center">
+                                <button @click.prevent="sendForm" class="btn btn-outline-primary text-dark" id="btnSend"
+                                    :disabled="!formCanBeSend">
+                                    Отправить заявку
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="alert alert-light border border-light shadow-sm">
+            {% comment %}<h4 class="fw-light text-purple">Партнеры и спонсоры</h4>{% endcomment %}
+            <h4 class="fw-light text-purple">Организаторы<hr class="line-title"></h4>
+            <div class="owl-carousel owl-theme owl-loaded">
+                <div class="owl-stage-outer">
+                    <div class="owl-stage">
+                        <div class="owl-item border p-4"><img src="{% static 'img/logo.png' %}" class="img-fluid"
+                                alt="..."></div>
+                        <div class="owl-item border p-4"><img src="{% static 'img/logo-naks-media.png' %}"
+                                class="img-fluid" alt="..."></div>
+                        <div class="owl-item border p-4"><img src="{% static 'img/logo.png' %}" class="img-fluid"
+                                alt="..."></div>
+                        <div class="owl-item border p-4"><img src="{% static 'img/logo-naks-media.png' %}"
+                                class="img-fluid" alt="..."></div>
+                        <div class="owl-item border p-4"><img src="{% static 'img/logo.png' %}" class="img-fluid"
+                                alt="..."></div>
+                        <div class="owl-item border p-4"><img src="{% static 'img/logo-naks-media.png' %}"
+                                class="img-fluid" alt="..."></div>
+                        <div class="owl-item border p-4"><img src="{% static 'img/logo.png' %}" class="img-fluid"
+                                alt="..."></div>
+                        <div class="owl-item border p-4"><img src="{% static 'img/logo-naks-media.png' %}"
+                                class="img-fluid" alt="..."></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

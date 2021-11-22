@@ -379,6 +379,11 @@ main {
     color: #fff;
     background-color: #2A0C67 !important;
     border-color: #2A0C67 !important; }
+  main .btn-reg {
+    position: absolute;
+    bottom: 10%;
+    left: 50% !important;
+    transform: translateX(-50%) !important; }
   main .card-main:hover {
     transition: 0.3s;
     border-color: #633cb3 !important; }
