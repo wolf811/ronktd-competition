@@ -384,6 +384,11 @@ main {
     bottom: 10%;
     left: 50% !important;
     transform: translateX(-50%) !important; }
+  main .anchor {
+    display: block;
+    height: 90px;
+    margin-top: -90px;
+    visibility: hidden; }
   main .card-main:hover {
     transition: 0.3s;
     border-color: #633cb3 !important; }

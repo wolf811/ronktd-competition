@@ -21,7 +21,7 @@
             {% endfor %}
             {% else %}
             <div class="carousel__slide">
-                <img src="{% static 'img/Foto_89.jpg' %}">
+                <img src="{% static 'img/slide_1.jpeg' %}">
                 {% comment %} <div class="carousel-text p-4">
                     <p class="fw-light mb-2">DEMO SLIDE: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo
                         debitis nesciunt, quas perferendis dolor tenetur nam inventore, voluptatibus molestias,
@@ -32,7 +32,7 @@
                 </div> {% endcomment %}
             </div>
             <div class="carousel__slide">
-                <img src="{% static 'img/Foto_88.jpg' %}">
+                <img src="{% static 'img/slide_2.jpeg' %}">
                 {% comment %} <div class="carousel-text p-4">
                     <p class="fw-light mb-2">DEMO SLIDE: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo
                         debitis nesciunt, quas perferendis dolor tenetur nam inventore, voluptatibus molestias,
@@ -57,11 +57,13 @@
             {% endif %}
 
         </div>
-        <a href="#" class="btn btn-lg btn-danger btn-reg">Зарегистрироваться</a>
+        <a href="#block_04" class="btn btn-lg btn-danger btn-reg shadow-lg">Зарегистрироваться</a>
     </div>
-</main>
-<main class="py-4">
-    <div class="container-xxl">
+{% comment %} </main>
+
+<main class="py-4"> {% endcomment %}
+    <div class="container-xxl py-4">
+    
 
         {% comment %} {% if chunks %}
 
@@ -94,23 +96,49 @@
         {% endif %} {% endcomment %}
 
         <div class="p-3 shadow-sm border border-light mb-4">
+            <div class="anchor" id="block_01"></div>
             <h4 class="text-purple">О семинаре
                 <hr class="line-title">
             </h4>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Id nisi consequuntur eveniet quam perferendis.
-                Ex minima rerum cum numquam ad. Id maxime soluta ipsa similique reiciendis voluptatum architecto
-                eligendi voluptatibus!</p>
+            <p>Стремительное развитие событий, связанных с подтверждением компетентности (аттестацией) специалистов НК технических устройств, зданий и сооружений, применяемых на ОПО, заставляет нас держать руку на пульсе. В этой хронике мы постараемся приводить все значимые события, происходящие на данном фронте. И так до тех пор, пока не будут развеяны все мифы ...</p>
         </div>
-
         <div class="p-3 shadow-sm border border-light mb-4">
+            <div class="anchor" id="block_02"></div>
+            <h4 class="text-purple">Программа семинара
+                <hr class="line-title">
+            </h4>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laudantium dicta vitae, perspiciatis maxime tenetur quo alias repellat sit commodi exercitationem error sed vel quibusdam doloribus neque, totam quam, praesentium laboriosam.</p>
+            <p class="mb-0">
+                <a href="#" target="_blank"><i class="bi bi-file-pdf me-2"></i>Программа семинара</a>
+            </p>
+        </div>
+        <div class="p-3 shadow-sm border border-light mb-4">
+            <div class="anchor" id="block_03"></div>
             <h4 class="text-purple">Документы
                 <hr class="line-title">
             </h4>
-            <p class="mb-2">
+            {% comment %} <p class="mb-2">
                 <a href="#" target="_blank"><i class="bi bi-file-pdf me-2"></i>Программа семинара</a>
+            </p> {% endcomment %}
+            <p class="mb-2">
+                <a href="http://www.naks.ru/upload/SNK01-2021.pdf" target="_blank"><i class="bi bi-file-pdf me-2"></i>СНК ОПО РОНКТД-01-2021</a>
+                <span class="ms-2">Общие требования</span>
+            </p>
+            <p class="mb-2">
+                <a href="http://nk.naks.ru/upload/SNK_02_2021_26052021.pdf" target="_blank"><i class="bi bi-file-pdf me-2"></i>СНК ОПО РОНКТД 02-2021</a>
+                <span class="ms-2">Аттестация специалистов неразрушающего контроля</span>
+            </p>
+            <p class="mb-2">
+                <a href="http://nk.naks.ru/upload/SNK_03_2021_26052021.pdf" target="_blank"><i class="bi bi-file-pdf me-2"></i>СНК ОПО РОНКТД 03-2021</a>
+                <span class="ms-2">Аттестация лабораторий неразрушающего контроля</span>
+            </p>
+            <p class="mb-2">
+                <a href="http://nk.naks.ru/upload/SNK_04_2021_2605_2021.pdf" target="_blank"><i class="bi bi-file-pdf me-2"></i>СНК ОПО РОНКТД 04-2021</a>
+                <span class="ms-2">Требования к аттестационным центрам</span>
             </p>
             <p class="mb-0">
-                <a href="#" target="_blank"><i class="bi bi-file-pdf me-2"></i>Другой документ</a>
+                <a href="http://www.naks.ru/upload/SNK05-2021.pdf" target="_blank"><i class="bi bi-file-pdf me-2"></i>СНК ОПО РОНКТД 05-2021</a>
+                <span class="ms-2">Порядок проведения экспертного обследования (проверки соответствия) и инспекционного контроля (проверки) аттестационных центров</span>
             </p>
             {% comment %} {% if documents %}
             {% for doc in documents %}
@@ -127,15 +155,15 @@
             {% endif %} {% endcomment %}
         </div>
         <div id="vue_main_page_form" class="alert alert-purple shadow-sm mb-4" v-cloak>
+            <div class="anchor" id="block_04"></div>
             <h3 class="fw-light text-purple text-center">Стать участником</h3>
             <div class="my-4">
                 <div class="row justify-content-sm-center">
                     <div class="col-sm-10 col-md-8 col-xl-6">
                         <form>
                             <div class="mb-3">
-                                <label for="name1" class="form-label">Контактное лицо</label>
-                                <input v-model="fio" name="fio" type="text" class="form-control" id="name1"
-                                    placeholder="ФИО">
+                                <label for="name1" class="form-label">ФИО</label>
+                                <input v-model="fio" name="fio" type="text" class="form-control" id="name1">
                             </div>
                             <div class="mb-3">
                                 <label for="phone1" class="form-label">Телефон</label>
@@ -147,9 +175,21 @@
                                 <input v-model="email" name="email" type="text" class="form-control" id="email1">
                             </div>
                             <div class="mb-3">
+                                <label for="org" class="form-label">Организация</label>
+                                <input name="org" type="text" class="form-control" id="org">
+                            </div>
+                            <div class="mb-3">
+                                <label for="city" class="form-label">Город</label>
+                                <input name="city" type="text" class="form-control" id="city">
+                            </div>
+                            {% comment %} <div class="mb-3">
                                 <label for="comment1" class="form-label">Комментарий</label>
                                 <textarea v-model="comment" name="comment" class="form-control" id="comment1" rows="3">
                                 </textarea>
+                            </div> {% endcomment %}
+                            <div class="mb-3">
+                                <label for="promo" class="form-label">Промокод</label>
+                                <input name="promo" type="text" class="form-control" id="promo">
                             </div>
                             <div class="mb-3 form-check">
                                 <input v-model="pdnAccept" name="pdn_accept" type="checkbox" class="form-check-input"
@@ -166,12 +206,12 @@
                             <div class="mb-1">
                                 <label class="form-label">Введите символы с картинки</label><br>
                                 {{ form.captcha }}
-                                <small id="refresh_captcha">refresh</small>
+                                <a href="#" id="refresh_captcha" class="btn btn-outline-primary btn-sm" title="обновить"><i class="bi bi-arrow-clockwise"></i></a>
                             </div>
                             <div @click="checkForm" class="text-center">
                                 <button @click.prevent="sendForm" class="btn btn-outline-primary text-dark" id="btnSend"
                                     :disabled="!formCanBeSend">
-                                    Отправить заявку
+                                    Зарегистрироваться
                                 </button>
                             </div>
                         </form>
@@ -181,6 +221,7 @@
         </div>
         <div class="alert alert-light border border-light shadow-sm">
             {% comment %}<h4 class="fw-light text-purple">Партнеры и спонсоры</h4>{% endcomment %}
+            <div class="anchor" id="block_05"></div>
             <h4 class="fw-light text-purple">Организаторы<hr class="line-title"></h4>
             <div class="owl-carousel owl-theme owl-loaded">
                 <div class="owl-stage-outer">
@@ -189,13 +230,13 @@
                                 alt="..."></div>
                         <div class="owl-item border p-4"><img src="{% static 'img/logo-naks-media.png' %}"
                                 class="img-fluid" alt="..."></div>
-                        <div class="owl-item border p-4"><img src="{% static 'img/logo.png' %}" class="img-fluid"
-                                alt="..."></div>
-                        <div class="owl-item border p-4"><img src="{% static 'img/logo-naks-media.png' %}"
+                        <div class="owl-item border p-4"><img src="{% static 'img/ronktd_logo.svg' %}"
                                 class="img-fluid" alt="..."></div>
                         <div class="owl-item border p-4"><img src="{% static 'img/logo.png' %}" class="img-fluid"
                                 alt="..."></div>
                         <div class="owl-item border p-4"><img src="{% static 'img/logo-naks-media.png' %}"
+                                class="img-fluid" alt="..."></div>
+                        <div class="owl-item border p-4"><img src="{% static 'img/ronktd_logo.svg' %}"
                                 class="img-fluid" alt="..."></div>
                         <div class="owl-item border p-4"><img src="{% static 'img/logo.png' %}" class="img-fluid"
                                 alt="..."></div>

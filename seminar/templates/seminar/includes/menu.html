@@ -1,11 +1,11 @@
 {% load static %}
-<nav class="navbar navbar-main navbar-expand-xl shadow">
+<nav class="navbar navbar-main navbar-expand-xl shadow fixed-top">
     <div class="container-xxl">
         <div class="contacts d-xl-none">
-            <a href="tel:+74992455656" class="me-3"><i class="bi bi-telephone me-1"></i>+7(499)245-56-56</a>
-            <a href="mailto:info@ronktd.ru"><i class="bi bi-envelope me-1"></i>info@ronktd.ru</a>
+            <a href="tel:+74997847289" class="me-3"><i class="bi bi-telephone me-1"></i>+7(499)784-72-89</a>
+            <a href="mailto:info@ronktd.ru"><i class="bi bi-envelope me-1"></i>soft@naks.ru</a>
         </div>
-        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarOffcanvasLg" aria-controls="navbarOffcanvasLg">
+        {% comment %} <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarOffcanvasLg" aria-controls="navbarOffcanvasLg">
             <i class="bi bi-list"></i>
         </button>
         <div class="offcanvas offcanvas-main offcanvas-end" tabindex="-1" id="navbarOffcanvasLg" aria-labelledby="navbarOffcanvasLgLabel">
@@ -16,19 +16,46 @@
             <div class="offcanvas-body">
                 <ul class="navbar-nav flex-grow-1 justify-content-center">
                     <li class="nav-item">
-                        <a class="nav-link {% if request.path == '/' or request.path == '/main/' %}active{% endif %}" href="{% url 'main:index' %}">О семинаре</a>
+                        <a class="nav-link" href="#block_01">О семинаре</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% if 'news' in request.path or 'news-detail' in request.path %}active{% endif %}" href="{% url 'main:news' %}">Документы</a>
+                        <a class="nav-link" href="#block_02">Программа семинара</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% if 'contacts' in request.path %}active{% endif %}" href="{% url 'main:contacts' %}">Стать участником</a>
+                        <a class="nav-link" href="#block_03">Документы</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% if 'contacts' in request.path %}active{% endif %}" href="{% url 'main:contacts' %}">Организаторы</a>
+                        <a class="nav-link" href="#block_04">Стать участником</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#block_05">Организаторы</a>
                     </li>
                 </ul>
             </div>
+        </div> {% endcomment %}
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-list"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+
+                <ul class="navbar-nav flex-grow-1 justify-content-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#block_01">О семинаре</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#block_02">Программа семинара</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#block_03">Документы</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#block_04">Стать участником</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#block_05">Организаторы</a>
+                    </li>
+                </ul>
+
         </div>
     </div>
 </nav>
