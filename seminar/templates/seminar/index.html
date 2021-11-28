@@ -11,12 +11,14 @@
             {% for banner in banners %}
             <div class="carousel__slide">
                 <img src="{{ banner.image.large.url }}">
-                <div class="carousel-text p-4">
-                    <p class="fw-light mb-2">{{ banner.short_description }}</p>
-                    <a href="{% url 'publications:details' banner.related_post.pk %}" class="btn btn-outline-light"
-                        role="button">{{ banner.related_post_button_name }}
-                        <i class="bi bi-arrow-right ms-2"></i></a>
-                </div>
+                {% comment %}
+                    <div class="carousel-text p-4">
+                        <p class="fw-light mb-2">{{ banner.short_description }}</p>
+                        <a href="#" class="btn btn-outline-light"
+                            role="button">{{ banner.related_post_button_name }}
+                            <i class="bi bi-arrow-right ms-2"></i></a>
+                    </div>
+                {% endcomment %}
             </div>
             {% endfor %}
             {% else %}
@@ -64,54 +66,43 @@
 <main class="py-4"> {% endcomment %}
     <div class="container-xxl py-4">
     
-
-        {% comment %} {% if chunks %}
-
-        {% for chunk in chunks %}
-
-        {% if user.is_authenticated %}
-        <div class="position-relative">
-            <div class="position-absolute top-0 end-0">
-                <div class="badge bg-primary">
-                    edit me:
-                    <a class="text-white" href="{% url 'admin:main_chunk_change' chunk.id %}">
-                        {{ chunk.code }}
-                    </a>
-
-                </div>
-            </div>
-        </div>
+        {% if descriptions %}
+           {% for description in descriptions %}
+              {% include "seminar/includes/seminar_description.html" %} 
+           {% endfor %} 
+           {% else %}
+            <div class="p-3 shadow-sm border border-light mb-4">
+                <div class="anchor" id="block_01"></div>
+                <h4 class="text-purple">О семинаре
+                    <hr class="line-title">
+                </h4>
+                <p>Стремительное развитие событий, связанных с подтверждением компетентности (аттестацией) специалистов НК технических устройств, зданий и сооружений, применяемых на ОПО, заставляет нас держать руку на пульсе. В этой хронике мы постараемся приводить все значимые события, происходящие на данном фронте. И так до тех пор, пока не будут развеяны все мифы ...</p>
+            </div>       
         {% endif %}
+        
 
-        <div class="p-3 shadow-sm border border-light mb-4">
-            {{ chunk.text|safe }}
-        </div>
-
-        {% endfor %}
-
-        {% else %}
-        <div class="p-3 shadow-sm border border-light mb-4">
-            NO CHUNKS
-        </div>
-        {% endif %} {% endcomment %}
-
-        <div class="p-3 shadow-sm border border-light mb-4">
-            <div class="anchor" id="block_01"></div>
-            <h4 class="text-purple">О семинаре
-                <hr class="line-title">
-            </h4>
-            <p>Стремительное развитие событий, связанных с подтверждением компетентности (аттестацией) специалистов НК технических устройств, зданий и сооружений, применяемых на ОПО, заставляет нас держать руку на пульсе. В этой хронике мы постараемся приводить все значимые события, происходящие на данном фронте. И так до тех пор, пока не будут развеяны все мифы ...</p>
-        </div>
         <div class="p-3 shadow-sm border border-light mb-4">
             <div class="anchor" id="block_02"></div>
-            <h4 class="text-purple">Программа семинара
+            <h4 class="text-purple">Программа {{ seminar.sub_title_declension|lower }}
                 <hr class="line-title">
             </h4>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laudantium dicta vitae, perspiciatis maxime tenetur quo alias repellat sit commodi exercitationem error sed vel quibusdam doloribus neque, totam quam, praesentium laboriosam.</p>
+            {% if programm %}
+                {% for themes in programm %}
+                    <div class="row mb-3">
+                        <div class="col">photo</div>
+                        <div class="col">time</div>
+                        <div class="col">description</div>
+                    </div>        
+                {% endfor %}
+            {% else %}
+               <p>NO THEMES IN PROGRAMM</p> 
+            {% endif %}
+            
             <p class="mb-0">
                 <a href="#" target="_blank"><i class="bi bi-file-pdf me-2"></i>Программа семинара</a>
             </p>
         </div>
+
         <div class="p-3 shadow-sm border border-light mb-4">
             <div class="anchor" id="block_03"></div>
             <h4 class="text-purple">Документы

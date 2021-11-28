@@ -175,7 +175,10 @@ class Document(models.Model):
     )
 
     category = models.ForeignKey(
-        DocumentCategory, blank=True, null=True, on_delete=models.SET_NULL
+        DocumentCategory,
+        blank=True,
+        null=True,
+        on_delete=models.SET_NULL,
     )
     url_code = models.CharField(
         "Код ссылки", max_length=30, blank=True, default="НЕ УКАЗАН"

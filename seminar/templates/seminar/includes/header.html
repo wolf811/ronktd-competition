@@ -17,20 +17,20 @@
             </div> {% endcomment %}
             <div class="row align-items-center justify-content-between">
                 <div class="col-lg-2 align-items-center mb-3 mb-sm-0">
-                    <a href="#"><img src="{% static 'img/logo.png' %}" alt="Логотип" class="d-block mx-auto mx-sm-0"></a>
+                    <a href="#"><img src="{{ glob_seminar.logo.url }}" alt="Логотип" class="d-block mx-auto mx-sm-0"></a>
                 </div>
                 <div class="col-lg">
                     <div class="text-center">
-                        <h5 class="mb-0 lh-sm text-purple">Семинар</h5>
+                        <h5 class="mb-0 lh-sm text-purple">{{ glob_seminar.sub_title }}</h5>
                         <hr class="line-head my-2">
-                        <h4 class="text-uppercase text-purple mb-0">Нормативно-правовое регулирование аттестации персонала и лабораторий неразрушающего контроля</h4>
+                        <h4 class="text-uppercase text-purple mb-0">{{ glob_seminar.title }}</h4>
                     </div>
                 </div>
-                <div class="col-lg-2">
+                <div class="col-lg-3">
                     <div class="d-none d-lg-block">
                         <div class="contacts d-flex flex-column text-end">
-                            <a href="tel:+74997847289"><i class="bi bi-telephone me-1"></i>+7(499)784-72-89</a>
-                            <a href="mailto:soft@naks.ru"><i class="bi bi-envelope me-2"></i>soft@naks.ru</a>
+                            <a href="tel:{{ glob_seminar.phone }}"><i class="bi bi-telephone me-1"></i>{{ glob_seminar.phone }}</a>
+                            <a href="mailto:{{ glob_seminar.email }}"><i class="bi bi-envelope me-2"></i>{{ glob_seminar.email }}</a>
                         </div>
                     </div>
                 </div>
