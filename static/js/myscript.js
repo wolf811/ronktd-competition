@@ -26,6 +26,26 @@ var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
 
 // ====================== OwlCarousel =========================
 $(document).ready(function () {
+	$('.owl-carousel-spikers').owlCarousel({
+		// nav: true,
+		// navText: ['<i class="bi bi-arrow-left"></i>','<i class="bi bi-arrow-right"></i>'],
+		loop: true,
+		margin: 10,
+		responsiveClass: true,
+		responsive: {
+			0: {
+				items: 1,
+			},
+			600: {
+				items: 3,
+			},
+			1000: {
+				items: 4,
+				loop: false,
+			},
+		},
+	});
+
 	$('.owl-carousel').owlCarousel({
 		// nav: true,
 		// navText: ['<i class="bi bi-arrow-left"></i>','<i class="bi bi-arrow-right"></i>'],
@@ -41,6 +61,28 @@ $(document).ready(function () {
 			},
 			1000: {
 				items: 5,
+				loop: false,
+			},
+		},
+	});
+
+});
+$(document).ready(function () {
+	$('.owl-carousel-spikers').owlCarousel({
+		// nav: true,
+		// navText: ['<i class="bi bi-arrow-left"></i>','<i class="bi bi-arrow-right"></i>'],
+		loop: true,
+		margin: 10,
+		responsiveClass: true,
+		responsive: {
+			0: {
+				items: 1,
+			},
+			600: {
+				items: 3,
+			},
+			1000: {
+				items: 4,
 				loop: false,
 			},
 		},

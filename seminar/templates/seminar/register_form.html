@@ -1,0 +1,87 @@
+{% load widget_tweaks %}
+<div id="vue_register_seminar_app">
+	<form method="post" action="/seminar/register/">
+		{% csrf_token %}
+		{% comment %}seminar/templates/seminar/register_form.html{% endcomment %}
+		<div class="mb-3">
+			<label for="id_fio" class="form-label">ФИО</label>
+			{% comment %} <input name="fio" type="text" class="form-control" id="name1" /> {% endcomment %}
+			{% render_field form.fio class+="form-control" placeholder='Ваше ФИО'%}
+		</div>
+		<div class="mb-3">
+			<label for="phone1" class="form-label">Телефон</label>
+
+			{% comment %} <input
+				name="phone"
+				type="text"
+				class="form-control"
+				id="masked_phone_number"
+			/> {% endcomment %}
+			{% render_field form.phone class+="form-control" placeholder='Ваш телефон в формате +7(999)999-99-99'%}
+		</div>
+		<div class="mb-3">
+			<label for="email1" class="form-label">Email</label>
+			{% comment %} <input name="email" type="text" class="form-control" id="email1" /> {% endcomment %}
+			{% render_field form.email class+="form-control" placeholder='Ваш адрес эл. почты'%}
+		</div>
+		<div class="mb-3">
+			<label for="org" class="form-label">Организация</label>
+			{% comment %} <input name="org" type="text" class="form-control" id="org" /> {% endcomment %}
+			{% render_field form.org class+="form-control" placeholder='Наименование организации участника'%}
+		</div>
+		<div class="mb-3">
+			<label for="city" class="form-label">Город</label>
+			{% comment %} <input name="city" type="text" class="form-control" id="city" /> {% endcomment %}
+			{% render_field form.city class+="form-control" placeholder='Город (населенный пункт)'%}
+		</div>
+		<div class="mb-3">
+			<label for="promo" class="form-label">Промокод</label>
+			<input name="promo" type="text" class="form-control" id="promo" />
+		</div>
+		<div class="mb-3 form-check">
+			<input
+				name="pdn_accept"
+				type="checkbox"
+				class="form-check-input"
+				id="checkSogl1"
+			/>
+			<label class="form-check-label" for="checkSogl1">
+				<span>Согласен с </span><a href="#">обработкой персональных данных </a>
+			</label>
+
+		</div>
+		<div class="mb-3 form-check">
+			<input
+				name="subsc_accept"
+				type="checkbox"
+				class="form-check-input"
+				id="check_subscr"
+			/>
+			<label class="form-check-label" for="check_subscr">
+				<span>Согласен получать рассылки и информационные письма от Российского общества по
+					неразрушающему контролю и технической диагностики
+
+				</span>
+			</label>
+
+		</div>
+		<div class="mb-1">
+			<label class="form-label">Введите символы с картинки</label><br />
+			{{ form.captcha }}
+			<a
+				href="#"
+				id="refresh_captcha"
+				class="btn btn-outline-primary btn-sm"
+				title="обновить"
+				><i class="bi bi-arrow-clockwise"></i
+			></a>
+		</div>
+		<div class="text-center">
+			<button
+				type="submit"
+				class="btn btn-outline-primary text-dark" id="btnSend">
+				Зарегистрироваться
+			</button>
+		</div>
+	</form>
+</div>

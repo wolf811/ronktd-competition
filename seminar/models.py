@@ -1,6 +1,6 @@
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.db import models
-from django.db.models.signals import post_save  # post_delete
+from django.db.models.signals import post_save, pre_save  # post_delete
 from django.dispatch import receiver
 from phonenumber_field.modelfields import PhoneNumberField
 from stdimage import StdImageField
@@ -188,6 +188,14 @@ class SDocument(models.Model):
         "publications.Document",
         on_delete=models.CASCADE,
     )
+    title = models.CharField(max_length=300, null=True, blank=True)
+    seminar = models.ForeignKey(
+        Seminar,
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="documents",
+    )
     theme = models.ForeignKey(
         STheme,
         null=True,
@@ -317,6 +325,13 @@ class SSubscriber(models.Model):
 
 
 # @receiver(post_save, sender=EdoUser)
+@receiver(pre_save, sender=SDocument)
+def deactivate_foreign_keys(sender, instance, *args, **kwargs):
+    seminar_document = instance
+    if seminar_document.seminar:
+        seminar_document.theme = None
+
+
 @receiver(post_save, sender=Seminar)
 def deactivate_other_published_seminars(sender, instance, created, **kwargs):
     seminar = instance

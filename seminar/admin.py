@@ -54,7 +54,7 @@ models = [
     # SDescription,
     # STheme,
     # SSpeaker,
-    SDocument,
+    # SDocument,
     SParticipant,
     SPartner,
     SPromoCode,
@@ -65,12 +65,20 @@ for model_ in models:
     admin.site.register(model_)
 
 
+@admin.register(SDocument)
+class SDocumentAdmin(admin.ModelAdmin):
+    list_display = [
+        "__str__",
+        "seminar",
+        "theme",
+    ]
+
+
 @admin.register(STheme)
 class SThemeAdmin(admin.ModelAdmin):
     list_display = [
         "__str__",
         "speaker",
-        # "speaker__seminar",
         "id",
         "number",
     ]

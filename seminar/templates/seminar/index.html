@@ -2,7 +2,7 @@
 {% load static %}
 {% block index %}
 <main>
-    <div id="test_callback">
+    <div>
         {% comment %}VUE CALLBACK{% endcomment %}
     </div>
     <div class="container-xxl p-0 px-lg-2 position-relative">
@@ -12,7 +12,7 @@
             <div class="carousel__slide">
                 <img src="{{ banner.image.large.url }}">
                 <div class="carousel-text-seminar p-3 p-xl-4">
-                    <h6 class="fw-light mb-0">Заголовок описания<hr class="line-title"></h6>
+                    <h6 class="fw-light mb-0">{{ banner.title }}<hr class="line-title"></h6>
                     <p class="fw-light mb-0">{{ banner.short_description }}</p>
                     {% comment %} <a href="#" class="btn btn-outline-light mt-2"
                         role="button">{{ banner.related_post_button_name }}
@@ -120,111 +120,55 @@
             <h4 class="text-purple">Документы
                 <hr class="line-title">
             </h4>
-            {% comment %} <p class="mb-2">
-                <a href="#" target="_blank"><i class="bi bi-file-pdf me-2"></i>Программа семинара</a>
-            </p> {% endcomment %}
-            <p class="mb-2">
-                <a href="http://www.naks.ru/upload/SNK01-2021.pdf" target="_blank"><i
-                        class="bi bi-file-pdf me-2"></i>СНК ОПО РОНКТД-01-2021</a>
-                <span class="ms-2">Общие требования</span>
-            </p>
-            <p class="mb-2">
-                <a href="http://nk.naks.ru/upload/SNK_02_2021_26052021.pdf" target="_blank"><i
-                        class="bi bi-file-pdf me-2"></i>СНК ОПО РОНКТД 02-2021</a>
-                <span class="ms-2">Аттестация специалистов неразрушающего контроля</span>
-            </p>
-            <p class="mb-2">
-                <a href="http://nk.naks.ru/upload/SNK_03_2021_26052021.pdf" target="_blank"><i
-                        class="bi bi-file-pdf me-2"></i>СНК ОПО РОНКТД 03-2021</a>
-                <span class="ms-2">Аттестация лабораторий неразрушающего контроля</span>
-            </p>
-            <p class="mb-2">
-                <a href="http://nk.naks.ru/upload/SNK_04_2021_2605_2021.pdf" target="_blank"><i
-                        class="bi bi-file-pdf me-2"></i>СНК ОПО РОНКТД 04-2021</a>
-                <span class="ms-2">Требования к аттестационным центрам</span>
-            </p>
-            <p class="mb-0">
-                <a href="http://www.naks.ru/upload/SNK05-2021.pdf" target="_blank"><i
-                        class="bi bi-file-pdf me-2"></i>СНК ОПО РОНКТД 05-2021</a>
-                <span class="ms-2">Порядок проведения экспертного обследования (проверки соответствия) и инспекционного
-                    контроля (проверки) аттестационных центров</span>
-            </p>
-            {% comment %} {% if documents %}
-            {% for doc in documents %}
-            <p {% if forloop.last %} class="mb-0" {% else %} class="mb-2" {% endif %}>
-                <a href="{{ doc.document.url }}" target="_blank">
-                    <i class="bi bi-file-pdf me-2"></i>
-                    {{  doc.title }}</a>
+            {% if seminar_documents %}
 
-            </p>
+                {% for doc in seminar_documents %}
 
-            {% endfor %}
+                    <p class="mb-2">
+                    <a href="{{ doc.document.document.url }}" target="_blank">
+                        <i class="bi bi-file-pdf me-2"></i>
+                        {{ doc.document.title }}
+                    </a>
+                        {% if doc.title %}
+                            <span class="ms-2">{{ doc.title }}</span>
+                        {% endif %}
+                    </p>
+
+                {% endfor %}
+
             {% else %}
-            NO DOCUMENTS
-            {% endif %} {% endcomment %}
+
+                <p class="mb-2">
+                    <a href="http://www.naks.ru/upload/SNK01-2021.pdf" target="_blank"><i class="bi bi-file-pdf me-2"></i>СНК ОПО РОНКТД-01-2021</a>
+                    <span class="ms-2">Общие требования</span>
+                </p>
+                <p class="mb-2">
+                    <a href="http://nk.naks.ru/upload/SNK_02_2021_26052021.pdf" target="_blank"><i class="bi bi-file-pdf me-2"></i>СНК ОПО РОНКТД 02-2021</a>
+                    <span class="ms-2">Аттестация специалистов неразрушающего контроля</span>
+                </p>
+                <p class="mb-2">
+                    <a href="http://nk.naks.ru/upload/SNK_03_2021_26052021.pdf" target="_blank"><i class="bi bi-file-pdf me-2"></i>СНК ОПО РОНКТД 03-2021</a>
+                    <span class="ms-2">Аттестация лабораторий неразрушающего контроля</span>
+                </p>
+                <p class="mb-2">
+                    <a href="http://nk.naks.ru/upload/SNK_04_2021_2605_2021.pdf" target="_blank"><i class="bi bi-file-pdf me-2"></i>СНК ОПО РОНКТД 04-2021</a>
+                    <span class="ms-2">Требования к аттестационным центрам</span>
+                </p>
+                <p class="mb-0">
+                    <a href="http://www.naks.ru/upload/SNK05-2021.pdf" target="_blank"><i class="bi bi-file-pdf me-2"></i>СНК ОПО РОНКТД 05-2021</a>
+                    <span class="ms-2">Порядок проведения экспертного обследования (проверки соответствия) и инспекционного контроля (проверки) аттестационных центров</span>
+                </p>
+            {% endif %}
         </div>
-        <div id="vue_main_page_form" class="alert alert-purple shadow-sm mb-4" v-cloak>
+        <div class="alert alert-purple shadow-sm mb-4">
             <div class="anchor" id="block_04"></div>
             <h3 class="fw-light text-purple text-center">Стать участником</h3>
             <div class="my-4">
                 <div class="row justify-content-sm-center">
                     <div class="col-sm-10 col-md-8 col-xl-6">
-                        <form>
-                            <div class="mb-3">
-                                <label for="name1" class="form-label">ФИО</label>
-                                <input v-model="fio" name="fio" type="text" class="form-control" id="name1">
-                            </div>
-                            <div class="mb-3">
-                                <label for="phone1" class="form-label">Телефон</label>
-                                <input v-model="phone" name="phone" type="text" class="form-control"
-                                    id="masked_phone_number">
-                            </div>
-                            <div class="mb-3">
-                                <label for="email1" class="form-label">Email</label>
-                                <input v-model="email" name="email" type="text" class="form-control" id="email1">
-                            </div>
-                            <div class="mb-3">
-                                <label for="org" class="form-label">Организация</label>
-                                <input name="org" type="text" class="form-control" id="org">
-                            </div>
-                            <div class="mb-3">
-                                <label for="city" class="form-label">Город</label>
-                                <input name="city" type="text" class="form-control" id="city">
-                            </div>
-                            {% comment %} <div class="mb-3">
-                                <label for="comment1" class="form-label">Комментарий</label>
-                                <textarea v-model="comment" name="comment" class="form-control" id="comment1" rows="3">
-                                </textarea>
-                            </div> {% endcomment %}
-                            <div class="mb-3">
-                                <label for="promo" class="form-label">Промокод</label>
-                                <input name="promo" type="text" class="form-control" id="promo">
-                            </div>
-                            <div class="mb-3 form-check">
-                                <input v-model="pdnAccept" name="pdn_accept" type="checkbox" class="form-check-input"
-                                    id="checkSogl1">
-                                <label class="form-check-label" for="checkSogl1">
-                                    <span>Согласен с </span><a href="#">обработкой
-                                        персональных данных
-                                    </a>
-                                </label>
-                                <div v-if="formErrorMessage">
-                                    [[ formErrorMessage ]]
-                                </div>
-                            </div>
-                            <div class="mb-1">
-                                <label class="form-label">Введите символы с картинки</label><br>
-                                {{ form.captcha }}
-                                <a href="#" id="refresh_captcha" class="btn btn-outline-primary btn-sm"
-                                    title="обновить"><i class="bi bi-arrow-clockwise"></i></a>
-                            </div>
-                            <div @click="checkForm" class="text-center">
-                                <button @click.prevent="sendForm" class="btn btn-outline-primary text-dark" id="btnSend"
-                                    :disabled="!formCanBeSend">
-                                    Зарегистрироваться
-                                </button>
-                            </div>
-                        </form>
+
+                       {% include "seminar/register_form.html" %}
+
                     </div>
                 </div>
             </div>
