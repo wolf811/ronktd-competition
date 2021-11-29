@@ -86,21 +86,32 @@
             <h4 class="text-purple">Программа {{ seminar.sub_title_declension|lower }}
                 <hr class="line-title">
             </h4>
-            {% if programm %}
-                {% for themes in programm %}
+            {% if themes %}
+                {% for theme in themes %}
                     <div class="row mb-3">
-                        <div class="col">photo</div>
-                        <div class="col">time</div>
-                        <div class="col">description</div>
+                        <div class="col">
+                            <img src="{{ theme.speaker.photo.thumbnail.url }}" alt="{{ theme.speaker.fio }}">
+                            <small>{{ theme.speaker.fio }}</small>
+                            
+                        </div>
+                        <div class="col">
+                            {{ theme.title }}<br>
+                            <strong>{{ theme.speak_time_start|date:"H:i" }}</strong>
+                            <strong>{{ theme.speak_time_start|date:"d/m/Y" }}</strong>
+                        </div>
+                        <div class="col">{{ theme.description|safe }}</div>
                     </div>        
                 {% endfor %}
             {% else %}
                <p>NO THEMES IN PROGRAMM</p> 
             {% endif %}
             
-            <p class="mb-0">
-                <a href="#" target="_blank"><i class="bi bi-file-pdf me-2"></i>Программа семинара</a>
-            </p>
+            {% if seminar.programm %}
+                <p class="mb-0">
+                <a href="{{ seminar.programm.url }}" target="_blank"><i class="bi bi-file-pdf me-2"></i>
+                    Программа {{ seminar.sub_title_declension|lower }}</a>
+                </p>
+            {% endif %}
         </div>
 
         <div class="p-3 shadow-sm border border-light mb-4">

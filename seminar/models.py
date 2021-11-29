@@ -2,9 +2,8 @@ from ckeditor_uploader.fields import RichTextUploadingField
 from django.db import models
 from django.db.models.signals import post_save  # post_delete
 from django.dispatch import receiver
-from stdimage import StdImageField
-
 from phonenumber_field.modelfields import PhoneNumberField
+from stdimage import StdImageField
 
 # Create your models here.
 
@@ -25,6 +24,11 @@ class Seminar(models.Model):
     begin_at = models.DateTimeField()
     phone = PhoneNumberField(null=True, blank=True)
     email = models.EmailField(null=True, blank=True)
+    programm = models.FileField(
+        null=True,
+        blank=True,
+        upload_to="upload/",
+    )
     json_data = models.JSONField("json-data", null=True, blank=True)
 
     def __str__(self):
@@ -116,6 +120,13 @@ class SBanner(models.Model):
 class SSpeaker(models.Model):
     """docstring: edit me"""
 
+    seminar = models.ForeignKey(
+        Seminar,
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="speakers",
+    )
     fio = models.CharField(max_length=200)
     bio = models.TextField(null=True, blank=True)
     photo = StdImageField(
@@ -145,7 +156,11 @@ class STheme(models.Model):
     """docstring: edit me"""
 
     speaker = models.ForeignKey(
-        SSpeaker, on_delete=models.CASCADE, null=True, blank=True, related_name="themes"
+        SSpeaker,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name="themes",
     )
     title = models.CharField(max_length=250)
     description = models.TextField(null=True, blank=True)
@@ -161,6 +176,9 @@ class STheme(models.Model):
     class Meta:
         verbose_name = "Theme"
         verbose_name_plural = "Themes"
+
+    def __str__(self):
+        return f"{self.title}"
 
 
 class SDocument(models.Model):

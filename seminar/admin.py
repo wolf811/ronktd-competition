@@ -52,7 +52,7 @@ get_url.short_description = "Ссылка на страницу"
 models = [
     # SBanner,
     # SDescription,
-    STheme,
+    # STheme,
     # SSpeaker,
     SDocument,
     SParticipant,
@@ -63,6 +63,17 @@ models = [
 
 for model_ in models:
     admin.site.register(model_)
+
+
+@admin.register(STheme)
+class SThemeAdmin(admin.ModelAdmin):
+    list_display = [
+        "__str__",
+        "speaker",
+        # "speaker__seminar",
+        "id",
+        "number",
+    ]
 
 
 @admin.register(Seminar)
@@ -80,7 +91,11 @@ class SeminarAdmin(admin.ModelAdmin):
 
 @admin.register(SSpeaker)
 class SSpeakerAdmin(admin.ModelAdmin):
-    list_display = ["__str__", get_picture_preview]
+    list_display = [
+        "__str__",
+        "seminar",
+        get_picture_preview,
+    ]
 
 
 @admin.register(SDescription)
