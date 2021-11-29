@@ -1,12 +1,25 @@
 {% load widget_tweaks %}
 <div id="vue_register_seminar_app">
-	<form method="post" action="/seminar/register/">
+	<form name="register_participant_form">
 		{% csrf_token %}
 		{% comment %}seminar/templates/seminar/register_form.html{% endcomment %}
+
+        {% if form.errors %}
+            <div class="alert alert-danger">
+            {% for field in form %}
+                {% if field.errors %}
+                        {{ field.label_tag }} {{ field.errors }}
+                {% endif %}
+            {% endfor %}
+            </div>
+        {% endif %}
+
 		<div class="mb-3">
 			<label for="id_fio" class="form-label">ФИО</label>
 			{% comment %} <input name="fio" type="text" class="form-control" id="name1" /> {% endcomment %}
 			{% render_field form.fio class+="form-control" placeholder='Ваше ФИО'%}
+            <br>
+            <span class="text-danger" v-if="errors && errors.fio">[[ getErrorText('fio') ]]</span>
 		</div>
 		<div class="mb-3">
 			<label for="phone1" class="form-label">Телефон</label>
@@ -18,67 +31,85 @@
 				id="masked_phone_number"
 			/> {% endcomment %}
 			{% render_field form.phone class+="form-control" placeholder='Ваш телефон в формате +7(999)999-99-99'%}
+            <br>
+            <span class="text-danger" v-if="errors && errors.phone">[[ getErrorText('phone') ]]</span>
 		</div>
 		<div class="mb-3">
 			<label for="email1" class="form-label">Email</label>
 			{% comment %} <input name="email" type="text" class="form-control" id="email1" /> {% endcomment %}
 			{% render_field form.email class+="form-control" placeholder='Ваш адрес эл. почты'%}
+            <br>
+            <span class="text-danger" v-if="errors && errors.email">[[ getErrorText('email') ]]</span>
 		</div>
 		<div class="mb-3">
 			<label for="org" class="form-label">Организация</label>
 			{% comment %} <input name="org" type="text" class="form-control" id="org" /> {% endcomment %}
 			{% render_field form.org class+="form-control" placeholder='Наименование организации участника'%}
+            <br>
+            <span class="text-danger" v-if="errors && errors.org">[[ getErrorText('org') ]]</span>
 		</div>
 		<div class="mb-3">
 			<label for="city" class="form-label">Город</label>
 			{% comment %} <input name="city" type="text" class="form-control" id="city" /> {% endcomment %}
 			{% render_field form.city class+="form-control" placeholder='Город (населенный пункт)'%}
+            <br>
+            <span class="text-danger" v-if="errors && errors.city">[[ getErrorText('city') ]]</span>
 		</div>
 		<div class="mb-3">
 			<label for="promo" class="form-label">Промокод</label>
-			<input name="promo" type="text" class="form-control" id="promo" />
+			{% comment %} <input name="promo" type="text" class="form-control" id="promo" /> {% endcomment %}
+			{% render_field form.promocode class+="form-control form-control-sm" placeholder='введите промо-код, если он у вас есть'%}
 		</div>
 		<div class="mb-3 form-check">
+            {% comment %}
 			<input
 				name="pdn_accept"
 				type="checkbox"
 				class="form-check-input"
 				id="checkSogl1"
 			/>
-			<label class="form-check-label" for="checkSogl1">
+            {% endcomment %}
+            
+            {% render_field form.pdn_accepted class+='form-check-input' type="checkbox" %}
+
+            
+			<label class="form-check-label" for="id_pdn_accepted">
 				<span>Согласен с </span><a href="#">обработкой персональных данных </a>
 			</label>
 
+            <br>
+            <span class="text-danger" v-if="errors && errors.pdn_accepted">[[ getErrorText('pdn_accepted') ]]</span>
+
 		</div>
 		<div class="mb-3 form-check">
-			<input
-				name="subsc_accept"
-				type="checkbox"
-				class="form-check-input"
-				id="check_subscr"
-			/>
-			<label class="form-check-label" for="check_subscr">
+            
+            {% render_field form.subscribe_accepted class+='form-check-input' type="checkbox" %}
+            
+			<label class="form-check-label" for="id_subscribe_accepted">
 				<span>Согласен получать рассылки и информационные письма от Российского общества по
 					неразрушающему контролю и технической диагностики
-
 				</span>
 			</label>
 
 		</div>
 		<div class="mb-1">
 			<label class="form-label">Введите символы с картинки</label><br />
-			{{ form.captcha }}
+            
+            {% render_field form.captcha class+='' %}
+            
 			<a
 				href="#"
 				id="refresh_captcha"
 				class="btn btn-outline-primary btn-sm"
-				title="обновить"
+				title="обновить картинку"
 				><i class="bi bi-arrow-clockwise"></i
 			></a>
+            <br>
+            <span class="text-danger" v-if="errors && errors.captcha">[[ getErrorText('captcha') ]]</span>
 		</div>
 		<div class="text-center">
-			<button
-				type="submit"
+            <button
+                @click.prevent="sendFormData"
 				class="btn btn-outline-primary text-dark" id="btnSend">
 				Зарегистрироваться
 			</button>
