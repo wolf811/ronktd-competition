@@ -1,12 +1,14 @@
+from django.http.response import HttpResponse, HttpResponseForbidden
 from django.shortcuts import render
 
 from seminar.models import SDocument, Seminar, STheme
-
+from seminar.forms import SParticipantForm
 
 # Create your views here.
 def index(request):
     title = "Семинар"
     seminar = Seminar.objects.filter(publish_on_main_page=True).first()
+    form = SParticipantForm()
     banners = None
     descriptions = None
     themes = None
@@ -29,5 +31,13 @@ def index(request):
         "speakers": speakers,
         "theme_documents": theme_documents,
         "seminar_documents": seminar_documents,
+        "form": form,
     }
     return render(request, "seminar/index.html", content)
+
+
+def register_participant(request):
+    if request.method == "POST":
+        print("request POST->", request.POST)
+        return HttpResponse("ok")
+    return HttpResponseForbidden("BAD...")
