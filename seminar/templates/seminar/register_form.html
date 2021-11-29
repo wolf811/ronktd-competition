@@ -1,0 +1,61 @@
+<div id="vue_register_seminar_app">
+	<form>
+		{% comment %}seminar/templates/seminar/register_form.html{% endcomment %}
+		<div class="mb-3">
+			<label for="name1" class="form-label">ФИО</label>
+			<input name="fio" type="text" class="form-control" id="name1" />
+		</div>
+		<div class="mb-3">
+			<label for="phone1" class="form-label">Телефон</label>
+			<input
+				name="phone"
+				type="text"
+				class="form-control"
+				id="masked_phone_number"
+			/>
+		</div>
+		<div class="mb-3">
+			<label for="email1" class="form-label">Email</label>
+			<input name="email" type="text" class="form-control" id="email1" />
+		</div>
+		<div class="mb-3">
+			<label for="org" class="form-label">Организация</label>
+			<input name="org" type="text" class="form-control" id="org" />
+		</div>
+		<div class="mb-3">
+			<label for="city" class="form-label">Город</label>
+			<input name="city" type="text" class="form-control" id="city" />
+		</div>
+		<div class="mb-3">
+			<label for="promo" class="form-label">Промокод</label>
+			<input name="promo" type="text" class="form-control" id="promo" />
+		</div>
+		<div class="mb-3 form-check">
+			<input
+				name="pdn_accept"
+				type="checkbox"
+				class="form-check-input"
+				id="checkSogl1"
+			/>
+			<label class="form-check-label" for="checkSogl1">
+				<span>Согласен с </span><a href="#">обработкой персональных данных </a>
+			</label>
+		</div>
+		<div class="mb-1">
+			<label class="form-label">Введите символы с картинки</label><br />
+			{{ form.captcha }}
+			<a
+				href="#"
+				id="refresh_captcha"
+				class="btn btn-outline-primary btn-sm"
+				title="обновить"
+				><i class="bi bi-arrow-clockwise"></i
+			></a>
+		</div>
+		<div class="text-center">
+			<button class="btn btn-outline-primary text-dark" id="btnSend">
+				Зарегистрироваться
+			</button>
+		</div>
+	</form>
+</div>
