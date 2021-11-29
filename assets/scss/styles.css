@@ -389,6 +389,23 @@ main {
     height: 90px;
     margin-top: -90px;
     visibility: hidden; }
+  main .carousel-text-seminar {
+    color: white;
+    background-color: rgba(42, 12, 103, 0.7);
+    position: absolute;
+    top: 10%;
+    left: 0;
+    width: 50%;
+    font-size: smaller; }
+    @media (max-width: 575px) {
+      main .carousel-text-seminar {
+        width: auto;
+        top: 0;
+        font-size: small; } }
+    main .carousel-text-seminar .line-title {
+      border-bottom: 1px solid #fff !important;
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem; }
   main .card-main:hover {
     transition: 0.3s;
     border-color: #633cb3 !important; }
