@@ -69,10 +69,10 @@
 				id="checkSogl1"
 			/>
             {% endcomment %}
-            
+
             {% render_field form.pdn_accepted class+='form-check-input' type="checkbox" %}
 
-            
+
 			<label class="form-check-label" for="id_pdn_accepted">
 				<span>Согласен с </span><a href="#">обработкой персональных данных </a>
 			</label>
@@ -82,9 +82,9 @@
 
 		</div>
 		<div class="mb-3 form-check">
-            
+
             {% render_field form.subscribe_accepted class+='form-check-input' type="checkbox" %}
-            
+
 			<label class="form-check-label" for="id_subscribe_accepted">
 				<span>Согласен получать рассылки и информационные письма от Российского общества по
 					неразрушающему контролю и технической диагностики
@@ -92,11 +92,11 @@
 			</label>
 
 		</div>
-		<div class="mb-1">
+		<div class="mb-3">
 			<label class="form-label">Введите символы с картинки</label><br />
-            
-            {% render_field form.captcha class+='' %}
-            
+
+            {% render_field form.captcha class+='form-control w-25 d-inline-block' %}
+
 			<a
 				href="#"
 				id="refresh_captcha"

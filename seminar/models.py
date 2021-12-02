@@ -1,3 +1,5 @@
+import uuid
+
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.db import models
 from django.db.models.signals import post_save, pre_save  # post_delete
@@ -262,7 +264,17 @@ class SPartner(models.Model):
         verbose_name_plural = "Partners"
 
     def __str__(self):
-        return f"logo {self.company}"
+        return f"{self.company}"
+
+    def generate_promocodes(self):
+        if self.total_promocodes:
+            for i in range(self.total_promocodes):
+                promocode = SPromoCode.objects.create(
+                    code=uuid.uuid4().hex.upper()[0:6],
+                    promo_partner=self,
+                    seminar=Seminar.objects.filter(publish_on_main_page=True).first(),
+                )
+                print("created promocode->", promocode.code)
 
 
 class SPromoCode(models.Model):
@@ -297,6 +309,11 @@ class SPromoCode(models.Model):
 
     def __str__(self):
         return f"code {self.pk}: {self.code}"
+
+    def activate(self):
+        self.activated = True
+        # send email notifications
+        self.save()
 
 
 class SSubscriber(models.Model):

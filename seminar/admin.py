@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.utils.html import format_html
+from django_object_actions import DjangoObjectActions
 
 from seminar.models import (SBanner, SDescription, SDocument, Seminar,
                             SParticipant, SPartner, SPromoCode, SSpeaker,
@@ -56,13 +57,23 @@ models = [
     # SSpeaker,
     # SDocument,
     SParticipant,
-    SPartner,
-    SPromoCode,
+    # SPartner,
+    # SPromoCode,
     SSubscriber,
 ]
 
 for model_ in models:
     admin.site.register(model_)
+
+
+@admin.register(SPromoCode)
+class SPromoCodeAdmin(admin.ModelAdmin):
+    list_display = [
+        "__str__",
+        "promo_partner",
+        "participant",
+        "activated",
+    ]
 
 
 @admin.register(SDocument)
@@ -114,3 +125,27 @@ class SDescriptionAdmin(admin.ModelAdmin):
 @admin.register(SBanner)
 class SBannerAdmin(admin.ModelAdmin):
     list_display = ["title", get_picture_preview, "activated"]
+
+
+@admin.register(SPartner)
+class SPartnerAdmin(DjangoObjectActions, admin.ModelAdmin):
+    def create_promocodes(self, request, obj):
+        print(f"creating {obj.total_promocodes} promocodes...")
+
+    def batch_create_promocodes(modeladmin, request, queryset):
+        for obj in queryset:
+            obj.generate_promocodes()
+        print("<-DONE CREATING PROMOCODES->")
+
+    create_promocodes.label = "Create promocodes"
+    create_promocodes.short_description = "Creating promocodes with given number"
+
+    change_actions = ("create_promocodes",)
+    changelist_actions = ("batch_create_promocodes",)
+
+    list_display = [
+        "__str__",
+        "seminar",
+        "total_promocodes",
+        "activated_promocodes",
+    ]

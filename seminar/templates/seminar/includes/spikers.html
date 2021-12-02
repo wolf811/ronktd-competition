@@ -8,6 +8,23 @@
     <div class="owl-carousel owl-carousel-spikers owl-theme owl-loaded">
         <div class="owl-stage-outer">
             <div class="owl-stage">
+                {% if speakers %}
+
+                    {% for speaker in speakers %}
+
+                    <div class="owl-item">
+                        <div class="card align-items-bottom">
+                            <img src="{{ speaker.photo.large.url }}" class="card-img-top img-fluid" alt="Photo">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ speaker.fio }}</h5>
+                                <p class="card-text">{{ speaker.bio }}</p>
+                            </div>
+                        </div>
+                        {% comment %} <img src="{% static 'img/logo.png' %}" class="img-fluid" alt="..."> {% endcomment %}
+                    </div>
+
+                {% endfor %}
+                {% else %}
                 <div class="owl-item">
                     <div class="card">
                         <img src="{% static 'img/logo.png' %}" class="card-img-top" alt="Photo">
@@ -16,7 +33,6 @@
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                         </div>
                     </div>
-                    {% comment %} <img src="{% static 'img/logo.png' %}" class="img-fluid" alt="..."> {% endcomment %}
                 </div>
                 <div class="owl-item">
                     <div class="card">
@@ -27,15 +43,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="owl-item">
-                    <div class="card">
-                        <img src="{% static 'img/logo.png' %}" class="card-img-top" alt="Photo">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-                    </div>
-                </div>
+                {% endif %}
             </div>
         </div>
     </div>

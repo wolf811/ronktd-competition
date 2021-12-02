@@ -2,7 +2,7 @@ from captcha.fields import CaptchaField
 from django import forms
 from django.core.exceptions import ValidationError
 
-from seminar.models import SParticipant
+from seminar.models import SParticipant, SPromoCode
 
 
 class SParticipantForm(forms.ModelForm):
@@ -20,3 +20,17 @@ class SParticipantForm(forms.ModelForm):
                 "Необходимо принять правила обработки персональных данных..."
             )
         return data
+
+    def clean_email(self):
+        email = self.cleaned_data["email"]
+        if SParticipant.objects.filter(email=email).exists():
+            raise ValidationError(
+                "Участник с таким адресом эл. почты уже зарегистрирован..."
+            )
+        return email
+
+    def clean_promocode(self):
+        promocode = self.cleaned_data["promocode"]
+        if SPromoCode.objects.filter(code=promocode, activated=True).exists():
+            raise ValidationError("Такой промо-код уже ранее был использован...")
+        return promocode

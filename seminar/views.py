@@ -3,7 +3,8 @@ from django.http.response import (HttpResponse, HttpResponseForbidden,
 from django.shortcuts import render
 
 from seminar.forms import SParticipantForm
-from seminar.models import SDocument, Seminar, STheme
+from seminar.models import (SDocument, Seminar, SParticipant, SPromoCode,
+                            SSubscriber, STheme)
 
 
 # Create your views here.
@@ -38,10 +39,41 @@ def index(request):
     return render(request, "seminar/index.html", content)
 
 
+def create_participant(data):
+    participant = SParticipant.objects.create(
+        fio=data["fio"],
+        phone=data["phone"],
+        email=data["email"],
+        org=data["org"],
+        city=data["city"],
+        pdn_accepted=True,
+        subscribe_accepted=data["subscribe_accepted"],
+    )
+    return participant
+
+
+def send_confirmation_email(email_addr, data):
+    pass
+
+
 def register_participant(request):
     if request.method == "POST":
+        seminar = Seminar.objects.filter(publish_on_main_page=True).first()
         form = SParticipantForm(request.POST)
         if form.is_valid():
             print("form is valid", form.cleaned_data)
+            prcode = form.cleaned_data["promocode"]
+            instance = form.save()
+            promocode = SPromoCode.objects.filter(
+                code=prcode,
+                seminar=seminar,
+                participant=instance,
+            ).first()
+            promocode.activate()
+            if instance.subscribe_accepted:
+                SSubscriber.objects.create(
+                    seminar=seminar, fio=instance.fio, email=instance.email
+                )
+            # send email with confirmation
             return JsonResponse({"success": "all is ok!"})
         return JsonResponse({"errors": form.errors})
