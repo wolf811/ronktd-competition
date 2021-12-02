@@ -1,8 +1,10 @@
-from django.http.response import HttpResponse, HttpResponseForbidden
+from django.http.response import (HttpResponse, HttpResponseForbidden,
+                                  JsonResponse)
 from django.shortcuts import render
 
-from seminar.models import SDocument, Seminar, STheme
 from seminar.forms import SParticipantForm
+from seminar.models import SDocument, Seminar, STheme
+
 
 # Create your views here.
 def index(request):
@@ -38,6 +40,8 @@ def index(request):
 
 def register_participant(request):
     if request.method == "POST":
-        print("request POST->", request.POST)
-        return HttpResponse("ok")
-    return HttpResponseForbidden("BAD...")
+        form = SParticipantForm(request.POST)
+        if form.is_valid():
+            print("form is valid", form.cleaned_data)
+            return JsonResponse({"success": "all is ok!"})
+        return JsonResponse({"errors": form.errors})
