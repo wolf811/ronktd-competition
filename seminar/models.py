@@ -276,6 +276,13 @@ class SPartner(models.Model):
                 )
                 print("created promocode->", promocode.code)
 
+    def count_promocodes(self):
+        self.total_promocodes = SPromoCode.objects.filter(promo_partner=self).count()
+        self.activated_promocodes = SPromoCode.objects.filter(
+            promo_partner=self, activated=True
+        ).count()
+        self.save()
+
 
 class SPromoCode(models.Model):
     """docstring: edit me"""
@@ -289,7 +296,7 @@ class SPromoCode(models.Model):
         SParticipant,
         null=True,
         blank=True,
-        on_delete=models.SET_NULL,
+        on_delete=models.CASCADE,
     )
     promo_partner = models.ForeignKey(
         SPartner,

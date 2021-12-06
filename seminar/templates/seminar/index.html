@@ -162,16 +162,7 @@
         </div>
         <div class="alert alert-purple shadow-sm mb-4">
             <div class="anchor" id="block_04"></div>
-            <h3 class="fw-light text-purple text-center">Стать участником</h3>
-            <div class="my-4">
-                <div class="row justify-content-sm-center">
-                    <div class="col-sm-10 col-md-8 col-xl-6">
-
-                       {% include "seminar/register_form.html" %}
-
-                    </div>
-                </div>
-            </div>
+               {% include "seminar/register_form.html" %}
         </div>
         {% include "seminar/includes/spikers.html" %}
         <div class="alert alert-light border border-light shadow-sm">
@@ -183,22 +174,32 @@
             <div class="owl-carousel owl-theme owl-loaded">
                 <div class="owl-stage-outer">
                     <div class="owl-stage">
-                        <div class="owl-item border p-4"><img src="{% static 'img/logo.png' %}" class="img-fluid"
-                                alt="..."></div>
-                        <div class="owl-item border p-4"><img src="{% static 'img/logo-naks-media.png' %}"
-                                class="img-fluid" alt="..."></div>
-                        <div class="owl-item border p-4"><img src="{% static 'img/ronktd_logo.svg' %}" class="img-fluid"
-                                alt="..."></div>
-                        <div class="owl-item border p-4"><img src="{% static 'img/logo.png' %}" class="img-fluid"
-                                alt="..."></div>
-                        <div class="owl-item border p-4"><img src="{% static 'img/logo-naks-media.png' %}"
-                                class="img-fluid" alt="..."></div>
-                        <div class="owl-item border p-4"><img src="{% static 'img/ronktd_logo.svg' %}" class="img-fluid"
-                                alt="..."></div>
-                        <div class="owl-item border p-4"><img src="{% static 'img/logo.png' %}" class="img-fluid"
-                                alt="..."></div>
-                        <div class="owl-item border p-4"><img src="{% static 'img/logo-naks-media.png' %}"
-                                class="img-fluid" alt="..."></div>
+                        {% if partners %}
+                            
+                            {% for partner in partners %}
+                                
+                                <div class="owl-item border p-4"><img src="{{ partner.logo.url }}" class="img-fluid"
+                                    alt="..."></div>
+                            {% endfor %}
+                        {% else %}
+                            
+                            <div class="owl-item border p-4"><img src="{% static 'img/logo.png' %}" class="img-fluid"
+                                    alt="..."></div>
+                            <div class="owl-item border p-4"><img src="{% static 'img/logo-naks-media.png' %}"
+                                    class="img-fluid" alt="..."></div>
+                            <div class="owl-item border p-4"><img src="{% static 'img/ronktd_logo.svg' %}" class="img-fluid"
+                                    alt="..."></div>
+                            <div class="owl-item border p-4"><img src="{% static 'img/logo.png' %}" class="img-fluid"
+                                    alt="..."></div>
+                            <div class="owl-item border p-4"><img src="{% static 'img/logo-naks-media.png' %}"
+                                    class="img-fluid" alt="..."></div>
+                            <div class="owl-item border p-4"><img src="{% static 'img/ronktd_logo.svg' %}" class="img-fluid"
+                                    alt="..."></div>
+                            <div class="owl-item border p-4"><img src="{% static 'img/logo.png' %}" class="img-fluid"
+                                    alt="..."></div>
+                            <div class="owl-item border p-4"><img src="{% static 'img/logo-naks-media.png' %}"
+                                    class="img-fluid" alt="..."></div>
+                        {% endif %}
                     </div>
                 </div>
             </div>

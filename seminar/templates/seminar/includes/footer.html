@@ -22,7 +22,8 @@
                 <li class="nav-item"><a href="{% url 'main:sponsors' %}" class="nav-link px-2">Партнеры и Спонсоры</a></li>
                 <li class="nav-item"><a href="{% url 'main:contacts' %}" class="nav-link px-2">Контакты</a></li>
             </ul> {% endcomment %}
-            <p class="text-center text-muted mb-0">© 2021, НАКС</p>
+            {% comment %}<p class="text-center text-muted mb-0">© 2021, НАКС</p>{% endcomment %}
+            <p class="text-center text-muted">© 2021, {{ glob_seminar.sub_title }} {{ glob_seminar.title }}</p>
         </div>
     </div>
 </footer>

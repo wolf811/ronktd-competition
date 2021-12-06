@@ -1,10 +1,12 @@
+from django.core.mail import send_mail
+from django.forms.models import model_to_dict
 from django.http.response import (HttpResponse, HttpResponseForbidden,
                                   JsonResponse)
 from django.shortcuts import render
 
 from seminar.forms import SParticipantForm
-from seminar.models import (SDocument, Seminar, SParticipant, SPromoCode,
-                            SSubscriber, STheme)
+from seminar.models import (SDocument, Seminar, SParticipant, SPartner,
+                            SPromoCode, SSubscriber, STheme)
 
 
 # Create your views here.
@@ -18,6 +20,7 @@ def index(request):
     speakers = None
     theme_documents = None
     seminar_documents = None
+    seminar_partners = None
     if seminar:
         banners = seminar.banners.select_related().order_by("number")
         descriptions = seminar.descriptions.select_related().order_by("number")
@@ -25,10 +28,12 @@ def index(request):
         themes = STheme.objects.filter(speaker__in=speakers).order_by("number")
         theme_documents = SDocument.objects.filter(theme__in=themes)
         seminar_documents = SDocument.objects.filter(seminar=seminar)
+        seminar_partners = SPartner.objects.filter(seminar=seminar, super_status=True)
     content = {
         "title": title,
         "seminar": seminar,
         "banners": banners,
+        "partners": seminar_partners,
         "descriptions": descriptions,
         "themes": themes,
         "speakers": speakers,
@@ -62,18 +67,41 @@ def register_participant(request):
         form = SParticipantForm(request.POST)
         if form.is_valid():
             print("form is valid", form.cleaned_data)
-            prcode = form.cleaned_data["promocode"]
+            form_promo_code = form.cleaned_data["promocode"]
             instance = form.save()
             promocode = SPromoCode.objects.filter(
-                code=prcode,
-                seminar=seminar,
-                participant=instance,
+                code=form_promo_code,
             ).first()
-            promocode.activate()
+            # __import__("pdb").set_trace()
+            registration_info = model_to_dict(instance)
+            registration_info["phone"] = f"{instance.phone}"
+            if promocode:
+                partner = promocode.promo_partner
+                promocode.participant = instance
+                promocode.activate()
+                registration_info.update(
+                    {
+                        "promocode": promocode.code,
+                    }
+                )
+                partner.count_promocodes()
             if instance.subscribe_accepted:
                 SSubscriber.objects.create(
                     seminar=seminar, fio=instance.fio, email=instance.email
                 )
             # send email with confirmation
-            return JsonResponse({"success": "all is ok!"})
+            send_mail(
+                "Успешная регистрация: {}!".format(seminar.title),
+                f"""Ваша регистрация подтверждена:
+{seminar.sub_title} {seminar.title}
+Email: {registration_info['email']},
+ФИО участника: {registration_info['fio']},
+Телефон участника: {registration_info['phone']},
+Спасибо за регистрацию!
+    """,
+                "noreply@naks.ru",
+                [instance.email],
+                fail_silently=False,
+            )
+            return JsonResponse({"success": registration_info})
         return JsonResponse({"errors": form.errors})
