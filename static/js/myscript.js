@@ -244,3 +244,23 @@ Fancybox.bind('[data-fancybox="gallery"]', {
 		},
 	},
 });
+
+// Кнопка - Наверх
+$(document).ready(function() {
+    $('body').append('<button class="top-arrow">');
+    $('.top-arrow').click(function() {
+        $('body').animate({
+            'scrollTop': 0
+        }, 0);
+        $('html').animate({
+            'scrollTop': 0
+        }, 0);
+    });
+    $(window).scroll(function() {
+        if ($(window).scrollTop() > 300) {
+            $(".top-arrow").addClass("top-arrow-active");
+        } else {
+            $(".top-arrow").removeClass("top-arrow-active");
+        }
+    });
+});
