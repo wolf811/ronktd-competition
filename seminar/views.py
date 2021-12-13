@@ -28,7 +28,9 @@ def index(request):
         themes = STheme.objects.filter(speaker__in=speakers).order_by("number")
         theme_documents = SDocument.objects.filter(theme__in=themes)
         seminar_documents = SDocument.objects.filter(seminar=seminar)
-        seminar_partners = SPartner.objects.filter(seminar=seminar, super_status=True)
+        seminar_partners = SPartner.objects.filter(
+            seminar=seminar, super_status=True
+        ).order_by("number")
     content = {
         "title": title,
         "seminar": seminar,

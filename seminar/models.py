@@ -96,7 +96,6 @@ class SBanner(models.Model):
     )
     short_description = models.TextField(
         "short description",
-        max_length=500,
         null=True,
         blank=True,
     )
@@ -244,6 +243,11 @@ class SPartner(models.Model):
         "Partner title",
         max_length=150,
     )
+    company_site = models.URLField(
+        "Partner site url",
+        blank=True,
+        null=True,
+    )
     seminar = models.ForeignKey(
         Seminar,
         null=True,
@@ -253,6 +257,7 @@ class SPartner(models.Model):
     total_promocodes = models.PositiveIntegerField(default=0)
     activated_promocodes = models.PositiveIntegerField(default=0)
     super_status = models.BooleanField(default=False)
+    number = models.PositiveSmallIntegerField("ordering", default=0)
     json_data = models.JSONField(
         "json-data",
         null=True,

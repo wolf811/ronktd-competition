@@ -21,12 +21,13 @@ from django.urls import include, path
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", include("main.urls", namespace="main")),
+    # path("", include("main.urls", namespace="main")),
+    path("", include("seminar.urls", namespace="seminar")),
     path("ckeditor/", include("ckeditor_uploader.urls")),
     path("captcha/", include("captcha.urls")),
     # path("users/", include("users.urls", namespace="users")),
     path("publications/", include("publications.urls", namespace="publications")),
-    path("seminar/", include("seminar.urls", namespace="seminar")),
+    # path("seminar/", include("seminar.urls", namespace="seminar")),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

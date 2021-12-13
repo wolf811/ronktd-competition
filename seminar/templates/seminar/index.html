@@ -89,7 +89,7 @@
             </h4>
             {% if themes %}
             {% for theme in themes %}
-            <div class="row mb-3">
+            <div class="row mb-5">
                 <div class="col">
                     <img src="{{ theme.speaker.photo.thumbnail.url }}" alt="{{ theme.speaker.fio }}">
                     <small>{{ theme.speaker.fio }}</small>
@@ -97,8 +97,11 @@
                 </div>
                 <div class="col">
                     {{ theme.title }}<br>
+                    {% comment %}<strong>{{ theme.speak_time_start|date:"d.m.Y" }}</strong>{% endcomment %}
                     <strong>{{ theme.speak_time_start|date:"H:i" }}</strong>
-                    <strong>{{ theme.speak_time_start|date:"d/m/Y" }}</strong>
+                    {% if theme.speak_time_end %}
+                        - <strong>{{ theme.speak_time_end|date:"H:i" }}</strong>
+                    {% endif %}
                 </div>
                 <div class="col">{{ theme.description|safe }}</div>
             </div>
@@ -178,8 +181,17 @@
                             
                             {% for partner in partners %}
                                 
-                                <div class="owl-item border p-4"><img src="{{ partner.logo.url }}" class="img-fluid"
-                                    alt="..."></div>
+                                <div class="owl-item border p-4">
+                                {% if partner.company_site %}
+                                    <a href="{{ partner.company_site }}" target="_blank">
+                                        <img src="{{ partner.logo.url }}" class="img-fluid"
+                                                                          alt="...">
+                                    </a>
+                                {% else %}
+                                <img src="{{ partner.logo.url }}" class="img-fluid"
+                                                                  alt="...">
+                                {% endif %}
+                                </div>
                             {% endfor %}
                         {% else %}
                             

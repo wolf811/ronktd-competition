@@ -21,7 +21,11 @@
                 </div>
                 <div class="col-lg">
                     <div class="text-center">
-                        <h5 class="mb-0 lh-sm text-purple">{{ glob_seminar.sub_title }}</h5>
+                        <h5 class="mb-0 lh-sm text-purple">{{ glob_seminar.sub_title }}
+                            {% if glob_seminar.begin_at %}
+                                (Дата проведения: {{ glob_seminar.begin_at|date:"d.m.Y" }}, начало в {{ glob_seminar.begin_at|date:"H:i" }}) 
+                            {% endif %}
+                        </h5>
                         <hr class="line-head my-2">
                         <h4 class="text-uppercase text-purple mb-0">{{ glob_seminar.title }}</h4>
                     </div>
