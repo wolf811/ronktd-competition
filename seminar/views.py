@@ -91,6 +91,13 @@ def register_participant(request):
                 SSubscriber.objects.create(
                     seminar=seminar, fio=instance.fio, email=instance.email
                 )
+            if request.POST.get("nksystem") or request.POST.get("question"):
+                instance.json_data = {
+                    "nksystem": request.POST.get("nksystem"),
+                    "question": request.POST.get("question"),
+                }
+                # __import__("ipdb").set_trace()
+                instance.save()
             # send email with confirmation
             send_mail(
                 "Успешная регистрация: {}!".format(seminar.title),

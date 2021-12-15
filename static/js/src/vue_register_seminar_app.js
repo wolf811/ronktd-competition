@@ -36,7 +36,7 @@ if (document.querySelectorAll('#vue_register_seminar_app').length) {
 						if (response.data.success) {
 							console.log('successRegistration', response.data.success);
 							this.successMessage = response.data.success;
-							window.location.replace('/seminar/#block_04');
+							window.location.replace('#block_04');
 						}
 					})
 					.catch((err) => {

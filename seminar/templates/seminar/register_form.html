@@ -63,6 +63,19 @@
                             <span class="text-danger" v-if="errors && errors.city">[[ getErrorText('city') ]]</span>
                         </div>
                         <div class="mb-3">
+                            
+                            <label for="id_nksystem" class="form-label">В какой системе вы аттестовываете специалистов НК и лаборатории НК?</label>
+                            {% render_field form.nksystem class+='form-control' placeholder='введите наименование...' %}
+                            
+                        </div>
+                        <div class="mb-3">
+                            
+                            <label for="id_question" class="form-label">Обозначьте вопросы, которые, на ваш взгляд, необходимо осветить на семинаре</label>
+
+                            {% render_field form.question class+='form-control' placeholder='ваши вопросы...' rows="4" %}
+                            
+                        </div>
+                        <div class="mb-3">
                             <label for="promo" class="form-label">Промокод</label>
                             {% comment %} <input name="promo" type="text" class="form-control" id="promo" /> {% endcomment %}
                             {% render_field form.promocode class+="form-control form-control-sm" placeholder='введите промо-код, если он у вас есть'%}

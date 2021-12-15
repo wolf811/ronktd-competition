@@ -6,6 +6,16 @@ from seminar.models import SParticipant, SPromoCode
 
 
 class SParticipantForm(forms.ModelForm):
+    nksystem = forms.CharField(
+        max_length=200,
+        label="В какой системе вы аттестовываете специалистов НК и лаборатории НК?",
+        required=False,
+    )
+    question = forms.CharField(
+        widget=forms.Textarea,
+        label="Обозначьте вопросы, которые, на ваш взгляд, необходимо осветить на семинаре",
+        required=False,
+    )
     captcha = CaptchaField()
     promocode = forms.CharField(max_length=100, required=False)
 
