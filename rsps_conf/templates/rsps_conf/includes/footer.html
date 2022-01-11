@@ -1,0 +1,29 @@
+{% load static %}
+<footer class="mt-auto">
+    <div class="container-xxl">
+        <div class="py-3 my-4">
+            {% comment %} <ul class="nav justify-content-center pb-3 mb-3">
+                <li class="nav-item"><a href="{% url 'main:index' %}" class="nav-link px-2">Главная</a></li>
+                <li class="nav-item"><a href="{% url 'main:news' %}" class="nav-link px-2">Новости</a></li>
+                <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">О&nbsp;конкурсе</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="{% url 'main:structure' %}">Организационная структура</a></li>
+                            <li><a class="dropdown-item" href="{% url 'main:docs' %}">Документы</a></li>
+                            <li><a class="dropdown-item" href="{% url 'main:stages' %}">Отборочные этапы</a></li>
+                            <li><a class="dropdown-item" href="{% url 'main:final-stage' %}">Финальный этап</a></li>
+                            <li><a class="dropdown-item" href="{% url 'main:memb-info' %}">Участникам</a></li>
+                            <li><a class="dropdown-item" href="{% url 'main:spon-info' %}">Спонсорам</a></li>
+                        </ul>
+                    </li>
+                <li class="nav-item"><a href="{% url 'main:gallery' %}" class="nav-link px-2">Галерея</a></li>
+                <li class="nav-item"><a href="{% url 'main:members' %}" class="nav-link px-2">Участники</a></li>
+                <li class="nav-item"><a href="{% url 'main:organizers' %}" class="nav-link px-2">Организаторы</a></li>
+                <li class="nav-item"><a href="{% url 'main:sponsors' %}" class="nav-link px-2">Партнеры и Спонсоры</a></li>
+                <li class="nav-item"><a href="{% url 'main:contacts' %}" class="nav-link px-2">Контакты</a></li>
+            </ul> {% endcomment %}
+            {% comment %}<p class="text-center text-muted mb-0">© 2021, НАКС</p>{% endcomment %}
+            <p class="text-center text-muted">© 2021, {{ glob_seminar.sub_title }} {{ glob_seminar.title }}</p>
+        </div>
+    </div>
+</footer>

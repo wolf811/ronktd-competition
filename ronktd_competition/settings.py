@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     "ckeditor",
     "ckeditor_uploader",
     "django_object_actions",
+    "rsps_conf",
 ]
 
 # WKHTMLTOPDF_CMD_OPTIONS = {

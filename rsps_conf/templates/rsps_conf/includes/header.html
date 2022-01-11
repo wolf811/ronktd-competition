@@ -1,0 +1,46 @@
+{% load static %}
+<header class="py-3 pt-5 mt-4">
+    <div class="header-main">
+        <div class="container-xxl">
+            {% comment %} <div class="d-none d-sm-flex align-items-center justify-content-around">
+                <div class="text-center text-lg-start">
+                    <a href="{% url 'main:index' %}" class="text-center mx-auto">
+                        <img src="{% static 'img/defectoscopist2021.png' %}" alt="Логотип" class="img-fluid">
+                    </a>
+                </div>
+                <div class="d-none d-lg-block">
+                    <div class="contacts d-flex flex-column text-end">
+                        <a href="tel:+74992455656"><i class="bi bi-telephone me-1"></i>+7(499)245-56-56</a>
+                        <a href="mailto:info@ronktd.ru"><i class="bi bi-envelope me-2"></i>info@ronktd.ru</a>
+                    </div>
+                </div>
+            </div> {% endcomment %}
+            <div class="row align-items-center justify-content-between">
+                <div class="col-lg-2 align-items-center mb-3 mb-lg-0">
+                    {% comment %} <a href="#"><img src="{{ glob_seminar.logo.url }}" alt="Логотип" class="d-block mx-auto mx-lg-0"></a> {% endcomment %}
+                    <a href="#"><img src="{% static 'img/logo-rsps.gif' %}" alt="Логотип" class="d-block mx-auto mx-lg-0"></a>
+                </div>
+                <div class="col-lg">
+                    <div class="text-center">
+                        {% comment %} <h5 class="mb-0 lh-sm text-purple">{{ glob_seminar.sub_title }}
+                            {% if glob_seminar.begin_at %}
+                                (Дата проведения: {{ glob_seminar.begin_at|date:"d.m.Y" }}, начало в {{ glob_seminar.begin_at|date:"H:i" }}) 
+                            {% endif %}
+                        </h5>
+                        <hr class="line-head my-2">
+                        <h4 class="text-uppercase text-purple mb-0">{{ glob_seminar.title }}</h4> {% endcomment %}
+                        <h4 class="text-uppercase text-purple mb-0">Конференция РСПС в городе Красноярске</h4>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="d-none d-lg-block">
+                        <div class="contacts d-flex flex-column text-end">
+                            <a href="tel:{{ glob_seminar.phone }}"><i class="bi bi-telephone me-1"></i>{{ glob_seminar.phone }}</a>
+                            <a href="mailto:{{ glob_seminar.email }}"><i class="bi bi-envelope me-2"></i>{{ glob_seminar.email }}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
