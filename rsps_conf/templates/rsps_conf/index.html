@@ -71,23 +71,20 @@
         {% else %}
         <div class="p-3 shadow-sm border border-light mb-4">
             <div class="anchor" id="block_01"></div>
-            <h4 class="text-purple">О семинаре
+            <h4 class="text-title-rsps">О конференции
                 <hr class="line-title">
             </h4>
-            <p>Стремительное развитие событий, связанных с подтверждением компетентности (аттестацией) специалистов НК
-                технических устройств, зданий и сооружений, применяемых на ОПО, заставляет нас держать руку на пульсе. В
-                этой хронике мы постараемся приводить все значимые события, происходящие на данном фронте. И так до тех
-                пор, пока не будут развеяны все мифы ...</p>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellat consequatur delectus, laudantium officiis obcaecati possimus accusamus, in, optio exercitationem molestiae ab officia dolores quidem! Dignissimos praesentium ratione perferendis dolorum similique.</p>
         </div>
         {% endif %}
 
 
         <div class="p-3 shadow-sm border border-light mb-4">
             <div class="anchor" id="block_02"></div>
-            {% comment %} <h4 class="text-purple">Программа {{ seminar.sub_title_declension|lower }}
+            {% comment %} <h4 class="text-title-rsps">Программа {{ seminar.sub_title_declension|lower }}
                 <hr class="line-title">
             </h4> {% endcomment %}
-            <h4 class="text-purple">Программа конференции
+            <h4 class="text-title-rsps">Программа конференции
                 <hr class="line-title">
             </h4>
             {% if themes %}
@@ -123,7 +120,7 @@
 
         <div class="p-3 shadow-sm border border-light mb-4">
             <div class="anchor" id="block_03"></div>
-            <h4 class="text-purple">Документы
+            <h4 class="text-title-rsps">Документы
                 <hr class="line-title">
             </h4>
             {% if seminar_documents %}
@@ -166,16 +163,16 @@
                 </p>
             {% endif %}
         </div>
-        <div class="alert alert-purple shadow-sm mb-4">
+        <div class="alert alert-rsps shadow-sm mb-4">
             <div class="anchor" id="block_04">
             </div>
                {% include "rsps_conf/register_form.html" %}
         </div>
         {% include "rsps_conf/includes/spikers.html" %}
         <div class="alert alert-light border border-light shadow-sm">
-            {% comment %}<h4 class="fw-light text-purple">Партнеры и спонсоры</h4>{% endcomment %}
+            {% comment %}<h4 class="fw-light text-title-rsps">Партнеры и спонсоры</h4>{% endcomment %}
             <div class="anchor" id="block_05"></div>
-            <h4 class="fw-light text-purple">Организаторы
+            <h4 class="fw-light text-title-rsps">Организаторы
                 <hr class="line-title">
             </h4>
             <div class="owl-carousel owl-theme owl-loaded">
@@ -203,13 +200,13 @@
                                     alt="..."></div>
                             <div class="owl-item border p-4"><img src="{% static 'img/logo-naks-media.png' %}"
                                     class="img-fluid" alt="..."></div>
-                            <div class="owl-item border p-4"><img src="{% static 'img/ronktd_logo.svg' %}" class="img-fluid"
+                            <div class="owl-item border p-4"><img src="{% static 'img/logo-rsps.gif' %}" class="img-fluid"
                                     alt="..."></div>
                             <div class="owl-item border p-4"><img src="{% static 'img/logo.png' %}" class="img-fluid"
                                     alt="..."></div>
                             <div class="owl-item border p-4"><img src="{% static 'img/logo-naks-media.png' %}"
                                     class="img-fluid" alt="..."></div>
-                            <div class="owl-item border p-4"><img src="{% static 'img/ronktd_logo.svg' %}" class="img-fluid"
+                            <div class="owl-item border p-4"><img src="{% static 'img/logo-rsps.gif' %}" class="img-fluid"
                                     alt="..."></div>
                             <div class="owl-item border p-4"><img src="{% static 'img/logo.png' %}" class="img-fluid"
                                     alt="..."></div>

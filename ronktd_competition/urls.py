@@ -29,7 +29,7 @@ urlpatterns = [
     path("captcha/", include("captcha.urls")),
     # path("users/", include("users.urls", namespace="users")),
     path("publications/", include("publications.urls", namespace="publications")),
-    path("rsps_conf/", include("rsps_conf.urls", namespace="rsps_conf")),
+    path("rsps-conf/", include("rsps_conf.urls", namespace="rsps_conf")),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

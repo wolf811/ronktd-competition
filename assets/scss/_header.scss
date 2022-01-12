@@ -50,13 +50,13 @@ header {
         // }
 
         a {
-            color: $ronktd-color;
+            color: #2A0C67;
             margin-bottom: 0.25rem;
             text-decoration: none;
 
             &:hover {
                 transition: 0.3s;
-                color: $ronktd-hover;
+                color: #633cb3;
             }
 
             &:last-child {
@@ -67,7 +67,7 @@ header {
     
     .line-head {
         height: 0;
-        border: 1px solid $ronktd-color;
+        border-bottom: 1px solid $ronktd-color;
         opacity: 1;
         width: 75%;
         margin-left: auto;

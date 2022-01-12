@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 # Create your views here.
 def index(request):
-    title = "Семинар"
+    title = "Конференция РСПС"
     # seminar = Seminar.objects.filter(publish_on_main_page=True).first()
     # form = SParticipantForm()
     # banners = None
