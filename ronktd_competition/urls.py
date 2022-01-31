@@ -20,10 +20,12 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
 
+main_urls_module = settings.MAIN_URLS_MODULE
+
 urlpatterns = [
     path("admin/", admin.site.urls),
+    # path("", include("seminar.urls", namespace="seminar")),
     # path("", include("main.urls", namespace="main")),
-    path("", include("seminar.urls", namespace="seminar")),
     path("seminar/register/", seminar.register_participant, name="seminar_register"),
     path("ckeditor/", include("ckeditor_uploader.urls")),
     path("captcha/", include("captcha.urls")),
@@ -33,3 +35,14 @@ urlpatterns = [
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+"""don't forget about settings_deploy_variables.py"""
+if main_urls_module:
+    urlpatterns += [
+        path(
+            "",
+            include(
+                main_urls_module["urls"], namespace=(main_urls_module["namespace"])
+            ),
+        )
+    ]

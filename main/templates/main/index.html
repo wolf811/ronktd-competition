@@ -69,7 +69,11 @@
                 {% endif %}
 
                 <div class="p-3 shadow-sm border border-light mb-4">
+                    {% if chunk.html %}
+                    {{ chunk.html|safe}} 
+                    {% elif chunk.text %}
                     {{ chunk.text|safe }}
+                    {% endif %}
                 </div>
                 
             {% endfor %}

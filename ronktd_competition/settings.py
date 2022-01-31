@@ -65,6 +65,8 @@ INSTALLED_APPS = [
     "rsps_conf",
 ]
 
+MAIN_URLS_MODULE = None
+
 # WKHTMLTOPDF_CMD_OPTIONS = {
 #     'quiet': False,
 # }
@@ -374,3 +376,6 @@ EMAIL_USE_SSL = True
 
 if "installed_server_apps" in locals():
     INSTALLED_APPS += installed_server_apps
+
+if "main_urls_module" in locals():
+    MAIN_URLS_MODULE = main_urls_module
