@@ -16,6 +16,7 @@
                     <div class="text-center">
                         <h5 class="mb-0 lh-sm text-purple">{{ glob_event.short_description }}
                             {% if glob_event.period_start %}
+                            <br>
                             (Даты проведения: {{ glob_event.period_start|date:"d.m.Y" }} - 
                                     {{ glob_event.period_end|date:"d.m.Y" }}) 
                             {% endif %}
