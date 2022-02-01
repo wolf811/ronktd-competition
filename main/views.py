@@ -1,6 +1,9 @@
+from common.models import Event, EventParticipant
+from django.core.mail import send_mail
 from django.http.response import JsonResponse
 from django.shortcuts import render
-from publications.models import Banner, Document
+from partners.models import Partner
+from publications.models import Banner, Document, Post
 from rest_framework.parsers import JSONParser
 
 from main.forms import ParticipantForm
@@ -18,6 +21,7 @@ def index(request):
     main_page_documents = Document.objects.filter(publish_on_main_page=True).order_by(
         "number"
     )
+    main_page_partners = Partner.objects.filter(super_status=True).order_by("number")
     form = ParticipantForm()
     content = {
         "title": title,
@@ -25,6 +29,7 @@ def index(request):
         "chunks": main_page_chunks,
         "documents": main_page_documents,
         "form": form,
+        "partners": main_page_partners,
     }
     return render(request, "main/index.html", content)
 
@@ -32,9 +37,29 @@ def index(request):
 def participant_form(request):
     post_data = {k: v for k, v in JSONParser().parse(request).items()}
     form = ParticipantForm(post_data)
+    event = Event.objects.filter(active_now=True).first()
     if form.is_valid():
-        print("FORM is valid")
-        return JsonResponse({"success": post_data})
+        instance = EventParticipant.objects.create(
+            fio=post_data.get("fio"),
+            phone=post_data.get("phone"),
+            email=post_data.get("email"),
+            comment=post_data.get("comment"),
+            pdn_accept=post_data.get("pdn_accept"),
+        )
+        send_mail(
+            "Успешная регистрация: {}!".format(event.title),
+            f"""Ваша регистрация подтверждена
+Event: {event.title}
+Email: {instance.email},
+ФИО участника: {instance.fio},
+Телефон участника: {instance.phone},
+Спасибо за регистрацию!
+    """,
+            "noreply@naks.ru",
+            [instance.email],
+            fail_silently=False,
+        )
+        return JsonResponse({"success": post_data, "id": instance.pk})
     else:
         print("ERRORS", form.errors)
     return JsonResponse({"errors": form.errors})
@@ -59,6 +84,7 @@ def news_detail(request):
 def structure(request):
     title = "Организационная структура"
     content = {
+        "post": Post.objects.filter(url_code="STRUCTURE").first(),
         "title": title,
     }
     return render(request, "main/structure.html", content)
@@ -68,6 +94,7 @@ def docs(request):
     title = "Документы"
     content = {
         "title": title,
+        "docs": Document.objects.all().order_by("number"),
     }
     return render(request, "main/docs.html", content)
 
@@ -124,6 +151,7 @@ def organizers(request):
     title = "Организаторы"
     content = {
         "title": title,
+        "partners": Partner.objects.all().order_by("number"),
     }
     return render(request, "main/organizers.html", content)
 
@@ -184,7 +212,3 @@ def profile(request):
         "subtitle": subtitle,
     }
     return render(request, "main/profile.html", content)
-
-
-def page_details(request, pk):
-    pass

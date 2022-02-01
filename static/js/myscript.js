@@ -2,14 +2,15 @@
 //
 //captcha django-simple-captcha
 //
-$('#refresh_captcha').on('click', function (e) {
+$("#refresh_captcha").on("click", function (e) {
 	e.preventDefault();
 	//console.log('refresh clicked...');
-	$.getJSON('/captcha/refresh/', function (result) {
-		$('.captcha').attr('src', result['image_url']);
-		$('#id_captcha_0').val(result['key']);
+	$.getJSON("/captcha/refresh/", function (result) {
+		$(".captcha").attr("src", result["image_url"]);
+		$("#id_captcha_0").val(result["key"]);
 	});
 });
+
 //
 var tooltipTriggerList = [].slice.call(
 	document.querySelectorAll('[data-bs-toggle="tooltip"]')
@@ -27,7 +28,7 @@ var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
 
 // ====================== OwlCarousel =========================
 $(document).ready(function () {
-	$('.owl-carousel-spikers').owlCarousel({
+	$(".owl-carousel-spikers").owlCarousel({
 		// nav: true,
 		// navText: ['<i class="bi bi-arrow-left"></i>','<i class="bi bi-arrow-right"></i>'],
 		loop: true,
@@ -47,10 +48,11 @@ $(document).ready(function () {
 		},
 	});
 
-	$('.owl-carousel').owlCarousel({
+	$(".owl-carousel").owlCarousel({
 		// nav: true,
 		// navText: ['<i class="bi bi-arrow-left"></i>','<i class="bi bi-arrow-right"></i>'],
 		loop: true,
+		rewind: true,
 		margin: 10,
 		responsiveClass: true,
 		responsive: {
@@ -61,15 +63,14 @@ $(document).ready(function () {
 				items: 3,
 			},
 			1000: {
-				items: 5,
-				loop: false,
+				items: 4,
+				//loop: false,
 			},
 		},
 	});
-
 });
 $(document).ready(function () {
-	$('.owl-carousel-spikers').owlCarousel({
+	$(".owl-carousel-spikers").owlCarousel({
 		// nav: true,
 		// navText: ['<i class="bi bi-arrow-left"></i>','<i class="bi bi-arrow-right"></i>'],
 		loop: true,
@@ -83,8 +84,8 @@ $(document).ready(function () {
 				items: 3,
 			},
 			1000: {
-				items: 4,
-				loop: false,
+				items: 3,
+				loop: true,
 			},
 		},
 	});
@@ -152,29 +153,29 @@ $(document).ready(function () {
 //     }
 // })
 
-$('#checkSogl1').click(function () {
-	if ($(this).is(':checked')) {
-		$('#btnSend').removeClass('disabled');
+$("#checkSogl1").click(function () {
+	if ($(this).is(":checked")) {
+		$("#btnSend").removeClass("disabled");
 	} else {
-		$('#btnSend').addClass('disabled');
+		$("#btnSend").addClass("disabled");
 	}
 });
 
-$('#btn-move-to-reg').click(function () {
-	$('#form-registration').show('fade');
-	$('#form-signin').hide();
+$("#btn-move-to-reg").click(function () {
+	$("#form-registration").show("fade");
+	$("#form-signin").hide();
 });
-$('#btn-move-to-signin').click(function () {
-	$('#form-registration').hide();
-	$('#form-signin').show('fade');
+$("#btn-move-to-signin").click(function () {
+	$("#form-registration").hide();
+	$("#form-signin").show("fade");
 });
-$('#btn-move-to-recovery').click(function () {
-	$('#form-recovery').show('fade');
-	$('#form-signin').hide();
+$("#btn-move-to-recovery").click(function () {
+	$("#form-recovery").show("fade");
+	$("#form-signin").hide();
 });
-$('#btn-cancel-recovery').click(function () {
-	$('#form-recovery').hide();
-	$('#form-signin').show('fade');
+$("#btn-cancel-recovery").click(function () {
+	$("#form-recovery").hide();
+	$("#form-signin").show("fade");
 });
 // ===========================================================
 
@@ -215,12 +216,12 @@ $('#btn-cancel-recovery').click(function () {
 //         },
 //     });
 
-const galleryCarousel = new Carousel(document.querySelector('.carousel'), {
+const galleryCarousel = new Carousel(document.querySelector(".carousel"), {
 	Dots: false,
 });
 // Thumbnails
-if (document.querySelectorAll('.thumb').length) {
-	const thumbCarousel = new Carousel(document.querySelector('.thumb'), {
+if (document.querySelectorAll(".thumb").length) {
+	const thumbCarousel = new Carousel(document.querySelector(".thumb"), {
 		Sync: {
 			target: galleryCarousel,
 			friction: 0,
@@ -246,21 +247,27 @@ Fancybox.bind('[data-fancybox="gallery"]', {
 });
 
 // Кнопка - Наверх
-$(document).ready(function() {
-    $('body').append('<button class="top-arrow">');
-    $('.top-arrow').click(function() {
-        $('body').animate({
-            'scrollTop': 0
-        }, 0);
-        $('html').animate({
-            'scrollTop': 0
-        }, 0);
-    });
-    $(window).scroll(function() {
-        if ($(window).scrollTop() > 300) {
-            $(".top-arrow").addClass("top-arrow-active");
-        } else {
-            $(".top-arrow").removeClass("top-arrow-active");
-        }
-    });
+$(document).ready(function () {
+	$("body").append('<button class="top-arrow">');
+	$(".top-arrow").click(function () {
+		$("body").animate(
+			{
+				scrollTop: 0,
+			},
+			0
+		);
+		$("html").animate(
+			{
+				scrollTop: 0,
+			},
+			0
+		);
+	});
+	$(window).scroll(function () {
+		if ($(window).scrollTop() > 300) {
+			$(".top-arrow").addClass("top-arrow-active");
+		} else {
+			$(".top-arrow").removeClass("top-arrow-active");
+		}
+	});
 });

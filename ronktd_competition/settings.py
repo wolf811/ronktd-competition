@@ -129,6 +129,7 @@ TEMPLATES = [
                 "django.contrib.messages.context_processors.messages",
                 "main.context_processors.profile",
                 "main.context_processors.csrf",
+                "common.context_processors.active_event",
                 "seminar.context_processors.active_seminar",
             ],
         },

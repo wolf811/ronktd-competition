@@ -2,8 +2,8 @@
 <nav class="navbar navbar-main navbar-expand-xl shadow">
     <div class="container-xxl">
         <div class="contacts d-xl-none">
-            <a href="tel:+74992455656" class="me-3"><i class="bi bi-telephone me-1"></i>+7(499)245-56-56</a>
-            <a href="mailto:info@ronktd.ru"><i class="bi bi-envelope me-1"></i>info@ronktd.ru</a>
+            <a href="tel:{{ glob_event.phone }}" class="me-3"><i class="bi bi-telephone me-1"></i>{{ glob_event.phone }}</a>
+            <a href="mailto:{{ glob_event.email }}"><i class="bi bi-envelope me-1"></i>{{ glob_event.email }}</a>
         </div>
         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarOffcanvasLg" aria-controls="navbarOffcanvasLg">
             <i class="bi bi-list"></i>
@@ -18,38 +18,64 @@
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == '/' or request.path == '/main/' %}active{% endif %}" href="{% url 'main:index' %}">Главная</a>
                     </li>
+
+                    {% if request.user.can_see_miracles %}
+                        <li class="nav-item">
+                            <a class="nav-link {% if 'news' in request.path or 'news-detail' in request.path %}active{% endif %}" href="{% url 'main:news' %}">Новости</a>
+                        </li>
+                    {% endif %}
+                    
+                    {% comment %} 
                     <li class="nav-item">
-                        <a class="nav-link {% if 'news' in request.path or 'news-detail' in request.path %}active{% endif %}" href="{% url 'main:news' %}">Новости</a>
-                    </li>
-                    {% comment %} <li class="nav-item">
                         <a class="nav-link {% if 'about' in request.path %}active{% endif %}" href="{% url 'main:about' %}">О&nbsp;конкурсе</a>
-                    </li> {% endcomment %}
+                    </li>
+                    {% endcomment %}
+
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle {% if 'structure' in request.path or 'docs' in request.path or 'stages' in request.path or 'final-stage' in request.path or 'memb-info' in request.path or 'spon-info' in request.path %}active{% endif %}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">О&nbsp;конкурсе</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="{% url 'main:structure' %}">Организационная структура</a></li>
                             <li><a class="dropdown-item" href="{% url 'main:docs' %}">Документы</a></li>
-                            <li><a class="dropdown-item" href="{% url 'main:stages' %}">Отборочные этапы</a></li>
-                            <li><a class="dropdown-item" href="{% url 'main:final-stage' %}">Финальный этап</a></li>
-                            <li><a class="dropdown-item" href="{% url 'main:memb-info' %}">Участникам</a></li>
-                            <li><a class="dropdown-item" href="{% url 'main:spon-info' %}">Спонсорам</a></li>
+
+                            {% if request.user.can_see_miracles %}
+                                <li><a class="dropdown-item" href="{% url 'main:stages' %}">Отборочные этапы</a></li>
+                                <li><a class="dropdown-item" href="{% url 'main:final-stage' %}">Финальный этап</a></li>
+                                <li><a class="dropdown-item" href="{% url 'main:memb-info' %}">Участникам</a></li>
+                                <li><a class="dropdown-item" href="{% url 'main:spon-info' %}">Спонсорам</a></li>
+                            {% endif %}
+
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link {% if 'gallery' in request.path %}active{% endif %}" href="{% url 'main:gallery' %}">Галерея</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {% if 'members' in request.path or 'member-detail' in request.path %}active{% endif %}" href="{% url 'main:members' %}">Участники</a>
-                    </li>
+                    {% if request.user.can_see_miracles %}
+                        <li class="nav-item">
+                            <a class="nav-link {% if 'gallery' in request.path %}active{% endif %}" href="{% url 'main:gallery' %}">Галерея</a>
+                        </li>
+                    {% endif %}
+                    
+                    {% if request.user.can_see_miracles %}
+                         <li class="nav-item">
+                            <a class="nav-link {% if 'members' in request.path or 'member-detail' in request.path %}active{% endif %}" href="{% url 'main:members' %}">Участники</a>
+                        </li>
+                    {% endif %}
+                    
                     <li class="nav-item">
                         <a class="nav-link {% if 'organizers' in request.path or 'organizer-detail' in request.path %}active{% endif %}" href="{% url 'main:organizers' %}">Организаторы</a>
                     </li>
+
+                    {% if request.user.can_see_miracles %}
                     <li class="nav-item">
                         <a class="nav-link {% if 'sponsors' in request.path or 'sponsor-detail' in request.path %}active{% endif %} text-nowrap" href="{% url 'main:sponsors' %}">Партнеры и Спонсоры</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {% if 'contacts' in request.path %}active{% endif %}" href="{% url 'main:contacts' %}">Контакты</a>
-                    </li>
+                    </li>    
+                    {% endif %}
+                    
+
+                    {% if user.can_see_miracles %}
+                        <li class="nav-item">
+                            <a class="nav-link {% if 'contacts' in request.path %}active{% endif %}" href="{% url 'main:contacts' %}">Контакты</a>
+                        </li>    
+                    {% endif %}
+                    
+
                 </ul>
                 {% comment %} <ul class="navbar-nav justify-content-end flex-grow-1">
                     {% if not request.user.is_authenticated %}
@@ -68,14 +94,22 @@
                     {% endif %}
                 </ul> {% endcomment %}
                 <ul class="navbar-nav justify-content-end flex-grow-1">
-                    {% if user.is_authenticated %}
+                    {% if user.is_authenticated and user.can_see_miracles %}
                     <li class="nav-item">
                         <a class="nav-link text-nowrap {% if 'profile' in request.path %}active{% endif %}" href="{% url 'main:profile' %}"><i class="bi bi-person-circle me-1"></i>Личный кабинет</a>
                     </li>
-                    {% else %}
+
+                    {% comment %}
+
                     <li class="nav-item">
-                        <a class="nav-link {% if 'authorization' in request.path %}active{% endif %}" href="{% url 'main:authorization' %}"><i class="bi bi-box-arrow-in-right me-2"></i>Войти</a>
+
+                        <a class="nav-link {% if 'authorization' in request.path %}active{% endif %}" href="{% url 'main:authorization' %}">
+
+                            <i class="bi bi-box-arrow-in-right me-2"></i>Войти</a>
                     </li>
+
+                    {% endcomment %}
+
                     {% endif %}
                 </ul>
                 {% comment %} <p class="text-danger">{{ user.username }}</p> {% endcomment %}

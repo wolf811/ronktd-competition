@@ -12,13 +12,17 @@ class PartnerStatus(models.Model):
         max_length=100,
     )
 
+    class Meta:
+        verbose_name = "Статус партнера"
+        verbose_name_plural = "Статусы партнера"
+
     def __str__(self):
         return f"{self.name}"
 
 
 class Partner(models.Model):
     short_title = models.CharField("Название", max_length=200)
-    full_title = models.CharField("Название", max_length=200)
+    full_title = models.CharField("Полное название", max_length=200)
     short_description = models.TextField(
         "Short description",
         max_length=500,
@@ -44,6 +48,10 @@ class Partner(models.Model):
         null=True,
         blank=True,
     )
+    city = models.CharField(max_length=100, default="---")
+    phone = models.CharField(max_length=100, default="---")
+    email = models.EmailField(null=True, blank=True)
+    site = models.URLField(null=True, blank=True)
     status = models.ForeignKey(
         PartnerStatus,
         verbose_name="status",
@@ -51,8 +59,13 @@ class Partner(models.Model):
         blank=True,
         on_delete=models.SET_NULL,
     )
+    super_status = models.BooleanField(default=False)
 
-    number = models.SmallIntegerField("Порядок вывода на сайт")
+    number = models.SmallIntegerField(
+        "Порядок вывода на сайт",
+        null=True,
+        blank=True,
+    )
     json_data = models.JSONField("json-data", null=True, blank=True)
 
     class Meta:
