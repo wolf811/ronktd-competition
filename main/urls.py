@@ -19,6 +19,7 @@ urlpatterns = [
     path("members/", main.members, name="members"),
     path("member-detail/", main.member_detail, name="member-detail"),
     path("organizers/", main.organizers, name="organizers"),
+    path("final-stage-organizers/", main.sponsors, name="final-stage-organizers"),
     path("organizer-detail/", main.organizer_detail, name="organizer-detail"),
     path("sponsors/", main.sponsors, name="sponsors"),
     path("sponsor-detail/", main.sponsor_detail, name="sponsor-detail"),

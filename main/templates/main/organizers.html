@@ -9,8 +9,10 @@
       <div class="table-responsive">
         <table class="table table-hover align-middle table-bordered">
               <tr>
-                <th>Наименование центра СНК ОПО РОНКТД</th>
+                <th>Наименование</th>
                 <th>Город</th>
+                <th>Номинации</th>
+                <th>Даты проведения</th>
                 <th>Контакты</th>
               </tr>
             {% if partners %}
@@ -18,10 +20,14 @@
             {% for partner in partners %}
                <tr>
                 <td>
-                  <a href="{% if request.user.can_see_miracles %}{% url 'main:member-detail' %}{% else %}#{% endif %}"
+                    <a href="{{ partner.site }}" target="_blank"
                      >{{ partner.short_title }}</a>
                 </td>
                       <td>{{ partner.city }}</td>
+                      <td>
+                          {{ partner.get_nominations }}
+                      </td>
+                      <td>{{ partner.get_period }}</td>
                 <td>
                   <p class="contacts text-sm mb-1">
                   <a href="tel:{{ partner.phone }}" class="text-nowrap">

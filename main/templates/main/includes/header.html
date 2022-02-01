@@ -7,6 +7,11 @@
                 <div class="col-lg-2 align-items-center mb-3 mb-lg-0">
                     <a href="{% url 'main:index' %}"><img src="{{ glob_event.logo.url }}" alt="Логотип" class="d-block mx-auto mx-lg-0"></a>
                 </div>
+                {% if glob_event.logo1 %}
+                    <div class="col-lg-2 align-items-center mb-3 mb-lg-0">
+                        <a href="{% url 'main:index' %}"><img src="{{ glob_event.logo1.url }}" alt="Логотип" class="d-block mx-auto mx-lg-0"></a>
+                    </div>
+                {% endif %}
                 <div class="col-lg">
                     <div class="text-center">
                         <h5 class="mb-0 lh-sm text-purple">{{ glob_event.short_description }}
@@ -22,8 +27,13 @@
                 <div class="col-lg-2">
                     <div class="d-none d-lg-block">
                         <div class="contacts d-flex flex-column text-end">
-                            <a href="tel:{{ glob_event.phone }}"><i class="bi bi-telephone me-1"></i>{{ glob_event.phone }}</a>
                             <a href="mailto:{{ glob_event.email }}"><i class="bi bi-envelope me-2"></i>{{ glob_event.email }}</a>
+                            {% if glob_event.email1 %}
+                                <a href="mailto:{{ glob_event.email1 }}"><i class="bi bi-envelope me-2"></i>{{ glob_event.email1 }}</a>
+                            {% endif %}
+                            {% if glob_event.phone %}
+                                <a href="tel:{{ glob_event.phone }}"><i class="bi bi-telephone me-1"></i>{{ glob_event.phone }}</a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

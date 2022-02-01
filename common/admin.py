@@ -2,9 +2,12 @@ from django.contrib import admin
 
 from common.models import Event, EventParticipant, Nomination, Tag
 
+
 # Register your models here.
-for cls_ in [Tag, Nomination]:
-    admin.site.register(cls_)
+@admin.register(Nomination)
+class NominationAdmin(admin.ModelAdmin):
+    list_display = ["id", "__str__", "number"]
+    list_display_links = ["id", "__str__"]
 
 
 @admin.register(Event)

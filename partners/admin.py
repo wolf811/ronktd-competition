@@ -13,5 +13,5 @@ for cls_ in classes:
 
 @admin.register(Partner)
 class PartnerAdmin(admin.ModelAdmin):
-    list_display = ["id", "__str__", "number"]
+    list_display = ["id", "__str__", "number", "final_stage", "super_status"]
     list_display_links = ["id", "__str__"]

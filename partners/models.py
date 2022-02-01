@@ -59,7 +59,15 @@ class Partner(models.Model):
         blank=True,
         on_delete=models.SET_NULL,
     )
-    super_status = models.BooleanField(default=False)
+    nominations = models.ManyToManyField(
+        "common.Nomination",
+        blank=True,
+    )
+    period_start = models.DateField(null=True, blank=True)
+    period_end = models.DateField(null=True, blank=True)
+
+    final_stage = models.BooleanField("Организатор финального этапа", default=False)
+    super_status = models.BooleanField("Супер-статус", default=False)
 
     number = models.SmallIntegerField(
         "Порядок вывода на сайт",
@@ -74,3 +82,15 @@ class Partner(models.Model):
 
     def __str__(self):
         return self.short_title
+
+    def get_period(self):
+        if self.period_start and self.period_end:
+            return f"с {self.period_start.strftime('%d.%m.%Y')} по {self.period_end.strftime('%d.%m.%Y')}"
+        return ""
+
+    def get_nominations(self):
+        if self.nominations.count():
+            return ", ".join(
+                [nom.title for nom in self.nominations.all().order_by("number")]
+            )
+        return ""

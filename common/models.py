@@ -50,8 +50,15 @@ class Event(EventMixin):
         null=True,
         blank=True,
     )
+    logo1 = models.ImageField(
+        upload_to="logos",
+        null=True,
+        blank=True,
+    )
+
     phone = models.CharField(max_length=100, null=True, blank=True, default="---")
     email = models.EmailField(null=True, blank=True, default="info@naks.ru")
+    email1 = models.EmailField(null=True, blank=True, default="info@naks.ru")
 
     active_now = models.BooleanField(default=False)
 

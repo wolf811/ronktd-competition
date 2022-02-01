@@ -58,15 +58,26 @@
                         </li>
                     {% endif %}
                     
-                    <li class="nav-item">
-                        <a class="nav-link {% if 'organizers' in request.path or 'organizer-detail' in request.path %}active{% endif %}" href="{% url 'main:organizers' %}">Организаторы</a>
-                    </li>
+                    {% comment %}
+                        <li class="nav-item">
+                            <a class="nav-link {% if 'organizers' in request.path or 'organizer-detail' in request.path %}active{% endif %}" href="{% url 'main:organizers' %}">Организаторы</a>
+                        </li>
+                    {% endcomment %}
 
-                    {% if request.user.can_see_miracles %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle{% if 'organizers' in request.path or 'final_stage' in request.path %} active{%endif%}"
+                            href="#" id="orgDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+                            >Организаторы</a>
+                        <ul class="dropdown-menu" aria-labelledby="orgDropdown">
+                            <li><a class="dropdown-item" href="{% url 'main:organizers' %}">Региональные этапы</a></li>
+                            <li><a class="dropdown-item" href="{% url 'main:final-stage-organizers' %}">Финальный этап</a></li>
+                        </ul>
+                    </li>
+                    {% comment %}
                     <li class="nav-item">
                         <a class="nav-link {% if 'sponsors' in request.path or 'sponsor-detail' in request.path %}active{% endif %} text-nowrap" href="{% url 'main:sponsors' %}">Партнеры и Спонсоры</a>
                     </li>    
-                    {% endif %}
+                    {% endcomment %}
                     
 
                     {% if user.can_see_miracles %}

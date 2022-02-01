@@ -151,7 +151,7 @@ def organizers(request):
     title = "Организаторы"
     content = {
         "title": title,
-        "partners": Partner.objects.all().order_by("number"),
+        "partners": Partner.objects.filter(super_status=False).order_by("number"),
     }
     return render(request, "main/organizers.html", content)
 
@@ -165,9 +165,11 @@ def organizer_detail(request):
 
 
 def sponsors(request):
-    title = "Спонсоры"
+    title = "Организаторы финального этапа"
+    partners = Partner.objects.filter(final_stage=True).order_by("number")
     content = {
         "title": title,
+        "partners": partners,
     }
     return render(request, "main/sponsors.html", content)
 
