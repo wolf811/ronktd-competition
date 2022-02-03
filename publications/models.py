@@ -178,7 +178,15 @@ class Document(models.Model):
         upload_to="documents/",
         validators=[
             FileExtensionValidator(
-                allowed_extensions=["pdf", "docx", "doc", "jpg", "jpeg"],
+                allowed_extensions=[
+                    "pdf",
+                    "docx",
+                    "doc",
+                    "jpg",
+                    "jpeg",
+                    "xls",
+                    "xlsx",
+                ],
                 message="Неправильный тип файла, используйте\
                                         PDF, DOCX, DOC, JPG, JPEG",
             )

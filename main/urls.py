@@ -11,6 +11,7 @@ urlpatterns = [
     path("news/", main.news, name="news"),
     path("news-detail/", main.news_detail, name="news-detail"),
     path("structure/", main.structure, name="structure"),
+    path("orgcommitee/", main.orgcommitee, name="orgcommitee"),
     path("docs/", main.docs, name="docs"),
     path("stages/", main.stages, name="stages"),
     path("final-stage/", main.final_stage, name="final-stage"),

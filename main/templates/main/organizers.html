@@ -13,7 +13,7 @@
                 <th>Город</th>
                 <th>Номинации</th>
                 <th>Даты проведения</th>
-                <th>Контакты</th>
+                {% comment %}<th>Контакты</th>{% endcomment %}
               </tr>
             {% if partners %}
 
@@ -28,25 +28,28 @@
                           {{ partner.get_nominations }}
                       </td>
                       <td>{{ partner.get_period }}</td>
-                <td>
-                  <p class="contacts text-sm mb-1">
-                  <a href="tel:{{ partner.phone }}" class="text-nowrap">
+                {% comment %}
+                    <td>
+                      <p class="contacts text-sm mb-1">
+                      <a href="tel:{{ partner.phone }}" class="text-nowrap">
 
-                      <i class="bi bi-telephone me-1"></i>{{ partner.phone }}
-                  </a>
-                  </p>
-                  <p class="contacts text-sm mb-1">
-                  <a href="mailto:{{ partner.email }}" class="text-nowrap">
-                    <i class="bi bi-envelope me-2"></i>{{ partner.email }}
-                  </a>
-                  </p>
-                  <p class="contacts text-sm mb-0">
-                  <a href="{{ partner.site }}" class="text-nowrap">
-                      <i class="bi bi-globe me-2"></i>
-                        {{ partner.site }}
-                  </a>
-                  </p>
-                </td>
+                          <i class="bi bi-telephone me-1"></i>{{ partner.phone }}
+                      </a>
+                      </p>
+                      <p class="contacts text-sm mb-1">
+                      <a href="mailto:{{ partner.email }}" class="text-nowrap">
+                        <i class="bi bi-envelope me-2"></i>{{ partner.email }}
+                      </a>
+                      </p>
+                      <p class="contacts text-sm mb-0">
+                      <a href="{{ partner.site }}" class="text-nowrap">
+                          <i class="bi bi-globe me-2"></i>
+                            {{ partner.site }}
+                      </a>
+                      </p>
+                    </td>    
+                {% endcomment %}
+                
               </tr> 
             {% endfor %}
             

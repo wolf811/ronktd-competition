@@ -174,6 +174,15 @@ def sponsors(request):
     return render(request, "main/sponsors.html", content)
 
 
+def orgcommitee(request):
+    title = "Организационный комитет"
+    content = {
+        "title": title,
+        "post": Post.objects.filter(url_code="ORGCOMMITEE").first(),
+    }
+    return render(request, "main/structure.html", content)
+
+
 def sponsor_detail(request):
     title = "Спонсоры"
     content = {
