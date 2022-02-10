@@ -6,6 +6,10 @@
         {{ title }}
         <hr class="line-title" />
       </h4>
+        <div class="pb-5">
+            <a href="{{ request.META.HTTP_REFERER }}" class="text-sm text-nowrap"><i
+                    class="bi bi-arrow-left me-1"></i>назад</a>
+        </div>
 
       {% for doc in docs %}
           <div class="mb-2">

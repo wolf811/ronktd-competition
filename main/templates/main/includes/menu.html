@@ -32,11 +32,15 @@
                     {% endcomment %}
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle{% if 'structure' in request.path or 'docs' in request.path or 'orgcommitee' in request.path or 'docs' in request.path%} active{% endif %}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">О&nbsp;конкурсе</a>
+                        <a class="nav-link dropdown-toggle{% if 'about' in request.path %} active{% endif %}" href="#" 
+                            id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">О&nbsp;конкурсе</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="{% url 'main:structure' %}">Организационная структура</a></li>
-                            <li><a class="dropdown-item" href="{% url 'main:orgcommitee' %}">Оргкомитет конкурса</a></li>
-                            <li><a class="dropdown-item" href="{% url 'main:docs' %}">Документы</a></li>
+                            <li><a class="dropdown-item" href="{% url 'main:about-competition-organizers' %}">Организаторы</a></li>
+                            <li><a class="dropdown-item" href="{% url 'main:about-structure' %}">Организационная структура</a></li>
+                            <li><a class="dropdown-item" href="{% url 'main:about-orgcommitee' %}">Оргкомитет конкурса</a></li>
+                            <li><a class="dropdown-item" href="{% url 'main:about-goals' %}">Задачи</a></li>
+                            <li><a class="dropdown-item" href="{% url 'main:about-docs' %}">Документы</a></li>
+                            <li><a class="dropdown-item" href="{% url 'main:about-nominations' %}">Номинации</a></li>
 
                             {% if request.user.can_see_miracles %}
                                 <li><a class="dropdown-item" href="{% url 'main:stages' %}">Отборочные этапы</a></li>
@@ -47,6 +51,43 @@
 
                         </ul>
                     </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle{% if 'def20' in request.path %} active{% endif %}"
+                            href="#" id="orgDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+                            >История конкурса</a>
+                        <ul class="dropdown-menu" aria-labelledby="orgDropdown">
+                            <li><a class="dropdown-item" href="{% url 'main:history-def2021' %}">Дефектоскопист 2021</a></li>
+                            <li><a class="dropdown-item" href="{% url 'main:history-def2022' %}">Дефектоскопист 2022</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle{% if 'stages' in request.path %} active{% endif %}"
+                            href="#" id="orgDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+                            >Отборочный этап</a>
+                        <ul class="dropdown-menu" aria-labelledby="orgDropdown">
+                            <li><a class="dropdown-item" href="{% url 'main:stages-centers' %}">Центры</a></li>
+                            <li><a class="dropdown-item" href="{% url 'main:stages-rules' %}">Правила проведения</a></li>
+                            <li><a class="dropdown-item" href="{% url 'main:stages-requirements' %}">Требования к участникам</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle{% if 'final-stage' in request.path %} active{% endif %}"
+                            href="#" id="orgDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+                            >Финальный этап</a>
+                        <ul class="dropdown-menu" aria-labelledby="orgDropdown">
+                            <li><a class="dropdown-item" href="{% url 'main:final-stage-place' %}">Площадка</a></li>
+                            <li><a class="dropdown-item" href="{% url 'main:final-stage-selection' %}">Отбор финалистов</a></li>
+                            <li><a class="dropdown-item" href="{% url 'main:final-stage-requirements' %}">Требования к участникам</a></li>
+                            <li><a class="dropdown-item" href="{% url 'main:final-stage-rules' %}">Правила проведения</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'main:sponsorship' %}">Спонсорам</a>
+                    </li>
+
                     {% if request.user.can_see_miracles %}
                         <li class="nav-item">
                             <a class="nav-link {% if 'gallery' in request.path %}active{% endif %}" href="{% url 'main:gallery' %}">Галерея</a>
@@ -65,21 +106,20 @@
                         </li>
                     {% endcomment %}
 
+                    {% comment %}
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle{% if 'organizers' in request.path or 'final' in request.path %} active{%endif%}"
                             href="#" id="orgDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"
                             >Организаторы</a>
                         <ul class="dropdown-menu" aria-labelledby="orgDropdown">
-                            <li><a class="dropdown-item" href="{% url 'main:organizers' %}">Региональные этапы</a></li>
+                            <li><a class="dropdown-item" href="{% url 'main:regional-organizers' %}">Региональные этапы</a></li>
                             <li><a class="dropdown-item" href="{% url 'main:final-stage-organizers' %}">Финальный этап</a></li>
                         </ul>
                     </li>
-                    {% comment %}
                     <li class="nav-item">
                         <a class="nav-link {% if 'sponsors' in request.path or 'sponsor-detail' in request.path %}active{% endif %} text-nowrap" href="{% url 'main:sponsors' %}">Партнеры и Спонсоры</a>
                     </li>    
                     {% endcomment %}
-                    
 
                     {% if user.can_see_miracles %}
                         <li class="nav-item">
