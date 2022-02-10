@@ -327,7 +327,7 @@ def sponsorship(request):
     }
     return render(request, "main/sponsors.html", content)
     """
-    redirect_to = "ronktd.ru/directions/konkurs/sponsoram/"
+    redirect_to = "https://ronktd.ru/directions/konkurs/sponsoram/"
     return redirect(redirect_to)
 
 
