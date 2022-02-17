@@ -147,12 +147,12 @@
                     {% endif %}
                 </ul> {% endcomment %}
                 <ul class="navbar-nav justify-content-end flex-grow-1">
-                    {% if glob_event.email1 %}
+                    {% if glob_event.email %}
                         <li class="nav-item">
-                            <a class="nav-link text-nowrap" href="mailto:{{ glob_event.email1 }}">{{ glob_event.email1 }}</a>
+                            <a class="nav-link text-nowrap" href="mailto:{{ glob_event.email }}">{{ glob_event.email }}</a>
                         </li>
                     {% endif %}
-                    {% if glob_event.email2 %}
+                    {% if glob_event.email1 %}
                         <li class="nav-item">
                             <a class="nav-link text-nowrap" href="mailto:{{ glob_event.email2 }}">{{ glob_event.email2 }}</a>
                         </li>
