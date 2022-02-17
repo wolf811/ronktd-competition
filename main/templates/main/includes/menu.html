@@ -79,7 +79,7 @@
                         <ul class="dropdown-menu" aria-labelledby="orgDropdown">
                             <li><a class="dropdown-item" href="{% url 'main:final-stage-place' %}">Площадка</a></li>
                             <li><a class="dropdown-item" href="{% url 'main:final-stage-selection' %}">Отбор финалистов</a></li>
-                            <li><a class="dropdown-item" href="{% url 'main:final-stage-requirements' %}">Требования к участникам</a></li>
+                            {% comment %}<li><a class="dropdown-item" href="{% url 'main:final-stage-requirements' %}">Требования к участникам</a></li>{% endcomment %}
                             <li><a class="dropdown-item" href="{% url 'main:final-stage-rules' %}">Правила проведения</a></li>
                         </ul>
                     </li>
@@ -149,12 +149,12 @@
                 <ul class="navbar-nav justify-content-end flex-grow-1">
                     {% if glob_event.email1 %}
                         <li class="nav-item">
-                            <a class="nav-link text-nowrap" href="#">info@naks.ru</a>
+                            <a class="nav-link text-nowrap" href="mailto:{{ glob_event.email1 }}">{{ glob_event.email1 }}</a>
                         </li>
                     {% endif %}
                     {% if glob_event.email2 %}
                         <li class="nav-item">
-                            <a class="nav-link text-nowrap" href="#">info1@naks.ru</a>
+                            <a class="nav-link text-nowrap" href="mailto:{{ glob_event.email2 }}">{{ glob_event.email2 }}</a>
                         </li>
                     {% endif %}
                     {% if user.is_authenticated and user.can_see_miracles %}
