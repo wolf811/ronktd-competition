@@ -88,6 +88,7 @@
                         <a class="nav-link" href="{% url 'main:sponsorship' %}">Спонсорам</a>
                     </li>
 
+
                     {% if request.user.can_see_miracles %}
                         <li class="nav-item">
                             <a class="nav-link {% if 'gallery' in request.path %}active{% endif %}" href="{% url 'main:gallery' %}">Галерея</a>
@@ -146,6 +147,16 @@
                     {% endif %}
                 </ul> {% endcomment %}
                 <ul class="navbar-nav justify-content-end flex-grow-1">
+                    {% if glob_event.email1 %}
+                        <li class="nav-item">
+                            <a class="nav-link text-nowrap" href="#">info@naks.ru</a>
+                        </li>
+                    {% endif %}
+                    {% if glob_event.email2 %}
+                        <li class="nav-item">
+                            <a class="nav-link text-nowrap" href="#">info1@naks.ru</a>
+                        </li>
+                    {% endif %}
                     {% if user.is_authenticated and user.can_see_miracles %}
                     <li class="nav-item">
                         <a class="nav-link text-nowrap {% if 'profile' in request.path %}active{% endif %}" href="{% url 'main:profile' %}"><i class="bi bi-person-circle me-1"></i>Личный кабинет</a>

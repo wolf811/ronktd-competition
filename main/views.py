@@ -161,8 +161,10 @@ def history_def2022(request):
 
 def stages_centers(request):
     title = "Центры"
+    post = Chunk.objects.filter(code="STAGES_CENTERS").first()
     content = {
         "title": title,
+        "post": post,
         "partners": Partner.objects.filter(super_status=False).order_by("number"),
     }
     return render(request, "main/organizers.html", content)

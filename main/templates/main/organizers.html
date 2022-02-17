@@ -6,6 +6,17 @@
         {{ title }}
         <hr class="line-title" />
       </h4>
+        <div class="pb-3">
+            <a href="{{ request.META.HTTP_REFERER }}" class="text-sm text-nowrap"><i
+                    class="bi bi-arrow-left me-1"></i>назад</a>
+        </div>
+
+        {% if post %}
+            <div class="p-3 shadow-sm border border-light mb-4">
+                    {{ post.html|safe }}
+            </div>        
+        {% endif %}
+
       <div class="table-responsive">
         <table class="table table-hover align-middle table-bordered">
               <tr>
@@ -28,6 +39,7 @@
                           {{ partner.get_nominations }}
                       </td>
                       <td>{{ partner.get_period }}</td>
+
                 {% comment %}
                     <td>
                       <p class="contacts text-sm mb-1">
