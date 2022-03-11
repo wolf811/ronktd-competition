@@ -54,7 +54,7 @@
 
             {% for chunk in chunks %}
 
-                {% if user.is_authenticated %}
+                {% if user.is_authenticated and user.can_see_miracles %}
                     <div class="position-relative">
                         <div class="position-absolute top-0 end-0">
                             <div class="badge bg-primary">
@@ -69,7 +69,13 @@
                 {% endif %}
 
                 <div class="p-3 shadow-sm border border-light mb-4">
-                    {{ chunk.text|safe }}
+                    {% if chunk.html %}
+                        {{ chunk.html|safe}} 
+                    {% elif chunk.text %}
+                        {{ chunk.text|safe }}
+                    {% else %}
+                        NO CHUNK TEXT
+                    {% endif %}
                 </div>
                 
             {% endfor %}
@@ -106,105 +112,128 @@
             class="alert alert-purple shadow-sm mb-4"
             v-cloak
             >
-            <h3 class="fw-light text-purple text-center">Стать участником, партнером или спонсором конкурса</h3>
+            <h3 class="fw-light text-purple text-center">Стать партнером или спонсором конкурса</h3>
             <div class="my-4">
                 <div class="row justify-content-sm-center">
                     <div class="col-sm-10 col-md-8 col-xl-6">
-                        <form>
-                            <div class="mb-3">
-                                <label for="name1" class="form-label">Контактное лицо</label>
-                                <input 
-                                       v-model="fio" 
-                                       name="fio"
-                                       type="text" 
-                                       class="form-control" 
-                                       id="name1" 
-                                       placeholder="ФИО"
-                                    >
-                            </div>
-                            <div class="mb-3">
-                                <label for="phone1" class="form-label">Телефон</label>
-                                <input 
-                                       v-model="phone" 
-                                       name="phone"
-                                       type="text" 
-                                       class="form-control" 
-                                       id="masked_phone_number"
-                                >
-                            </div>
-                            <div class="mb-3">
-                                <label for="email1" class="form-label">Email</label>
-                                <input 
-                                        v-model="email" 
-                                        name="email"
-                                        type="text" 
-                                        class="form-control" 
-                                        id="email1"
-                                    >
-                            </div>
-                            <div class="mb-3">
-                                <label for="comment1" class="form-label">Комментарий</label>
-                                <textarea 
-                                    v-model="comment"
-                                    name="comment"
-                                    class="form-control" 
-                                    id="comment1" 
-                                    rows="3">
-                                </textarea>
-                            </div>
-                            <div class="mb-3 form-check">
-                                <input 
-                                    v-model="pdnAccept"
-                                    name="pdn_accept"
-                                    type="checkbox" 
-                                    class="form-check-input"
-                                    id="checkSogl1"
-                                    >
-                                    <label class="form-check-label" for="checkSogl1">
-                                        <span>Согласен с </span><a href="#">обработкой
-                                            персональных данных
-                                        </a>
-                                    </label>
-                                <div v-if="formErrorMessage">
-                                    [[ formErrorMessage ]]
+                        <div :class="{'d-none': formIsInVisible}">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="name1" class="form-label">Контактное лицо</label>
+                                    <input 
+                                           v-model="fio" 
+                                           name="fio"
+                                           type="text" 
+                                           class="form-control" 
+                                           id="name1" 
+                                           placeholder="ФИО"
+                                        >
                                 </div>
-                            </div>
-                            <div class="mb-1">
-                                <label class="form-label">Введите символы с картинки</label><br>
-                                {{ form.captcha }}
-                                <small id="refresh_captcha">refresh</small>
-                            </div>
-                            <div 
-                                @click="checkForm"
-                                class="text-center">
-                                <button 
-                                    @click.prevent="sendForm"
-                                     class="btn btn-outline-primary text-dark" 
-                                     id="btnSend"
-                                     :disabled="!formCanBeSend"
-                                     >
-                                    Отправить заявку
-                                </button>
-                            </div>
-                        </form>
+                                <div class="mb-3">
+                                    <label for="phone1" class="form-label">Телефон</label>
+                                    <input 
+                                           v-model="phone" 
+                                           name="phone"
+                                           type="text" 
+                                           class="form-control" 
+                                           id="masked_phone_number"
+                                    >
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email1" class="form-label">Email</label>
+                                    <input 
+                                            v-model="email" 
+                                            name="email"
+                                            type="text" 
+                                            class="form-control" 
+                                            id="email1"
+                                        >
+                                </div>
+                                <div class="mb-3">
+                                    <label for="comment1" class="form-label">Комментарий</label>
+                                    <textarea 
+                                        v-model="comment"
+                                        name="comment"
+                                        class="form-control" 
+                                        id="comment1" 
+                                        rows="3">
+                                    </textarea>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input 
+                                        v-model="pdnAccept"
+                                        name="pdn_accept"
+                                        type="checkbox" 
+                                        class="form-check-input"
+                                        id="checkSogl1"
+                                        >
+                                        <label class="form-check-label" for="checkSogl1">
+                                            <span>Согласен с </span><a href="#">обработкой
+                                                персональных данных
+                                            </a>
+                                        </label>
+                                    <div v-if="formErrorMessage">
+                                        [[ formErrorMessage ]]
+                                    </div>
+                                </div>
+                                <div class="mb-1">
+                                    <label class="form-label">Введите символы с картинки</label><br>
+                                    {{ form.captcha }}
+                                    <small id="refresh_captcha">
+                                        <a href="#" id="refresh_captcha">
+                                            Обновить картинку
+                                        </a>
+                                    </small>
+                                </div>
+                                <div 
+                                    @click="checkForm"
+                                    class="text-center">
+                                    <button 
+                                        @click.prevent="sendForm"
+                                         class="btn btn-outline-primary text-dark" 
+                                         id="btnSend"
+                                         :disabled="!formCanBeSend"
+                                         >
+                                        Отправить заявку
+                                    </button>
+                                </div>
+                            </form>    
+                        </div>
+                        
+                    <div :class="{'d-none': !formIsInVisible}">
+                        <p class="text-success">
+                            Спасибо!<br>
+                            Идентификатор регистрации [[ formSuccessMessage ]]<br>
+                            Скоро с Вами свяжется наш сотрудник. 
+                        </p>
+                    </div>
+
                     </div>
                 </div>
             </div>
         </div>
         <div class="alert alert-light border border-light shadow-sm">
             {% comment %}<h4 class="fw-light text-purple">Партнеры и спонсоры</h4>{% endcomment %}
-            <h4 class="fw-light text-purple">Уже с нами</h4>
+            <h4 class="fw-light text-purple">Партнеры конкурса</h4>
             <div class="owl-carousel owl-theme owl-loaded">
                 <div class="owl-stage-outer">
                     <div class="owl-stage">
-                        <div class="owl-item border p-4"><img src="{% static 'img/logo.png' %}" class="img-fluid" alt="..."></div>
-                        <div class="owl-item border p-4"><img src="{% static 'img/logo-naks-media.png' %}" class="img-fluid" alt="..."></div>
-                        <div class="owl-item border p-4"><img src="{% static 'img/logo.png' %}" class="img-fluid" alt="..."></div>
-                        <div class="owl-item border p-4"><img src="{% static 'img/logo-naks-media.png' %}" class="img-fluid" alt="..."></div>
-                        <div class="owl-item border p-4"><img src="{% static 'img/logo.png' %}" class="img-fluid" alt="..."></div>
-                        <div class="owl-item border p-4"><img src="{% static 'img/logo-naks-media.png' %}" class="img-fluid" alt="..."></div>
-                        <div class="owl-item border p-4"><img src="{% static 'img/logo.png' %}" class="img-fluid" alt="..."></div>
-                        <div class="owl-item border p-4"><img src="{% static 'img/logo-naks-media.png' %}" class="img-fluid" alt="..."></div>
+                        {% for partner in partners %}
+
+                            <div class="owl-item border p-4">
+                                <img src="{{ partner.logo.url }}" class="img-fluid" alt="...">
+                            </div>
+                            
+                        {% endfor %}
+                        {% comment %}
+                            <div class="owl-item border p-4"><img src="{% static 'img/logo-naks-media.png' %}" class="img-fluid" alt="..."></div>
+                            <div class="owl-item border p-4"><img src="{% static 'img/logo.png' %}" class="img-fluid" alt="..."></div>
+                            <div class="owl-item border p-4"><img src="{% static 'img/logo-naks-media.png' %}" class="img-fluid" alt="..."></div>
+                            <div class="owl-item border p-4"><img src="{% static 'img/logo.png' %}" class="img-fluid" alt="..."></div>
+                            <div class="owl-item border p-4"><img src="{% static 'img/logo-naks-media.png' %}" class="img-fluid" alt="..."></div>
+                            <div class="owl-item border p-4"><img src="{% static 'img/logo.png' %}" class="img-fluid" alt="..."></div>
+                            <div class="owl-item border p-4"><img src="{% static 'img/logo-naks-media.png' %}" class="img-fluid" alt="..."></div>
+                        {% endcomment %}
                     </div>
                 </div>
             </div>

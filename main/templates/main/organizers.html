@@ -1,49 +1,148 @@
-{% extends 'main/base.html' %}
-{% load static %}
-{% block content %}
+{% extends 'main/base.html' %} {% load static %} {% block content %}
 <main class="py-4">
-    <div class="container-xxl">
-        <div class="p-3 shadow-sm border border-light mb-4">
-            <h4 class="text-purple">{{ title }}
-                <hr class="line-title">
-            </h4>
-            <div class="table-responsive">
-                <table class="table table-hover align-middle table-bordered">
-                    <tr>
-                        <th>Наименование центра СНК ОПО РОНКТД</th>
-                        <th>Город</th>
-                        <th>Контакты</th>
-                    </tr>
-                    <tr>
-                        <td><a href="{% url 'main:member-detail' %}">ООО "НАКС-Архангельск"</a></td>
-                        <td>Архангельск</td>
-                        <td>
-                            <p class="contacts text-sm mb-1"><a href="tel:+74992455656" class="text-nowrap"><i class="bi bi-telephone me-1"></i>+7(499)245-56-56</a></p>
-                            <p class="contacts text-sm mb-1"><a href="mailto:info@ronktd.ru" class="text-nowrap"><i class="bi bi-envelope me-2"></i>info@ronktd.ru</a></p>
-                            <p class="contacts text-sm mb-0"><a href="mailto:info@ronktd.ru" class="text-nowrap"><i class="bi bi-globe me-2"></i>http://naksarh.ru/</a></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><a href="{% url 'main:member-detail' %}">ООО «ГАЦ АР НАКС»</a></td>
-                        <td>Барнаул</td>
-                        <td>
-                            <p class="contacts text-sm mb-1"><a href="tel:+74992455656" class="text-nowrap"><i class="bi bi-telephone me-1"></i>+7(499)245-56-56</a></p>
-                            <p class="contacts text-sm mb-1"><a href="mailto:info@ronktd.ru" class="text-nowrap"><i class="bi bi-envelope me-2"></i>info@ronktd.ru</a></p>
-                            <p class="contacts text-sm mb-0"><a href="mailto:info@ronktd.ru" class="text-nowrap"><i class="bi bi-globe me-2"></i>http://naksarh.ru/</a></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><a href="{% url 'main:member-detail' %}">ООО «Тихоокеанский ГАЦ»</a></td>
-                        <td>Владивосток</td>
-                        <td>
-                            <p class="contacts text-sm mb-1"><a href="tel:+74992455656" class="text-nowrap"><i class="bi bi-telephone me-1"></i>+7(499)245-56-56</a></p>
-                            <p class="contacts text-sm mb-1"><a href="mailto:info@ronktd.ru" class="text-nowrap"><i class="bi bi-envelope me-2"></i>info@ronktd.ru</a></p>
-                            <p class="contacts text-sm mb-0"><a href="mailto:info@ronktd.ru" class="text-nowrap"><i class="bi bi-globe me-2"></i>http://naksarh.ru/</a></p>
-                        </td>
-                    </tr>
-                </table>
-            </div>
+  <div class="container-xxl">
+    <div class="p-3 shadow-sm border border-light mb-4">
+      <h4 class="text-purple">
+        {{ title }}
+        <hr class="line-title" />
+      </h4>
+        <div class="pb-3">
+            <a href="{{ request.META.HTTP_REFERER }}" class="text-sm text-nowrap"><i
+                    class="bi bi-arrow-left me-1"></i>назад</a>
         </div>
+
+        {% if post %}
+            <div class="p-3 shadow-sm border border-light mb-4">
+                    {{ post.html|safe }}
+            </div>        
+        {% endif %}
+
+      <div class="table-responsive">
+        <table class="table table-hover align-middle table-bordered">
+              <tr>
+                <th>Наименование</th>
+                <th>Город</th>
+                <th>Номинации</th>
+                <th>Даты проведения</th>
+                {% comment %}<th>Контакты</th>{% endcomment %}
+              </tr>
+            {% if partners %}
+
+            {% for partner in partners %}
+               <tr>
+                <td>
+                    <a href="{{ partner.site }}" target="_blank"
+                     >{{ partner.short_title }}</a>
+                </td>
+                      <td>{{ partner.city }}</td>
+                      <td>
+                          {{ partner.get_nominations }}
+                      </td>
+                      <td>{{ partner.get_period }}</td>
+
+                {% comment %}
+                    <td>
+                      <p class="contacts text-sm mb-1">
+                      <a href="tel:{{ partner.phone }}" class="text-nowrap">
+
+                          <i class="bi bi-telephone me-1"></i>{{ partner.phone }}
+                      </a>
+                      </p>
+                      <p class="contacts text-sm mb-1">
+                      <a href="mailto:{{ partner.email }}" class="text-nowrap">
+                        <i class="bi bi-envelope me-2"></i>{{ partner.email }}
+                      </a>
+                      </p>
+                      <p class="contacts text-sm mb-0">
+                      <a href="{{ partner.site }}" class="text-nowrap">
+                          <i class="bi bi-globe me-2"></i>
+                            {{ partner.site }}
+                      </a>
+                      </p>
+                    </td>    
+                {% endcomment %}
+                
+              </tr> 
+            {% endfor %}
+            
+            {% else %}
+              <tr>
+                <td>
+                  <a href="{% url 'main:member-detail' %}"
+                    >ООО "НАКС-Архангельск"</a
+                  >
+                </td>
+                <td>Архангельск</td>
+                <td>
+                  <p class="contacts text-sm mb-1">
+                    <a href="tel:+74992455656" class="text-nowrap"
+                      ><i class="bi bi-telephone me-1"></i>+7(499)245-56-56</a
+                    >
+                  </p>
+                  <p class="contacts text-sm mb-1">
+                    <a href="mailto:info@ronktd.ru" class="text-nowrap"
+                      ><i class="bi bi-envelope me-2"></i>info@ronktd.ru</a
+                    >
+                  </p>
+                  <p class="contacts text-sm mb-0">
+                    <a href="mailto:info@ronktd.ru" class="text-nowrap"
+                      ><i class="bi bi-globe me-2"></i>http://naksarh.ru/</a
+                    >
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a href="{% url 'main:member-detail' %}">ООО «ГАЦ АР НАКС»</a>
+                </td>
+                <td>Барнаул</td>
+                <td>
+                  <p class="contacts text-sm mb-1">
+                    <a href="tel:+74992455656" class="text-nowrap"
+                      ><i class="bi bi-telephone me-1"></i>+7(499)245-56-56</a
+                    >
+                  </p>
+                  <p class="contacts text-sm mb-1">
+                    <a href="mailto:info@ronktd.ru" class="text-nowrap"
+                      ><i class="bi bi-envelope me-2"></i>info@ronktd.ru</a
+                    >
+                  </p>
+                  <p class="contacts text-sm mb-0">
+                    <a href="mailto:info@ronktd.ru" class="text-nowrap"
+                      ><i class="bi bi-globe me-2"></i>http://naksarh.ru/</a
+                    >
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <a href="{% url 'main:member-detail' %}"
+                    >ООО «Тихоокеанский ГАЦ»</a
+                  >
+                </td>
+                <td>Владивосток</td>
+                <td>
+                  <p class="contacts text-sm mb-1">
+                    <a href="tel:+74992455656" class="text-nowrap"
+                      ><i class="bi bi-telephone me-1"></i>+7(499)245-56-56</a
+                    >
+                  </p>
+                  <p class="contacts text-sm mb-1">
+                    <a href="mailto:info@ronktd.ru" class="text-nowrap"
+                      ><i class="bi bi-envelope me-2"></i>info@ronktd.ru</a
+                    >
+                  </p>
+                  <p class="contacts text-sm mb-0">
+                    <a href="mailto:info@ronktd.ru" class="text-nowrap"
+                      ><i class="bi bi-globe me-2"></i>http://naksarh.ru/</a
+                    >
+                  </p>
+                </td>
+              </tr>
+            {% endif %}
+        </table>
+      </div>
     </div>
+  </div>
 </main>
 {% endblock %}

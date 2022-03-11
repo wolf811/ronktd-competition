@@ -1,0 +1,99 @@
+$rsps-red: #A71911 !important;
+$rsps-red-light: #D03027 !important;
+
+.text-title-rsps {
+    color: #214E6F;
+}
+.alert-rsps {
+    color: #214E6F;
+    background-color: rgba(208, 48, 39, 0.1);
+    border-color: rgba(208, 48, 39, 0.5);
+}
+// .top-arrow {
+//     background-color: #214E6F;
+// }
+.wrapper-rsps-conf {
+    .navbar-main {
+        background-color: rgba(8, 109, 163, 1);
+        background-image: url(../img/bg-blue.gif);
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-bottom: 1px solid #086da3;
+
+        .navbar-nav {
+
+            .nav-link {
+                padding: 1rem;
+                color: #fff;
+
+                &:hover {
+                    transition: 0.3s;
+                    background-color: rgba(4, 85, 148, 1);
+                    // color: #fff;
+
+                    @media (max-width: 991px) {
+                        background-color: rgba(247, 160, 20, 0.3);
+                    }
+                }
+            }
+
+            .nav-link.active {
+                font-weight: bold;
+            }
+        }
+
+    }
+
+    header {
+        border-bottom: 1px solid #086da3;
+    }
+
+    .header-main {
+        .line-head {
+            border-bottom: 1px solid $rsps-red-light;
+        }
+
+        .contacts {
+            a {
+                color: #214E6F;
+
+                &:hover {
+                    color: #214E6F;
+                    opacity: 0.8;
+                }
+            }
+        }
+    }
+
+    main {
+        .line-title {
+            border-bottom: 2px solid $rsps-red-light;
+        }
+
+        .carousel-text-seminar {
+            background-color: rgba(208, 48, 39, 0.7);
+        }
+
+        .owl-carousel .owl-dots .owl-dot span {
+            border: 1px solid #086da3 !important;
+        }
+
+        .owl-carousel .owl-dots .owl-dot.active span {
+            background: #086da3 !important;
+            border: 1px solid #086da3 !important;
+        }
+
+        .owl-carousel .owl-dots .owl-dot:hover span {
+            background: rgba(4, 85, 148, 1) !important;
+            border: 1px solid rgba(4, 85, 148, 1) !important;
+        }
+    }
+
+    footer {
+        background-image: url(../img/bg-blue.gif);
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-top: 1px solid #086da3;
+        color: #fff;
+    }
+}

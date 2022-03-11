@@ -7,11 +7,52 @@
             <h4 class="text-purple">{{ title }}
                 <hr class="line-title">
             </h4>
-            <p class="lead"><a href="{% url 'main:spon-info' %}">Информация для спонсоров<i class="bi bi-arrow-right ms-2"></i></a></p>
+            {% comment %}<p class="lead"><a href="{% url 'main:spon-info' %}">Информация для спонсоров<i class="bi bi-arrow-right ms-2"></i></a></p>{% endcomment %}
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 g-4">
+                {% for partner in partners %}
+                    <div class="col">
+                        <div class="card card-main h-100 position-relative">
+                            {% comment %}
+                                <span class="position-absolute top-0 end-0 p-1">
+                                    <i class="bi bi-award-fill fs-1 text-warning" 
+                                        data-bs-container="body" 
+                                        data-bs-toggle="popover" 
+                                        data-bs-trigger="hover" 
+                                        data-bs-placement="top" 
+                                        data-bs-content="Организация является спонсором конкурса"></i>
+                                </span>    
+                            {% endcomment %}
+
+                            <div class="p-5">
+                                <img src="{{ partner.logo.url }}" class="card-img-top" alt="...">
+                            </div>
+
+                            <div class="card-body">
+                                <h5 class="card-title">{{ partner.short_title }}</h5>
+                                <p class="card-text fw-light">
+                                    {{ partner.short_description }}     
+                                </p>
+                                <a href="{{ partner.site }}" target="_blank" class="btn btn-outline-primary btn-sm">
+                                    Сайт партнера<i class="bi bi-arrow-right ms-1"></i></a>
+                            </div>
+                        </div>
+                    </div>    
+                {% endfor %}
+                
+                {% comment %}
                 <div class="col">
                     <div class="card card-main h-100 position-relative">
-                        <span class="position-absolute top-0 end-0 p-1"><i class="bi bi-award-fill fs-1 text-warning" data-bs-container="body" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="top" data-bs-content="Организация является спонсором конкурса"></i></span>
+                        <a href="{% url 'main:sponsor-detail' %}" class="card-img-box" target="_blank"><img src="{% static 'img/logo.png' %}" class="card-img-top" alt="..."></a>
+                        <div class="card-body">
+                            <h5 class="card-title">СРО Ассоциация "НАКС"</h5>
+                            <p class="card-text fw-light">This is a longer card with supporting text below as a natural lead-in
+                                to additional content. This content is a little bit longer.</p>
+                            <a href="{% url 'main:sponsor-detail' %}" class="btn btn-outline-primary btn-sm">Подробнее<i class="bi bi-arrow-right ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card card-main h-100 position-relative">
                         <a href="{% url 'main:sponsor-detail' %}" class="card-img-box" target="_blank"><img src="{% static 'img/logo-naks-media.png' %}" class="card-img-top" alt="..."></a>
                         <div class="card-body">
                             <h5 class="card-title">ООО "НАКС-Медиа"</h5>
@@ -31,29 +72,9 @@
                             <a href="{% url 'main:sponsor-detail' %}" class="btn btn-outline-primary btn-sm">Подробнее<i class="bi bi-arrow-right ms-1"></i></a>
                         </div>
                     </div>
-                </div>
-                <div class="col">
-                    <div class="card card-main h-100 position-relative">
-                        <a href="{% url 'main:sponsor-detail' %}" class="card-img-box" target="_blank"><img src="{% static 'img/logo-naks-media.png' %}" class="card-img-top" alt="..."></a>
-                        <div class="card-body">
-                            <h5 class="card-title">ООО "НАКС-Медиа"</h5>
-                            <p class="card-text fw-light">This is a longer card with supporting text below as a natural lead-in
-                                to additional content. This content is a little bit longer.</p>
-                            <a href="{% url 'main:sponsor-detail' %}" class="btn btn-outline-primary btn-sm">Подробнее<i class="bi bi-arrow-right ms-1"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card card-main h-100 position-relative">
-                        <a href="{% url 'main:sponsor-detail' %}" class="card-img-box" target="_blank"><img src="{% static 'img/logo.png' %}" class="card-img-top" alt="..."></a>
-                        <div class="card-body">
-                            <h5 class="card-title">СРО Ассоциация "НАКС"</h5>
-                            <p class="card-text fw-light">This is a longer card with supporting text below as a natural lead-in
-                                to additional content. This content is a little bit longer.</p>
-                            <a href="{% url 'main:sponsor-detail' %}" class="btn btn-outline-primary btn-sm">Подробнее<i class="bi bi-arrow-right ms-1"></i></a>
-                        </div>
-                    </div>
-                </div>
+                </div>    
+                {% endcomment %}
+                
             </div>
         </div>
     </div>

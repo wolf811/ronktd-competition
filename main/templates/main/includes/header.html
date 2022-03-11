@@ -2,27 +2,72 @@
 <header class="py-3">
     <div class="header-main">
         <div class="container-xxl">
-            <div class="d-none d-sm-flex align-items-center justify-content-around">
-                <div class="text-center text-lg-start">
-                    <a href="{% url 'main:index' %}" class="text-center mx-auto">
-                        <img src="{% static 'img/defectoscopist2021.png' %}" alt="Логотип" class="img-fluid">
-                    </a>
+
+            <div class="row align-items-center justify-content-between">
+                <div class="col-lg-2 align-items-center mb-3 mb-lg-0">
+                    <a href="{% url 'main:index' %}"><img src="{{ glob_event.logo.url }}" alt="Логотип" class="d-block mx-auto mx-lg-0"></a>
                 </div>
-                <div class="d-none d-lg-block">
-                    <div class="contacts d-flex flex-column text-end">
-                        <a href="tel:+74992455656"><i class="bi bi-telephone me-1"></i>{{ glob_seminar.phone }}</a>
-                        <a href="mailto:info@ronktd.ru"><i class="bi bi-envelope me-2"></i>{{ glob_seminar.email }}</a>
+                <div class="col-lg">
+                    <div class="text-center">
+                        <h5 class="mb-0 lh-sm text-purple">{{ glob_event.short_description }}
+                            {% comment %}
+                                 {% if glob_event.period_start %}
+                                 <br>
+                                 (Даты проведения: {{ glob_event.period_start|date:"d.m.Y" }} - 
+                                         {{ glob_event.period_end|date:"d.m.Y" }}) 
+                                 {% endif %}
+                            {% endcomment %}
+                        </h5>
+                        <hr class="line-head my-2">
+                        <h4 class="text-uppercase text-purple mb-0">{{ glob_event.full_description|safe }}</h4>
                     </div>
                 </div>
-            </div>
-            <div class="d-flex d-sm-none align-items-center justify-content-center">
-                <a href="#" class="me-2"><img src="{% static 'img/competition-logo.png' %}" alt="Логотип" class="d-block"></a>
-                <div class="text-center">
-                    <p class="mb-0 lh-sm text-purple text-xs">Всероссийский&nbsp;конкурс по&nbsp;неразрушающему&nbsp;контролю</p>
-                    <hr class="line-head my-2">
-                    <div class="fw-bold text-uppercase text-purple text-sm">Дефектоскопист 2021</div>
+            {% if glob_event.logo1 %}
+                <div class="col-lg-2 align-items-center mb-3 mb-lg-0">
+                    <a href="{% url 'main:index' %}"><img src="{{ glob_event.logo1.url }}" alt="Логотип" class="d-block mx-auto mx-lg-0"></a>
                 </div>
+            {% endif %}
+
+                    {% comment %}
+                     <div class="col-lg-2">
+                        <div class="d-none d-lg-block">
+                            <div class="contacts d-flex flex-column text-end">
+                                <a href="mailto:{{ glob_event.email }}"><i class="bi bi-envelope me-2"></i>{{ glob_event.email }}</a>
+                                {% if glob_event.email1 %}
+                                    <a href="mailto:{{ glob_event.email1 }}"><i class="bi bi-envelope me-2"></i>{{ glob_event.email1 }}</a>
+                                {% endif %}
+                                {% if glob_event.phone %}
+                                    <a href="tel:{{ glob_event.phone }}"><i class="bi bi-telephone me-1"></i>{{ glob_event.phone }}</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    {% endcomment %}
             </div>
+
+            {% comment %}
+                <div class="d-none d-sm-flex align-items-center justify-content-around">
+                    <div class="text-center text-lg-start">
+                        <a href="{% url 'main:index' %}" class="text-center mx-auto">
+                            <img src="{% static 'img/defectoscopist2021.png' %}" alt="Логотип" class="img-fluid">
+                        </a>
+                    </div>
+                    <div class="d-none d-lg-block">
+                        <div class="contacts d-flex flex-column text-end">
+                            <a href="tel:+74992455656"><i class="bi bi-telephone me-1"></i>{{ glob_seminar.phone }}</a>
+                            <a href="mailto:info@ronktd.ru"><i class="bi bi-envelope me-2"></i>{{ glob_seminar.email }}</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex d-sm-none align-items-center justify-content-center">
+                    <a href="#" class="me-2"><img src="{% static 'img/competition-logo.png' %}" alt="Логотип" class="d-block"></a>
+                    <div class="text-center">
+                        <p class="mb-0 lh-sm text-purple text-xs">Всероссийский&nbsp;конкурс по&nbsp;неразрушающему&nbsp;контролю</p>
+                        <hr class="line-head my-2">
+                        <div class="fw-bold text-uppercase text-purple text-sm">Дефектоскопист 2021</div>
+                    </div>
+                </div>
+            {% endcomment %}
         </div>
     </div>
 </header>

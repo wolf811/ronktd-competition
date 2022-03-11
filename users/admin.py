@@ -39,5 +39,14 @@ class CustomUserAdmin(BaseUserAdmin):
 admin.site.register(CustomUser, CustomUserAdmin)
 """
 
-admin.site.register(CustomUser)
+
+class UserProfileInline(admin.StackedInline):
+    model = UserProfile
+
+
+@admin.register(CustomUser)
+class CustomUserAdmin(admin.ModelAdmin):
+    inlines = [UserProfileInline]
+
+
 admin.site.register(UserProfile)

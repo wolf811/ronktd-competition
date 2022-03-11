@@ -1,0 +1,140 @@
+{% load widget_tweaks %}
+<div id="vue_register_seminar_app" v-cloak>
+
+<h3 v-if="!successMessage" class="fw-light text-title-rsps text-center">Стать участником</h3>
+<h3 v-else class="fw-light text-title-rsps text-center">Спасибо за регистрацию!</h3>
+<div class="my-4">
+    <div class="row justify-content-sm-center">
+        <div class="col-sm-10 col-md-8 col-xl-6">
+            <div v-if="!successMessage">
+                        <form name="register_participant_form">
+                        {% csrf_token %}
+                        {% comment %}seminar/templates/seminar/register_form.html{% endcomment %}
+
+                        {% if form.errors %}
+                            <div class="alert alert-danger">
+                                {% for field in form %}
+                                    {% if field.errors %}
+                                        {{ field.label_tag }} {{ field.errors }}
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+
+                        <div class="mb-3">
+                            <label for="id_fio" class="form-label">ФИО</label>
+                            <input name="fio" type="text" class="form-control" id="name1" />
+                            {% comment %} {% render_field form.fio class+="form-control" placeholder='Ваше ФИО'%} {% endcomment %}
+                            <br>
+                            <span class="text-danger" v-if="errors && errors.fio">[[ getErrorText('fio') ]]</span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="phone1" class="form-label">Телефон</label>
+
+                            <input
+                                name="phone"
+                                type="text"
+                                class="form-control"
+                                id="masked_phone_number"
+                            />
+                            {% comment %} {% render_field form.phone class+="form-control" placeholder='Ваш телефон в формате +7(999)999-99-99'%} {% endcomment %}
+                            <br>
+                            <span class="text-danger" v-if="errors && errors.phone">[[ getErrorText('phone') ]]</span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email1" class="form-label">Email</label>
+                            <input name="email" type="text" class="form-control" id="email1" />
+                            {% comment %} {% render_field form.email class+="form-control" placeholder='Ваш адрес эл. почты'%} {% endcomment %}
+                            <br>
+                            <span class="text-danger" v-if="errors && errors.email">[[ getErrorText('email') ]]</span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="org" class="form-label">Организация</label>
+                            <input name="org" type="text" class="form-control" id="org" />
+                            {% comment %} {% render_field form.org class+="form-control" placeholder='Наименование организации участника'%} {% endcomment %}
+                            <br>
+                            <span class="text-danger" v-if="errors && errors.org">[[ getErrorText('org') ]]</span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="city" class="form-label">Город</label>
+                            <input name="city" type="text" class="form-control" id="city" />
+                            {% comment %} {% render_field form.city class+="form-control" placeholder='Город (населенный пункт)'%} {% endcomment %}
+                            <br>
+                            <span class="text-danger" v-if="errors && errors.city">[[ getErrorText('city') ]]</span>
+                        </div>
+                        <div class="mb-3">
+                            
+                            <label for="id_question" class="form-label">Обозначьте вопросы, которые, на ваш взгляд, необходимо осветить на конференции</label>
+                            <textarea class="form-control" rows="4" placeholder="ващи вопросы..."></textarea>
+                            {% comment %} {% render_field form.question class+='form-control' placeholder='ваши вопросы...' rows="4" %} {% endcomment %}
+                            
+                        </div>
+                        <div class="mb-3">
+                            <label for="promo" class="form-label">Промокод</label>
+                            <input name="promo" type="text" class="form-control" id="promo" />
+                            {% comment %} {% render_field form.promocode class+="form-control form-control-sm" placeholder='введите промо-код, если он у вас есть'%} {% endcomment %}
+                        </div>
+                        <div class="mb-3 form-check">
+                            
+                                <input name="pdn_accept" type="checkbox" class="form-check-input" id="checkSogl1">
+                           
+
+                            {% comment %} {% render_field form.pdn_accepted class+='form-check-input' type="checkbox" %} {% endcomment %}
+
+
+                            <label class="form-check-label" for="id_pdn_accepted">
+                                <span>Согласен с </span><a href="#">обработкой персональных данных </a>
+                            </label>
+
+                            <br>
+                            <span class="text-danger" v-if="errors && errors.pdn_accepted">[[ getErrorText('pdn_accepted') ]]</span>
+
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input name="pdn_accept" type="checkbox" class="form-check-input" id="checkSogl2">
+                            {% comment %} {% render_field form.subscribe_accepted class+='form-check-input' type="checkbox" %} {% endcomment %}
+
+                            <label class="form-check-label" for="id_subscribe_accepted">
+                                <span>Согласен получать рассылки и информационные письма от Российского сварочного профессионального сообщества
+                                </span>
+                            </label>
+
+                        </div>
+                        {% comment %} <div class="mb-3">
+                            <label class="form-label">Введите символы с картинки</label><br />
+
+                            {% render_field form.captcha class+='form-control w-25 d-inline-block' %}
+
+                            <a
+                                    href="#"
+                                    id="refresh_captcha"
+                                    class="btn btn-outline-primary btn-sm"
+                                    title="обновить картинку"
+                                    ><i class="bi bi-arrow-clockwise"></i
+                                    ></a>
+                            <br>
+                            <span class="text-danger" v-if="errors && errors.captcha">[[ getErrorText('captcha') ]]</span>
+                        </div> {% endcomment %}
+                        <div class="text-center">
+                            <button
+                                    @click.prevent="sendFormData"
+                                    class="btn btn-danger" id="btnSend">
+                                Зарегистрироваться
+                            </button>
+                            <p v-if="errors" class="alert alert-warning mt-3">
+                                Исправьте ошибки формы... 
+                            </div>
+                        </div>
+                        </form>
+                </div>
+
+                <div v-if="successMessage">
+                    <p v-if="successMessage.fio">Регистрация: [[ successMessage.fio ]]</p>
+                    <p v-if="successMessage.phone">Телефон: [[ successMessage.phone ]]</p>
+                    <p v-if="successMessage.email">E-mail: [[ successMessage.email ]]</p>
+                    <p v-if="successMessage.promocode">Использован промокод: [[ successMessage.promocode ]]</p>
+                    <p v-if="successMessage.email">На регистрационный адрес эл. почты отправлено письмо с подтверждением.</p>
+                </div>
+        </div>
+    </div>
+</div>

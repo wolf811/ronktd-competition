@@ -45,6 +45,23 @@ class Event(EventMixin):
     period_start = models.DateField()
     period_end = models.DateField()
 
+    logo = models.ImageField(
+        upload_to="logos",
+        null=True,
+        blank=True,
+    )
+    logo1 = models.ImageField(
+        upload_to="logos",
+        null=True,
+        blank=True,
+    )
+
+    phone = models.CharField(max_length=100, null=True, blank=True, default="---")
+    email = models.EmailField(null=True, blank=True, default="info@naks.ru")
+    email1 = models.EmailField(null=True, blank=True, default="info@naks.ru")
+
+    active_now = models.BooleanField(default=False)
+
     class Meta:
         verbose_name = "Event"
         verbose_name_plural = "Events"
@@ -78,3 +95,29 @@ class Tag(models.Model):
 
     def __unicode__(self):
         return self.name
+
+
+class EventParticipant(models.Model):
+    """
+    fio = forms.CharField(max_length=150)
+    phone = forms.CharField(max_length=50)
+    email = forms.EmailField(required=True)
+    comment = forms.CharField(required=False)
+    pdn_accept = forms.BooleanField()
+    captcha = CaptchaField()
+    """
+
+    fio = models.CharField(max_length=300, null=True, blank=True)
+    phone = models.CharField(max_length=50, null=True, blank=True)
+    email = models.EmailField(null=True, blank=True)
+    comment = models.TextField(null=True, blank=True)
+    pdn_accept = models.BooleanField(default=True)
+
+    class Meta:
+        verbose_name = "EventParticipant"
+        verbose_name_plural = "EventParticipants"
+
+    def __str__(self):
+        if self.fio:
+            return self.fio
+        return f"Participant {self.pk}"

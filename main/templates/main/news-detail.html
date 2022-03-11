@@ -5,14 +5,15 @@
     <div class="container-xxl">
         <div class="p-3 shadow-sm border border-light mb-4">
             <div class="d-flex justify-content-between">
-                <h4 class="text-purple">Заголовок новости
+                <h4 class="text-purple">{{ post.title }}
                     <hr class="line-title">
                 </h4>
-                <a href="{% url 'main:news' %}" class="text-sm text-nowrap"><i class="bi bi-arrow-left me-1"></i>назад</a>
+                <a href="{{request.META.HTTP_REFERER}}" class="text-sm text-nowrap"><i class="bi bi-arrow-left me-1"></i>назад</a>
+                
             </div>
             <div class="mb-3">
-                <small class="text-muted">21.10.2021 г.</small>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo quod error nobis iure corporis odit
+                <small class="text-muted">{{ post.published_date|date:"d.m.Y" }}</small>
+                {% comment %} <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo quod error nobis iure corporis odit
                     perferendis modi sapiente. Autem ex excepturi consequatur iusto sint non aperiam, quis ullam at
                     deleniti!</p>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo quod error nobis iure corporis odit
@@ -20,41 +21,59 @@
                     deleniti!</p>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo quod error nobis iure corporis odit
                     perferendis modi sapiente. Autem ex excepturi consequatur iusto sint non aperiam, quis ullam at
-                    deleniti!</p>
+                    deleniti!</p> {% endcomment %}
+                    {{ post.text|safe }}
+                    
             </div>
-            <div id="newsCarousel" class="carousel carousel-news">
-                <div class="carousel__slide" data-fancybox="gallery" data-src="{% static 'img/1.jpg' %}">
-                    <img src="{% static 'img/1.jpg' %}">
+
+            {% if post.get_photos %}
+
+                <div class="my-5"></div>
+            
+                <div id="newsCarousel" class="carousel carousel-news">
+                    
+                    {% for photo in post.get_photos %}
+                    <div class="carousel__slide" data-fancybox="gallery" data-src="{{ photo.image.url }}">
+                        <img src="{{ photo.image.url }}">
+                        </div>
+                    {% endfor %}
+                    {% comment %}
+                    <div class="carousel__slide" data-fancybox="gallery" data-src="{% static 'img/2.jpg' %}">
+                        <img src="{% static 'img/2.jpg' %}">
+                    </div>
+                    <div class="carousel__slide" data-fancybox="gallery" data-src="{% static 'img/3.jpg' %}">
+                        <img src="{% static 'img/3.jpg' %}">
+                    </div>
+                    <div class="carousel__slide" data-fancybox="gallery" data-src="{% static 'img/4.jpg' %}">
+                        <img src="{% static 'img/4.jpg' %}">
+                    </div>
+                    {% endcomment %}
+
                 </div>
-                <div class="carousel__slide" data-fancybox="gallery" data-src="{% static 'img/2.jpg' %}">
-                    <img src="{% static 'img/2.jpg' %}">
-                </div>
-                <div class="carousel__slide" data-fancybox="gallery" data-src="{% static 'img/3.jpg' %}">
-                    <img src="{% static 'img/3.jpg' %}">
-                </div>
-                <div class="carousel__slide" data-fancybox="gallery" data-src="{% static 'img/4.jpg' %}">
-                    <img src="{% static 'img/4.jpg' %}">
-                </div>
-            </div>
+            {% endif %}
+
         </div>
     </div>
 </main>
-<script>
-const newsCarousel = new Carousel(document.querySelector("#newsCarousel"), {
-    // preload: 2,
-});
 
-// Customize Fancybox
-Fancybox.bind('[data-fancybox="gallery"]', {
-    Carousel: {
-        on: {
-            change: (that) => {
-                newsCarousel.slideTo(newsCarousel.findPageForSlide(that.page), {
-                    friction: 0,
-                });
+        {% if post.get_photos %}
+        <script>
+        const newsCarousel = new Carousel(document.querySelector("#newsCarousel"), {
+            // preload: 2,
+        });
+
+        // Customize Fancybox
+        Fancybox.bind('[data-fancybox="gallery"]', {
+            Carousel: {
+                on: {
+                    change: (that) => {
+                        newsCarousel.slideTo(newsCarousel.findPageForSlide(that.page), {
+                            friction: 0,
+                        });
+                    },
+                },
             },
-        },
-    },
-});
-</script>
+        });
+        </script>
+        {% endif %}
 {% endblock %}

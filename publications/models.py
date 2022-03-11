@@ -118,6 +118,17 @@ class Post(ContentMixin):
         self.published_date = timezone.now()
         self.save()
 
+    def get_photos(self):
+        if PostPhoto.objects.filter(post=self).count():
+            return PostPhoto.objects.filter(post=self)
+        return None
+
+    def get_docs(self):
+        docs = Document.objects.filter(post=self).order_by("number")
+        if docs.count():
+            return docs
+        return None
+
     def __str__(self):
         return f"Post: { self.title }"
 
@@ -167,7 +178,15 @@ class Document(models.Model):
         upload_to="documents/",
         validators=[
             FileExtensionValidator(
-                allowed_extensions=["pdf", "docx", "doc", "jpg", "jpeg"],
+                allowed_extensions=[
+                    "pdf",
+                    "docx",
+                    "doc",
+                    "jpg",
+                    "jpeg",
+                    "xls",
+                    "xlsx",
+                ],
                 message="Неправильный тип файла, используйте\
                                         PDF, DOCX, DOC, JPG, JPEG",
             )

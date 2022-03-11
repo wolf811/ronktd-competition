@@ -1,0 +1,14 @@
+{% comment %}
+    seminar/templates/seminar/includes/seminar_description.html
+{% endcomment %}
+<div class="p-3 shadow-sm border border-light mb-4">
+            <div class="anchor" id="block_01"></div>
+            <h4 class="text-title-rsps"> {{ description.title }}
+                <hr class="line-title">
+            </h4>
+            {% if description.plain_html %}
+                <p>{{ description.plain_html|safe }}</p>
+            {% else %}
+                <p>{{ description.formatted_html|safe }}</p>
+            {% endif %}
+</div>

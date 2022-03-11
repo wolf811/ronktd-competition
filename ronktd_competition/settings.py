@@ -62,7 +62,10 @@ INSTALLED_APPS = [
     "ckeditor",
     "ckeditor_uploader",
     "django_object_actions",
+    "rsps_conf",
 ]
+
+MAIN_URLS_MODULE = None
 
 # WKHTMLTOPDF_CMD_OPTIONS = {
 #     'quiet': False,
@@ -126,6 +129,7 @@ TEMPLATES = [
                 "django.contrib.messages.context_processors.messages",
                 "main.context_processors.profile",
                 "main.context_processors.csrf",
+                "common.context_processors.active_event",
                 "seminar.context_processors.active_seminar",
             ],
         },
@@ -373,3 +377,6 @@ EMAIL_USE_SSL = True
 
 if "installed_server_apps" in locals():
     INSTALLED_APPS += installed_server_apps
+
+if "main_urls_module" in locals():
+    MAIN_URLS_MODULE = main_urls_module
